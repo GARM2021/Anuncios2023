@@ -37,8 +37,8 @@ class DuaController extends Controller
     {
         try {
             $valor = 0;
-           
-            return view('dua.duaindex')->with([  //! Clase  29
+
+            return view('dua.duaindex')->with([  //! Clase  29 20230509
 
                 'items' => DuaModel::select(
                     'dua',
@@ -53,24 +53,13 @@ class DuaController extends Controller
                     'rfc_dua',
                     'seguro',
                     'fechaini',
-                    'fechafin', 
+                    'fechafin',
                     'fbajax',
                 )
                     ->where('dua', '>', $valor)
                     ->get()
             ]);
-        }
-
-
-
-
-
-
-
-
-
-        //
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             die("Error al conectar: " . $e->getMessage());
         }
     }
@@ -104,10 +93,28 @@ class DuaController extends Controller
      */
     public function show($dua)
     {
+        $valor = 0;
         // $duas = DB::table('anunmduas')->where('dua', $dua)->get();
-        $dua = DuaModel::findOrFail($dua); //! clase 27 
-        // return $dua;
-        return view('dua.duaShow')->with(['items' => $dua]);
+        // $items = DuaModel::findOrFail($dua); //! clase 27 
+        // return $items;
+        return view('dua.duaShow')->with([
+            'items' => DuaModel::select(
+                 'dua',
+                'nomdua',
+                'domdua',
+                'colonia',
+                DB::raw("(SELECT nomcol FROM anunmcolonia  WHERE colonia = anunmdua.colonia) AS nomcol"),
+                'ciudad',
+                'prop',
+                'telprop',
+                'rep_legal',
+                'rfc_dua',
+                'seguro',
+                'fechaini',
+                'fechafin',
+                'fbajax',
+            )->where('dua', '>', $valor)->first() //! con get marca error 
+        ]);
     }
 
     /**

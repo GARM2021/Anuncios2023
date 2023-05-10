@@ -12,7 +12,7 @@ class DuaModel extends Model
 
     protected $fillable = [
 
-        'dua',
+         'dua',
         'nomdua',
         'domdua',
         'colonia',

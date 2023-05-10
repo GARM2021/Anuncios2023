@@ -7,7 +7,9 @@
     <title>Lista de DUAS</title>
 </head>
 <body>
-    
+    @empty($items)
+    <h1>no trae nada</h1>
+    @endempty
     <h1> {{ $items->dua }}</h1>
      <h1>{{ $items->nomdua }}</h1>
     <div class="table-responsive">
@@ -17,7 +19,8 @@
                     	
                     
                     <th>domdua</th>	
-                    <th>colonia</th>
+                    <th>Col</th>
+                    <th>Nombre Colonia</th>
                     <th>ciudad</th>	
                     <th>prop</th>
                     <th>telprop</th>	
@@ -38,8 +41,9 @@
 
                     <td>{{ $items->domdua }}</td>
                     <td>{{ $items->colonia }}</td>
+                    <td>{{ $items->nomcol }}</td>
                     <td>{{ $items->ciudad}}</td>
-                    <td>{{ $items->prop }}</td>
+                    <td>{{ $items->prop }}</td> 
                     <td>{{ $items->telprop }}</td>
                     <td>{{ $items->rep_legal}}</td>
                     <td>{{ $items->rfc_dua }}</td>
