@@ -71,8 +71,9 @@ class DuaController extends Controller
      */
     public function create()
     {
-        //
-    }
+          return  view('dua.duaCreate');
+        
+        }
 
     /**
      * Store a newly created resource in storage.

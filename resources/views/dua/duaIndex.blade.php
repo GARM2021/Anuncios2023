@@ -1,5 +1,7 @@
-@extends('layouts.master')
+ @extends('layouts.master')  {{-- //! Clase  30  --}} --}}
 
+@section('content')
+    
 
     <h1> Lista de DUAS</h1>
 
@@ -57,4 +59,5 @@
             </table>
         </div>
     @endempty
+    @endsection
 

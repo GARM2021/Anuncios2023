@@ -38,6 +38,8 @@ Route::delete('/anuncios/{cuenta}/delete', 'AnunciosController@destroy')->name('
 
 
 Route::get('/duas', [DuaController::class, 'index'] );
+Route::get('/duas/create', [DuaController::class, 'create'] )->name('duas.create');
+Route::post('/duas', [DuaController::class, 'store'])->name('duas.store');
 Route::get('/colonias', [ColoniaController::class, 'index'] );
 Route::get('/duas/{dua}', [DuaController::class, 'show'] );
 
