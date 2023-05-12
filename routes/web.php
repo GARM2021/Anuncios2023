@@ -36,11 +36,11 @@ Route::match(['put', 'patch'], '/anuncios/{anuncio}/update', 'AnunciosController
 
 Route::delete('/anuncios/{cuenta}/delete', 'AnunciosController@destroy')->name('anuncios.destroy');
 
-
+Route::post('/duas', [DuaController::class, 'store'])->name('duas.store');
 Route::get('/duas', [DuaController::class, 'index'] );
 Route::get('/duas/create', [DuaController::class, 'create'] )->name('duas.create');
-Route::post('/duas', [DuaController::class, 'store'])->name('duas.store');
+
 Route::get('/colonias', [ColoniaController::class, 'index'] );
-Route::get('/duas/{dua}', [DuaController::class, 'show'] );
+Route::get('/duas/{dua}', [DuaController::class, 'show'] )->name('duas.show');;
 
 Route::get('/pruebaDB', [DuaController::class, 'pruebaDB'] );

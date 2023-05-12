@@ -71,7 +71,8 @@ class DuaController extends Controller
      */
     public function create()
     {
-          return  view('dua.duaCreate');
+        
+          return  view('dua.duaCreate')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol' )->where('colonia', '>', '0')->orderBy('nomcol')->get()]);
         
         }
 
@@ -83,7 +84,8 @@ class DuaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+   
+      dd("estoy en store");
     }
 
     /**
@@ -98,6 +100,7 @@ class DuaController extends Controller
         // $duas = DB::table('anunmduas')->where('dua', $dua)->get();
         // $items = DuaModel::findOrFail($dua); //! clase 27 
         // return $items;
+        
         return view('dua.duaShow')->with([
             'items' => DuaModel::select(
                  'dua',
@@ -114,7 +117,7 @@ class DuaController extends Controller
                 'fechaini',
                 'fechafin',
                 'fbajax',
-            )->where('dua', '>', $valor)->first() //! con get marca error 
+            )->where('dua', '=', $dua)->first() //! con get marca error 
         ]);
     }
 

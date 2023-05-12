@@ -83,4 +83,5 @@ class CreateAnunmduaTable extends Migration
         Schema::dropIfExists('anunmdua');
     }
 }
-//---------------------------------------------------------------------------------------------------------
+//--20230512-------------------------------------------------------------------------------------------------------
+return view('dua.duaCreate')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', 0)->orderBy('nomcol')->get()]);
