@@ -20,7 +20,7 @@
                 <br>
             </div> <br>
             {{-- <select id="ddlCol" class="ddl" onchange="this.form.submit()"> --}}
-            <select id="ddlCol" onchange="updateNomcol(this.value)">
+            <select id="ddlCol" onchange="updateCvecol(this.value)">
 
                 <option value="" selected>Selecciona Colonia</option>
                 @foreach ($icolonias as $colonia)
@@ -41,7 +41,7 @@
             <div class="form_row">
                 <label>Propietario</label>
                 <input class="form-control" maxlength="40" type="text" name="prop" required>
-                <br>           
+                <br>
             </div> <br>
             <div class="form_row">
                 <label>Tel. Propietario</label>
@@ -61,7 +61,7 @@
             <br>
             <div class="form_row">
                 <label>Seguro</label>
-                
+
 
                 <input type="radio" id="html" name="seguro" value="SI">
                 <label for="html">SI</label><br>
@@ -69,26 +69,24 @@
                 <label for="css">NO</label><br><br>
 
             </div> <br>
-         
+
 
             <form action="/action_page.php">
                 <label for="fechaini">Fecha Inicial:</label><br><br>
-                <input type="text" id="fechaini" name="fechaini" placeholder="AAAAMMDD"
-                pattern="[0-9]{8}"><br><br>
+                <input type="text" maxlength="08" id="fechaini" name="fechaini" placeholder="AAAAMMDD" pattern="[0-9]{8}"><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
-                
-              </form> 
 
-             
-              <form action="/action_page.php">
+            </form>
+
+
+            <form action="/action_page.php">
                 <label for="fechabaja">Fecha Baja:</label><br><br>
-                <input type="text" id="fechabaja" name="fechabaja" placeholder="AAAAMMDD"
-                pattern="[0-9]{8}"><br><br>
+                <input type="text" maxlength="08"id="fechabaja" name="fechabaja" placeholder="AAAAMMDD" pattern="[0-9]{8}"><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
-                
-              </form> 
-           
-           
+
+            </form>
+
+
             <div class="form_row">
                 <button type="submit" class="btn btn-primary btn-lg">Inserta DUA</button>
 
@@ -98,7 +96,7 @@
 
     </form>
     <script>
-        function updateNomcol(value) {
+        function updateCvecol(value) {
             document.getElementsByName("colonia")[0].value = value;
         }
     </script>

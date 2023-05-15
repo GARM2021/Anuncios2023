@@ -84,7 +84,7 @@ class DuaController extends Controller
      */
     public function store(Request $request)
     {
-   
+      return $request;
       dd("estoy en store");
     }
 
