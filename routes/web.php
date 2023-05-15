@@ -39,6 +39,8 @@ Route::delete('/anuncios/{cuenta}/delete', 'AnunciosController@destroy')->name('
 Route::post('/duas', [DuaController::class, 'store'])->name('duas.store');
 Route::get('/duas', [DuaController::class, 'index'] );
 Route::get('/duas/create', [DuaController::class, 'create'] )->name('duas.create');
+Route::get('/duas/edit/{dua}', [DuaController::class, 'edit'] )->name('duas.edit');
+Route::match(['put', 'patch'], '/duas/{dua}/update', [DuaController::class, 'update'])->name('duas.update');
 
 Route::get('/colonias', [ColoniaController::class, 'index'] );
 Route::get('/duas/{dua}', [DuaController::class, 'show'] )->name('duas.show');;

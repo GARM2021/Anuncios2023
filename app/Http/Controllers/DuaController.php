@@ -71,10 +71,9 @@ class DuaController extends Controller
      */
     public function create()
     {
-        
-          return  view('dua.duaCreate')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol' )->where('colonia', '>', '0')->orderBy('nomcol')->get()]);
-        
-        }
+
+        return  view('dua.duaCreate')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get()]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -84,8 +83,11 @@ class DuaController extends Controller
      */
     public function store(Request $request)
     {
-      return $request;
-      dd("estoy en store");
+
+        return $request;
+        // $duas = DuaModel::create(request())->all();  //! Clase  32
+
+
     }
 
     /**
@@ -100,10 +102,10 @@ class DuaController extends Controller
         // $duas = DB::table('anunmduas')->where('dua', $dua)->get();
         // $items = DuaModel::findOrFail($dua); //! clase 27 
         // return $items;
-        
+
         return view('dua.duaShow')->with([
             'items' => DuaModel::select(
-                 'dua',
+                'dua',
                 'nomdua',
                 'domdua',
                 'colonia',
@@ -129,7 +131,14 @@ class DuaController extends Controller
      */
     public function edit($dua)
     {
-        //
+        $icolonia = DuaModel::where('dua', $dua)->value('colonia'); //! Clase  33 con OpenAI
+        
+        return view('dua.duaEdit')->with([
+            'nomcol' => ColoniaModel::where('colonia', $icolonia)->value('nomcol'),
+            'items' => DuaModel::findOrFail($dua),
+            'icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get(),
+           
+        ]);
     }
 
     /**
@@ -141,7 +150,7 @@ class DuaController extends Controller
      */
     public function update(Request $request, $dua)
     {
-        //
+          return $request;
     }
 
     /**
