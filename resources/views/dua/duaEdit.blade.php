@@ -96,7 +96,7 @@
 
 
             <div class="form_row">
-                <button type="submit" class="btn btn-primary btn-lg">Inserta DUA</button>
+                <button type="submit" class="btn btn-primary btn-lg">Edita DUA</button>
 
             </div> <br>
 

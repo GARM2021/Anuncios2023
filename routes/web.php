@@ -43,6 +43,6 @@ Route::get('/duas/edit/{dua}', [DuaController::class, 'edit'] )->name('duas.edit
 Route::match(['put', 'patch'], '/duas/{dua}/update', [DuaController::class, 'update'])->name('duas.update');
 
 Route::get('/colonias', [ColoniaController::class, 'index'] );
-Route::get('/duas/{dua}', [DuaController::class, 'show'] )->name('duas.show');;
+Route::get('/duas/{dua}', [DuaController::class, 'show'] )->name('duas.show');
 
 Route::get('/pruebaDB', [DuaController::class, 'pruebaDB'] );
