@@ -26,6 +26,7 @@
                         <th>sububicaion</th>
                         <th>zona</th>
                         <th>colonia</th>
+                        <th>Nombre Colonia</th>
                         <th>subeexp</th>
                         <th>subtelefono</th>
                         <th>subdesgiro</th>
@@ -50,6 +51,7 @@
                         <td>{{ $item->sububicaion}}</td>
                         <td>{{ $item->zona}}</td>
                         <td>{{ $item->colonia}}</td>
+                        <td>{{ $item->nomcol}}</td> 
                         <td>{{ $item->subeexp}}</td>
                         <td>{{ $item->subtelefono}}</td>
                         <td>{{ $item->subdesgiro}}</td>
@@ -72,7 +74,7 @@
                         <td>{{ $item->fechafin}}</td>
                         <td>{{ $item->fbajax}}</td> --}}
                         {{-- <td> <a href="{{ route('subduas.show', ['dua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Muestra </td> --}}
-                        <td> <a href="{{ route('subduas.edit', ['dua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Actualiza </td>
+                        <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Actualiza </td>
                         
 
 

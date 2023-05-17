@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 
 use Illuminate\Http\Request;
+use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class SubduaController extends Controller
 {
@@ -130,14 +131,26 @@ class SubduaController extends Controller
      */
     public function edit($subdua)
     {
-        // $icolonia = DuaModel::where('dua', $dua)->value('colonia'); //! Clase  33 con OpenAI
+        //$icolonia = SubduaModel::where('subdua', $subdua)->value('colonia'); 
+        $result = SubduaModel::where('subdua', $subdua)->pluck('colonia', 'dua'); //! Clase  33 con OpenAI pluck
+       
+        foreach ($result as $clave => $valor) {
+            $icolonia =  $valor; //. ", Valor: " . $valor . "<br>"
+            $dua = $clave;
+        };
+       
+      
+       
         
-        // return view('dua.duaEdit')->with([
-        //     'nomcol' => ColoniaModel::where('colonia', $icolonia)->value('nomcol'),
-        //     'items' => DuaModel::findOrFail($dua),
-        //     'icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get(),
-           
-        // ]);
+         return view('subdua.subduaEdit')->with([
+            'nomcol' => ColoniaModel::where('colonia', $icolonia)->value('nomcol'),
+            'ditems' => DuaModel::findOrFail($dua),
+            'items' => SubduaModel::findOrFail($subdua),
+            'icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get(),
+             
+        ]);
+
+                  
     }
 
     /**

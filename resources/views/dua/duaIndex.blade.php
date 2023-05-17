@@ -34,6 +34,7 @@
                         
                   
                     <tr>
+                        
                         <td>{{ $item->dua}}</td>
                         <td>{{ $item->nomdua}}</td>
                         <td>{{ $item->domdua}}</td>
