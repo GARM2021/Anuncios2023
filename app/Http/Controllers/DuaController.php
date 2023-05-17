@@ -119,7 +119,8 @@ class DuaController extends Controller
                 'fechaini',
                 'fechafin',
                 'fbajax',
-            )->where('dua', '=', $dua)->first() //! con get marca error 
+            )->where('dua', '=', $dua)->first(), //! con get marca error 
+            
         ]);
     }
 
