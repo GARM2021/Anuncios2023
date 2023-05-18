@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AnunciosController;
+use App\Http\Controllers\AnuncioController; //! 20230518 aqui lo tenia como Anuncios perdi tiempo
 use App\Http\Controllers\DuaController;
 use App\Http\Controllers\ColoniaController;
 use App\Http\Controllers\SubduaController;
@@ -55,6 +55,7 @@ route::resource('duas', 'App\Http\Controllers\DuaController'); //! Clase 49  si
 
 //Route::get('/subduas/lista/{dua}', [App\Http\Controllers\SubduaController::class, 'lsubduas'])->name('subduas.lsubduas'); //si
 Route::get('subduas/{dua}/lsubduas', [SubduaController::class, 'lsubduas'])->name('subduas.lsubduas');
+
 Route::post('/subduas', [SubduaController::class, 'store'])->name('subduas.store');
 Route::get('/subduas/create', [SubduaController::class, 'create'] )->name('subduas.create');
 Route::get('/subduas/edit/{subdua}', [SubduaController::class, 'edit'])->name('subduas.edit');
@@ -65,6 +66,9 @@ Route::get('/subduas/{subdua}', [SubduaController::class, 'show'] )->name('subdu
 Route::get('/colonias/edit/{colonia}', [ColoniaController::class, 'edit'])->name('colonias.edit');
 Route::match(['put', 'patch'], '/colonias/{colonia}/update', [SubduaController::class, 'update'])->name('colonias.update');
 Route::get('/colonias', [ColoniaController::class, 'index'] );
+
+Route::get('anuncios/{subdua?}/lanuncios', [AnuncioController::class, 'lanuncios'])->name('anuncios.lanuncios');
+Route::get('/anuncios/create', [AnuncioController::class, 'create'] )->name('anuncios.create');
 
 
 // Route::resource('subduas', SubduaController::class)->except(['show']);

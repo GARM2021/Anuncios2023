@@ -62,19 +62,9 @@
                         <td>{{ $item->proptel}}</td>
                         <td>{{ $item->fbajax}}</td>
                        
-                        {{-- <td>{{ $item->colonia}}</td> --}}
-                        {{-- <td>{{ $item->nomcol}}</td> 
-                        <td>{{ $item->ciudad}}</td> --}}
-                        {{-- <td>{{ $item->prop}}</td> 
-                        <td>{{ $item->telprop}}</td>
-                        <td>{{ $item->rep_legal}}</td>
-                        <td>{{ $item->rfc_dua}}</td>
-                        <td>{{ $item->seguro}}</td> --}}
-                        {{-- <td>{{ $item->fechaini}}</td>
-                        <td>{{ $item->fechafin}}</td>
-                        <td>{{ $item->fbajax}}</td> --}}
-                        {{-- <td> <a href="{{ route('subduas.show', ['dua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Muestra </td> --}}
-                        <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Actualiza </td>
+                    
+                        <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Actualiza SUBDUA</td>
+                        <td> <a href="{{ route('anuncios.lanuncios', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> ANUNCIOS</td>
                         
 
 
