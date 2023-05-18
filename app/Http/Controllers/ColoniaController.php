@@ -58,9 +58,20 @@ class ColoniaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($colonia)
     {
-        //
+               
+        return view('colonias.coloniaEdit')->with([
+            'items' => ColoniaModel::findOrFail($colonia),
+  
+        ]);
+
+         
+            // $items = ColoniaModel::findOrFail($colonia);
+
+            // return $items;
+  
+        // ]);
     }
 
     /**
@@ -70,7 +81,7 @@ class ColoniaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $colonia)
     {
         //
     }

@@ -57,12 +57,15 @@ route::resource('duas', 'App\Http\Controllers\DuaController'); //! Clase 49  si
 Route::get('subduas/{dua}/lsubduas', [SubduaController::class, 'lsubduas'])->name('subduas.lsubduas');
 Route::post('/subduas', [SubduaController::class, 'store'])->name('subduas.store');
 Route::get('/subduas/create', [SubduaController::class, 'create'] )->name('subduas.create');
-Route::get('/subduas/edit/{subdua?}', [SubduaController::class, 'edit'])->name('subduas.edit');
+Route::get('/subduas/edit/{subdua}', [SubduaController::class, 'edit'])->name('subduas.edit');
 
 Route::match(['put', 'patch'], '/subduas/{subdua}/update', [SubduaController::class, 'update'])->name('subduas.update');
 Route::get('/subduas/{subdua}', [SubduaController::class, 'show'] )->name('subduas.show');
 
+Route::get('/colonias/edit/{colonia}', [ColoniaController::class, 'edit'])->name('colonias.edit');
+Route::match(['put', 'patch'], '/colonias/{colonia}/update', [SubduaController::class, 'update'])->name('colonias.update');
 Route::get('/colonias', [ColoniaController::class, 'index'] );
+
 
 // Route::resource('subduas', SubduaController::class)->except(['show']);
 // Route::get('subduas/{subdua}/lsubduas', [SubduaController::class, 'lsubduas'])->name('subduas.lsubduas');

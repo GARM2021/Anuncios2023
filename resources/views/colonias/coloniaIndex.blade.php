@@ -12,7 +12,7 @@
             <table class="table-stripped">
                 <thead class="thead-light">
                     <tr>
-                        <th>Coloni</th>
+                        <th>Colonia</th>
                         <th>Nombre de Colonia</th>
                        
                     </tr>
@@ -22,11 +22,10 @@
                         
                   
                     <tr>
-                        <td>{{ $item->coloni}}</td>
+                        <td>{{ $item->colonia}}</td>
                         <td>{{ $item->nomcol}}</td>
-                        
-
-
+                        <td> <a href="{{ route('colonias.edit', ['colonia' => str_pad($item->colonia, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Actualiza </td>
+       
                     </tr>
                
                     @endforeach
