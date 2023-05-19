@@ -68,6 +68,7 @@ Route::match(['put', 'patch'], '/colonias/{colonia}/update', [SubduaController::
 Route::get('/colonias', [ColoniaController::class, 'index'] );
 
 Route::get('anuncios/{subdua?}/lanuncios', [AnuncioController::class, 'lanuncios'])->name('anuncios.lanuncios');
+Route::get('/anuncios/edit/{cuenta}', [AnuncioController::class, 'edit'])->name('anuncios.edit');
 Route::get('/anuncios/create', [AnuncioController::class, 'create'] )->name('anuncios.create');
 
 

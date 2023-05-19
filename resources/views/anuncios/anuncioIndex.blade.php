@@ -97,7 +97,7 @@
                         <td>{{ $item->fcaptura}}</td>
                         <td>{{ $item->horacap}}</td>
                         <td>{{ $item->capturista}}</td>
-                        <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Actualiza </td>
+                        <td> <a href="{{ route('anuncios.edit', ['cuenta' => str_pad($item->cuenta, 6, '0', STR_PAD_LEFT)]) }}" class="btn btn-link"> Actualiza </td>
                         
 
 

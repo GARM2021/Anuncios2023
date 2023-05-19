@@ -98,24 +98,25 @@ class AnuncioController extends Controller
     }
 
 
-    public function edit($subdua)
+    public function edit($cuenta)
     {
         
-        // $result = SubduaModel::where('subdua', $subdua)->pluck( 'nomsubdua','dua'); //! Clase  33 con OpenAI pluck 
+        $result = AnuncioModel::where('cuenta', $cuenta)->pluck( 'dua', 'subdua'); //! Clase  33 con OpenAI pluck 
+   
         
-        // foreach ($result as $item) {
-        //     $dua = $item->columna1;
-        //     $nomsubdua = $item->columna2;
-        //  }
+        foreach ($result as $clave => $valor) {
+            $dua =  $valor; //. ", Valor: " . $valor . "<br>"
+            $subdua = $clave;
+        }
+        
 
-        // return view('subdua.subduaEdit')->with([
-        //     'ditems' => DuaModel::findOrFail($dua),
-        //     'items' => AnuncioModel::findOrFail($subdua),
-        //     'nomsubdua' => $nomsubdua,
-        //     'subdua' => $subdua,
 
-            
-        // ]);
+        return view('anuncios.anuncioEdit')->with([
+            'ditems' => DuaModel::findOrFail($dua),
+            'sitems' => SubduaModel::findOrFail($subdua),
+            'items' => AnuncioModel::findOrFail($cuenta),
+      
+        ]);
     }
 
 
