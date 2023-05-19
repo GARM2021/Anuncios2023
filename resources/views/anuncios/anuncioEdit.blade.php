@@ -37,151 +37,224 @@
 
     <h1>Dua {{ $ditems->dua }}</h1>
     <h1>Dom. Dua {{ $ditems->nomdua }}</h1>
-    <h2>Sub Dua {{ $items->subdua}}</h2>
+    <h2>Sub Dua {{ $items->subdua }}</h2>
     <h2>Dom. SubDua {{ $items->sububicaion }}</h2>
 
 
     <form method="POST" action="{{ route('subduas.update', ['subdua' => $items->subdua]) }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
-         @method("PUT") {{-- //! Clase  33 --}}
+        @method('PUT') {{-- //! Clase  33 --}}
 
-         <div class="form_row">
+        <div class="form_row">
             <label>cuenta</label>
-            <input class="form-control" maxlength="60" type="text" name="cuenta" value = {{$items->cuenta}} requiered>
-            </div> <br>
-            <div class="form_row">
+            <input class="form-control" maxlength="60" type="text" name="cuenta" value={{ $items->cuenta }} requiered>
+        </div> <br>
+        <div class="form_row">
             <label>dua</label>
-            <input class="form-control" maxlength="60" type="text" name="dua" value = {{$items->dua}} requiered>
-            </div> <br>
-            <div class="form_row">
+            <input class="form-control" maxlength="60" type="text" name="dua" value={{ $items->dua }} requiered>
+        </div> <br>
+        <div class="form_row">
             <label>subdua</label>
-            <input class="form-control" maxlength="60" type="text" name="subdua" value = {{$items->subdua}} requiered>
-            </div> <br>
-            <div class="form_row">
+            <input class="form-control" maxlength="60" type="text" name="subdua" value={{ $items->subdua }} requiered>
+        </div> <br>
+        <div class="form_row">
             <label>concepto</label>
-            <input class="form-control" maxlength="60" type="text" name="concepto" value = {{$items->concepto}} requiered>
-            </div> <br>
-            <div class="form_row">
+            <input class="form-control" maxlength="60" type="text" name="concepto" value={{ $items->concepto }}
+                requiered>
+        </div> <br>
+        <div class="form_row">
             <label>numper</label>
-            <input class="form-control" maxlength="60" type="text" name="numper" value = {{$items->numper}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>fperm</label>
-            <input class="form-control" maxlength="60" type="text" name="fperm" value = {{$items->fperm}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>finicio</label>
-            <input class="form-control" maxlength="60" type="text" name="finicio" value = {{$items->finicio}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>ftermino</label>
-            <input class="form-control" maxlength="60" type="text" name="ftermino" value = {{$items->ftermino}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>tipoanuncio</label>
-            <input class="form-control" maxlength="60" type="text" name="tipoanuncio" value = {{$items->tipoanuncio}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>vistas</label>
-            <input class="form-control" maxlength="60" type="text" name="vistas" value = {{$items->vistas}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>largo</label>
-            <input class="form-control" maxlength="60" type="text" name="largo" value = {{$items->largo}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>ancho</label>
-            <input class="form-control" maxlength="60" type="text" name="ancho" value = {{$items->ancho}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>area</label>
-            <input class="form-control" maxlength="60" type="text" name="area" value = {{$items->area}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>leyendaanuncio</label>
-            <input class="form-control" maxlength="60" type="text" name="leyendaanuncio" value = {{$items->leyendaanuncio}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>num_anun_temp</label>
-            <input class="form-control" maxlength="60" type="text" name="num_anun_temp" value = {{$items->num_anun_temp}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>dias</label>
-            <input class="form-control" maxlength="60" type="text" name="dias" value = {{$items->dias}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>fpago</label>
-            <input class="form-control" maxlength="60" type="text" name="fpago" value = {{$items->fpago}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>recof</label>
-            <input class="form-control" maxlength="60" type="text" name="recof" value = {{$items->recof}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>fpagocap</label>
-            <input class="form-control" maxlength="60" type="text" name="fpagocap" value = {{$items->fpagocap}} equiered>
-            </div> <br>
-            <div class="form_row">
-            <label>recofcap</label>
-            <input class="form-control" maxlength="60" type="text" name="recofcap" value = {{$items->recofcap}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>nombrecap</label>
-            <input class="form-control" maxlength="60" type="text" name="nombrecap" value = {{$items->nombrecap}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>yearpagocap</label>
-            <input class="form-control" maxlength="60" type="text" name="yearpagocap" value = {{$items->yearpagocap}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>fbajax</label>
-            <input class="form-control" maxlength="60" type="text" name="fbajax" value = {{$items->fbajax}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>fnotifica</label>
-            <input class="form-control" maxlength="60" type="text" name="fnotifica" value = {{$items->fnotifica}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>freq</label>
-            <input class="form-control" maxlength="60" type="text" name="freq" value = {{$items->freq}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>cvereq</label>
-            <input class="form-control" maxlength="60" type="text" name="cvereq" value = {{$items->cvereq}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>fembargo</label>
-            <input class="form-control" maxlength="60" type="text" name="fembargo" value = {{$items->fembargo}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>status</label>
-            <input class="form-control" maxlength="60" type="text" name="status" value = {{$items->status}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>usuario_mov</label>
-            <input class="form-control" maxlength="60" type="text" name="usuario_mov" value = {{$items->usuario_mov}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>fcaptura</label>
-            <input class="form-control" maxlength="60" type="text" name="fcaptura" value = {{$items->fcaptura}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>horacap</label>
-            <input class="form-control" maxlength="60" type="text" name="horacap"  value = {{$items->horacap}} requiered>
-            </div> <br>
-            <div class="form_row">
-            <label>capturista</label>
-            <input class="form-control" maxlength="60" type="text" name="capturista"  value = {{$items->capturista}} requiered>
-            </div> <br>
-            
+            <input class="form-control" maxlength="60" type="text" name="numper" value={{ $items->numper }} requiered>
+        </div> <br>
+    
 
-        
-        
-        
-        
+        <form action="/action_page.php">
+            <label for="fperm">Fecha Permiso:</label><br><br>
+            <input type="text" maxlength="08"id="fperm" name="fperm" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+                value={{ $items->fperm }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <form action="/action_page.php">
+            <label for="finicio">Fecha Inicio:</label><br><br>
+            <input type="text" maxlength="08"id="finicio" name="finicio" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+                value={{ $items->finicio }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+        <form action="/action_page.php">
+            <label for="ftermino">Fecha Termino:</label><br><br>
+            <input type="text" maxlength="08"id="ftermino" name="ftermino" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+                value={{ $items->ftermino }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <div class="form_row">
+            <label>tipoanuncio</label>
+            <input class="form-control" maxlength="60" type="text" name="tipoanuncio" value={{ $items->tipoanuncio }}
+                requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>vistas</label>
+            <input class="form-control" maxlength="60" type="text" name="vistas" value={{ $items->vistas }} requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>largo</label>
+            <input class="form-control" maxlength="60" type="text" name="largo" value={{ $items->largo }} requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>ancho</label>
+            <input class="form-control" maxlength="60" type="text" name="ancho" value={{ $items->ancho }} requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>area</label>
+            <input class="form-control" maxlength="60" type="text" name="area" value={{ $items->area }} requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>leyendaanuncio</label>
+            <input class="form-control" maxlength="60" type="text" name="leyendaanuncio"
+                value={{ $items->leyendaanuncio }} requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>num_anun_temp</label>
+            <input class="form-control" maxlength="60" type="text" name="num_anun_temp"
+                value={{ $items->num_anun_temp }} requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>dias</label>
+            <input class="form-control" maxlength="60" type="text" name="dias" value={{ $items->dias }} requiered>
+        </div> <br>
+
+       
+        <form action="/action_page.php">
+            <label for="fpago">Fecha Pago:</label><br><br>
+            <input type="text" maxlength="08"id="fpago" name="fpago" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+                value={{ $items->fpago }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <div class="form_row">
+            <label>recof</label>
+            <input class="form-control" maxlength="60" type="text" name="recof" value={{ $items->recof }}
+                requiered>
+        </div> <br>
+      
+
+        <form action="/action_page.php">
+            <label for="fpagocap">Fecha Captura de Pago:</label><br><br>
+            <input type="text" maxlength="08"id="fpagocap" name="fpagocap" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ $items->fpagocap }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <div class="form_row">
+            <label>recofcap</label>
+            <input class="form-control" maxlength="60" type="text" name="recofcap" value={{ $items->recofcap }}
+                requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>nombrecap</label>
+            <input class="form-control" maxlength="60" type="text" name="nombrecap" value={{ $items->nombrecap }}
+                requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>yearpagocap</label>
+            <input class="form-control" maxlength="60" type="text" name="yearpagocap"
+                value={{ $items->yearpagocap }} requiered>
+        </div> <br>
+       
+
+        <form action="/action_page.php">
+            <label for="fbajax">Fecha Baja:</label><br><br>
+            <input type="text" maxlength="08"id="fbajax" name="fbajax" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ $items->fbajax }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <form action="/action_page.php">
+            <label for="fnotifica">Fecha Notifica:</label><br><br>
+            <input type="text" maxlength="08"id="fnotifica" name="fnotifica" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ $items->fnotifica }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+        <form action="/action_page.php">
+            <label for="freq">Fecha Requerimiento:</label><br><br>
+            <input type="text" maxlength="08"id="freq" name="freq" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ $items->freq }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <div class="form_row">
+            <label>cvereq</label>
+            <input class="form-control" maxlength="60" type="text" name="cvereq" value={{ $items->cvereq }}
+                requiered>
+        </div> <br>
+
+        <form action="/action_page.php">
+            <label for="fembargo">Fecha Embargo:</label><br><br>
+            <input type="text" maxlength="08"id="fembargo" name="fembargo" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ $items->fembargo }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <div class="form_row">
+            <label>status</label>
+            <input class="form-control" maxlength="60" type="text" name="status" value={{ $items->status }}
+                requiered>
+        </div> <br>
+
+        <div class="form_row">
+            <label>usuario_mov</label>
+            <input class="form-control" maxlength="60" type="text" name="usuario_mov"
+                value={{ $items->usuario_mov }} requiered>
+        </div> <br>
+
+
+        <form action="/action_page.php">
+            <label for="fcaptura">Fecha Captura:</label><br><br>
+            <input type="text" maxlength="08"id="fcaptura" name="fcaptura" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ $items->fcaptura }}><br><br>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+        </form>
+
+
+        <div class="form_row">
+            <label>horacap</label>
+            <input class="form-control" maxlength="60" type="text" name="horacap" value={{ $items->horacap }}
+                requiered>
+        </div> <br>
+        <div class="form_row">
+            <label>capturista</label>
+            <input class="form-control" maxlength="60" type="text" name="capturista" value={{ $items->capturista }}
+                requiered>
+        </div> <br>
+
+
+
+
+
+
         ///////////////////////////////////////////////////////////////////////////////////////////////
-        
-         {{-- <div class="form_row">
+
+        {{-- <div class="form_row">
                 <label>Nom SubDua</label>
                 <input class="form-control" maxlength="60" type="text" name="nomsubdua"  value = {{$items->nomsubdua}}  requiered>
             </div> <br>
@@ -266,10 +339,10 @@
             </form> --}}
 
 
-            <div class="form_row">
-                <button type="submit" class="btn btn-primary btn-lg">Edita DUA</button>
+        <div class="form_row">
+            <button type="submit" class="btn btn-primary btn-lg">Edita DUA</button>
 
-            </div> <br>
+        </div> <br>
 
 
 
