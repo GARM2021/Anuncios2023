@@ -34,16 +34,16 @@
                 'fcaptura',
                 'horacap',
                 'capturista', --}}
-
+   @dump($errors)
     <h1>Dua {{ $ditems->dua }}</h1>
     <h1>Dom. Dua {{ $ditems->nomdua }}</h1>
     <h2>Sub Dua {{ $items->subdua }}</h2>
     <h2>Dom. SubDua {{ $items->sububicaion }}</h2>
 
-
-    <form method="POST" action="{{ route('subduas.update', ['subdua' => $items->subdua]) }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
+        <div class="form_row">
+    <form method="POST" action="{{ route('anuncios.update', ['cuenta' => $items->cuenta]) }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
-        @method('PUT') {{-- //! Clase  33 --}}
+        @method("PUT") {{-- //! Clase  33 --}}
 
         <div class="form_row">
             <label>cuenta</label>

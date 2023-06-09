@@ -104,7 +104,7 @@ class SubduaController extends Controller
     }
 
  
-    public function update(Request $request, $dua)
+    public function update(Request $request, $subdua)
     {
           return $request;
     }
