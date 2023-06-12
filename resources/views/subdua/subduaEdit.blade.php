@@ -115,7 +115,7 @@
 
 
             <div class="form_row">
-                <button type="submit" class="btn btn-primary btn-lg">Edita DUA</button>
+                <button type="submit" class="btn btn-primary btn-lg">Actualiza SUBDUA</button>
 
             </div> <br>
 
