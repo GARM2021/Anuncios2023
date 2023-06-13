@@ -9,7 +9,18 @@
 </head>
 
 <body>
+  @if (isset($errors) && $errors->any())
+<div class="alert alert-danger">
+             
+        <ul>
+            @foreach ($errors->all() as $error)   {{-- //! Clase 39 --}}
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
 
+</div>
+      
+  @endif
     @yield('content') {{-- //! Clase 30 --}}
 
 </body>

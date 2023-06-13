@@ -14,7 +14,7 @@
         action="{{ route('anuncios.update', ['cuenta' => str_pad($items->cuenta, 6, '0', STR_PAD_LEFT)]) }}">
         {{-- //! aqui lo resolvi asi  --}}
         {{-- //! https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario  --}}
-        {{-- //! y en la lina 299  --}}
+        {{-- //! tenia unos elementos form intermedios? y en la lina 299  --}}
         {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
         @method('PUT')

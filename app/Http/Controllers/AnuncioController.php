@@ -125,8 +125,8 @@ class AnuncioController extends Controller
 
     public function update(Request $request, $cuenta)
     {
-        dump($cuenta);
-        dd($request);
+        // dump($cuenta);
+        // dd($request);
        
         $validatedData = $request->validate([ 
             // 'cuenta' => ['required', 'numeric', 'size:06'],
@@ -163,43 +163,43 @@ class AnuncioController extends Controller
             // 'capturista' => ['size:08']
 
 
-            'cuenta' => 'required|numeric|  size:06|',
-            'dua' => 'required|numeric|  size:06|',  
-            'subdua' =>  'required|numeric|  size:06|',
-            'concepto' => 'required| size:06|between:2480,2480',
-            'numper' => 'required| max:10|',
-            'fperm' => 'required|  size:08',
-            'finicio' => 'required|numeric|  size:08',
-            'ftermino' => 'numeric|  size:08|',
+            'cuenta' => 'required|size:06',
+            'dua' => 'required|size:06',  
+            'subdua' =>  'required|size:06',
+            'concepto' => 'required|size:06',
+            'numper' => 'required|between:1,10',
+            'fperm' => 'required|between:1,8',
+            'finicio' => 'required|between:1,8',
+            'ftermino' => 'between:0,8',
             'tipoanuncio' => 'required',
-            'vistas' => 'required| max:4|between:min:1,max:9999',
-            'largo' => 'required| decimal:2',
-            'ancho' => 'required| decimal:2',
-            'area' => 'required| decimal:2',
-            'leyendaanuncio' => 'required| max:70|',
-            'num_anun_temp' => 'numeric|between:min:0,max:9999',
-            'dias' => 'numeric',
-            'fpago' => 'numeric|size:06|',
-            'recof' => 'numeric| max:20|',
-            'fpagocap' => 'numeric| size:08|',
-            'recofcap' => 'numeric| max:20|',
-            'nombrecap' => ' max:70|',
-            'yearpagocap' => 'numeric| size:04|',
-            'fbajax' => 'numeric| size:08|',
-            'fnotifica' => 'numeric| size:08|',
-            'freq' => 'numeric| max:08|',
-            'cvereq' => 'numeric| max:20|',
-            'fembargo' => 'numeric| size:08|',
-            'status' => 'numeric| max:20|',
-            'usuario_mov' => ' max:70',
-            'fcaptura' => 'numeric| size:08|',
-            'horacap' => ' max:08|',
-            'capturista' => ' size:08|'
+            'vistas' => 'required|between:1,9999',
+            'largo' => 'required|decimal:1,2',
+            'ancho' => 'required|decimal:1,2',
+            'area' => 'required|decimal:1,2',
+            'leyendaanuncio' => 'required|between:0,70',
+            'num_anun_temp' => 'between:0,9999',
+            'dias' => 'between:0,9999',
+            'fpago' => 'between:1,8',
+            'recof' => 'numeric|max:20',
+            'fpagocap' => 'numeric|size:08',
+            'recofcap' => 'max:20',
+            'nombrecap' => 'max:70',
+            'yearpagocap' => 'between:1,8',
+            'fbajax' => 'numeric|size:08',
+            'fnotifica' => 'numeric|size:08',
+            'freq' => 'numeric|max:08',
+            'cvereq' => 'numeric|max:20',
+            'fembargo' => 'numeric|size:08',
+            'status' => 'max:02',
+            'usuario_mov' => 'max:70',
+            'fcaptura' => 'numeric|size:08',
+            //'horacap' => 'between:0,8',
+            'capturista' => '|between:0,8'
 
         ]);
 
         
-       return $request;
+       return  $validatedData;
     }
 
 
