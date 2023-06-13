@@ -23,34 +23,34 @@
         <div class="form_row">
             <label>cuenta</label>
             <input class="form-control" maxlength="60" type="text" name="cuenta"
-                value={{ str_pad($items->cuenta, 6, '0', STR_PAD_LEFT) }} requiered>
+                value={{  old('') ?? str_pad($items->cuenta, 6, '0', STR_PAD_LEFT) }} requiered>
 
 
             <label>dua</label>
-            <input class="form-control" maxlength="60" type="text" name="dua" value={{ $items->dua }} requiered>
+            <input class="form-control" maxlength="60" type="text" name="dua" value={{  old('dua') ?? $items->dua }} requiered>
 
 
             <label>subdua</label>
-            <input class="form-control" maxlength="60" type="text" name="subdua" value={{ $items->subdua }} requiered>
+            <input class="form-control" maxlength="60" type="text" name="subdua" value={{  old('subdua') ?? $items->subdua }} requiered>
 
         </div> <br>
 
         <div class="form_row">
             <label>concepto</label>
-            <input class="form-control" maxlength="60" type="text" name="concepto" value={{ $items->concepto }}
+            <input class="form-control" maxlength="60" type="text" name="concepto" value={{  old('concepto') ?? $items->concepto }}
                 requiered>
         </div> <br>
 
         <div class="form_row">
             <label>numper</label>
-            <input class="form-control" maxlength="60" type="text" name="numper" value={{ $items->numper }}>
+            <input class="form-control" maxlength="60" type="text" name="numper" value={{  old('numper') ?? $items->numper }}>
 
 
 
             <div class="form_row">
                 <label for="fperm">Fecha Permiso:</label><br><br>
                 <input type="text" maxlength="08"id="fperm" name="fperm" placeholder="AAAAMMDD" pattern="[0-9]{8}"
-                    value={{ $items->fperm }}><br><br>
+                    value={{  old('fperm') ?? $items->fperm }}><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
 
@@ -61,12 +61,12 @@
 
                 <label for="finicio">Fecha Inicio:</label><br><br>
                 <input type="text" maxlength="08"id="finicio" name="finicio" placeholder="AAAAMMDD" pattern="[0-9]{8}"
-                    value={{ $items->finicio }}><br><br>
+                    value={{  old('finicio') ?? $items->finicio }}><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
                     <label for="ftermino">Fecha Termino:</label><br><br>
                     <input type="text" maxlength="08"id="ftermino" name="ftermino" placeholder="AAAAMMDD"
-                        pattern="[0-9]{8}" value={{ $items->ftermino }}><br><br>
+                        pattern="[0-9]{8}" value={{  old('ftermino') ?? $items->ftermino }}><br><br>
                     <small>Format Ejemplo: 20230512</small><br><br>
 
                
@@ -75,7 +75,7 @@
             <div class="form_row">
                 <label>tipoanuncio</label>
                 <input class="form-control" maxlength="60" type="text" name="tipoanuncio"
-                    value={{ $items->tipoanuncio }} requiered>
+                    value={{  old('tipoanuncio') ?? $items->tipoanuncio }} requiered>
             </div> <br>
 
             <div class="form_row">
@@ -100,45 +100,45 @@
 
             <div class="form_row">
                 <label>vistas</label>
-                <input class="form-control" maxlength="60" type="text" name="vistas" value={{ $items->vistas }}
+                <input class="form-control" maxlength="60" type="text" name="vistas" value={{  old('vistas') ?? $items->vistas }}
                     requiered>
 
 
                 <label>largo</label>
-                <input class="form-control" maxlength="60" type="text" name="largo" value={{ $items->largo }}
+                <input class="form-control" maxlength="60" type="text" name="largo" value={{  old('largo') ?? $items->largo }}
                     requiered>
 
 
                 <label>ancho</label>
-                <input class="form-control" maxlength="60" type="text" name="ancho" value={{ $items->ancho }}
+                <input class="form-control" maxlength="60" type="text" name="ancho" value={{  old('ancho') ?? $items->ancho }}
                     requiered>
 
 
                 <label>area</label>
-                <input class="form-control" maxlength="60" type="text" name="area" value={{ $items->area }}
+                <input class="form-control" maxlength="60" type="text" name="area" value={{  old('area') ?? $items->area }}
                     requiered>
             </div> <br>
 
             <div class="form_row">
                 <label>leyendaanuncio</label>
                 <input class="form-control" maxlength="60" type="text" name="leyendaanuncio"
-                    value={{ $items->leyendaanuncio }} requiered>
+                    value={{  old('leyendaanuncio') ?? $items->leyendaanuncio }} requiered>
             </div> <br>
 
             <div class="form_row">
                 <label>num_anun_temp</label>
                 <input class="form-control" maxlength="60" type="text" name="num_anun_temp"
-                    value={{ $items->num_anun_temp }}>
+                    value={{  old('num_anun_temp') ?? $items->num_anun_temp }}>
 
                 <label>dias</label>
-                <input class="form-control" maxlength="60" type="text" name="dias" value={{ $items->dias }}>
+                <input class="form-control" maxlength="60" type="text" name="dias" value={{  old('dias') ?? $items->dias }}>
             </div> <br>
 
 
             {{-- <div class="row"> --}}
             <div class="col-md-4">
                 <label>recof</label>
-                <input class="form-control" maxlength="60" type="text" name="recof" value={{ $items->recof }}
+                <input class="form-control" maxlength="60" type="text" name="recof" value={{  old('recof') ?? $items->recof }}
                     requiered>
             </div> <br>
 
@@ -148,7 +148,7 @@
                 <form action="/action_page.php">
                     <label for="fpago">Fecha Pago:</label><br><br>
                     <input type="text" maxlength="08"id="fpago" name="fpago" placeholder="AAAAMMDD"
-                        pattern="[0-9]{8}" value={{ $items->fpago }}><br><br>
+                        pattern="[0-9]{8}" value={{  old('fpago') ?? $items->fpago }}><br><br>
                     <small>Format Ejemplo: 20230512</small><br><br>
 
                 </form>
@@ -160,7 +160,7 @@
                 <form action="/action_page.php">
                     <label for="fpagocap">Fecha Captura de Pago:</label><br><br>
                     <input type="text" maxlength="08"id="fpagocap" name="fpagocap" placeholder="AAAAMMDD"
-                        pattern="[0-9]{8}" value={{ $items->fpagocap }}><br><br>
+                        pattern="[0-9]{8}" value={{  old('fpagocap') ?? $items->fpagocap }}><br><br>
                     <small>Format Ejemplo: 20230512</small><br><br>
 
                 </form>
@@ -172,17 +172,17 @@
             <div class="row">
 
                 <label>recofcap</label>
-                <input class="form-control" maxlength="60" type="text" name="recofcap" value={{ $items->recofcap }}>
+                <input class="form-control" maxlength="60" type="text" name="recofcap" value={{  old('recofcap') ?? $items->recofcap }}>
 
 
                 <label>nombrecap</label>
                 <input class="form-control" maxlength="60" type="text" name="nombrecap"
-                    value={{ $items->nombrecap }}>
+                    value={{  old('nombrecap') ?? $items->nombrecap }}>
 
 
                 <label>yearpagocap</label>
                 <input class="form-control" maxlength="60" type="text" name="yearpagocap"
-                    value={{ $items->yearpagocap }}>
+                    value={{  old('yearpagocap') ?? $items->yearpagocap }}>
 
             </div> <br>
 
@@ -191,7 +191,7 @@
             <form action="/action_page.php">
                 <label for="fbajax">Fecha Baja:</label><br><br>
                 <input type="text" maxlength="08"id="fbajax" name="fbajax" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ $items->fbajax }}><br><br>
+                    pattern="[0-9]{8}" value={{  old('fbajax') ?? $items->fbajax }}><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
             </form>
@@ -200,7 +200,7 @@
             <form action="/action_page.php">
                 <label for="fnotifica">Fecha Notifica:</label><br><br>
                 <input type="text" maxlength="08"id="fnotifica" name="fnotifica" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ $items->fnotifica }}><br><br>
+                    pattern="[0-9]{8}" value={{  old('fnotifica') ?? $items->fnotifica }}><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
             </form>
@@ -208,7 +208,7 @@
             <form action="/action_page.php">
                 <label for="freq">Fecha Requerimiento:</label><br><br>
                 <input type="text" maxlength="08"id="freq" name="freq" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ $items->freq }}><br><br>
+                    pattern="[0-9]{8}" value={{  old('freq') ?? $items->freq }}><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
             </form>
@@ -216,13 +216,13 @@
 
             <div class="form_row">
                 <label>cvereq</label>
-                <input class="form-control" maxlength="60" type="text" name="cvereq" value={{ $items->cvereq }}>
+                <input class="form-control" maxlength="60" type="text" name="cvereq" value={{  old('cvereq') ?? $items->cvereq }}>
             </div> <br>
 
             <form action="/action_page.php">
                 <label for="fembargo">Fecha Embargo:</label><br><br>
                 <input type="text" maxlength="08"id="fembargo" name="fembargo" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ $items->fembargo }}><br><br>
+                    pattern="[0-9]{8}" value={{  old('fembargo') ?? $items->fembargo }}><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
             </form>
@@ -230,20 +230,20 @@
 
             <div class="form_row">
                 <label>status</label>
-                <input class="form-control" maxlength="60" type="text" name="status" value={{ $items->status }}>
+                <input class="form-control" maxlength="60" type="text" name="status" value={{  old('status') ?? $items->status }}>
             </div> <br>
 
             <div class="form_row">
                 <label>usuario_mov</label>
                 <input class="form-control" maxlength="60" type="text" name="usuario_mov"
-                    value={{ $items->usuario_mov }} requiered>
+                    value={{  old('usuario_mov') ?? $items->usuario_mov }} requiered>
             </div> <br>
 
 
             <form action="/action_page.php">
                 <label for="fcaptura">Fecha Captura:</label><br><br>
                 <input type="text" maxlength="08"id="fcaptura" name="fcaptura" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ $items->fcaptura }}><br><br>
+                    pattern="[0-9]{8}" value={{  old('fcaptura') ?? $items->fcaptura }}><br><br>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
             </form>
@@ -251,13 +251,13 @@
 
             <div class="form_row">
                 <label>horacap</label>
-                <input class="form-control" maxlength="60" type="text" name="horacap" value={{ $items->horacap }}
+                <input class="form-control" maxlength="60" type="text" name="horacap" value={{  old('horacap') ?? $items->horacap }}
                     requiered>
             </div> <br>
             <div class="form_row">
                 <label>capturista</label>
                 <input class="form-control" maxlength="60" type="text" name="capturista"
-                    value={{ $items->capturista }}>
+                    value={{  old('capturista') ?? $items->capturista }}>
             </div> <br>
 
 
