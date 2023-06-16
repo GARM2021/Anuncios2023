@@ -40,8 +40,8 @@
         <div class="form_row">
             <label>concepto</label>
             <input class="form-control" maxlength="60" type="text" name="concepto"
-            value={{ old('concepto') ?? str_pad($items->concepto, 6, '0', STR_PAD_LEFT) }} requiered>
-              
+                value={{ old('concepto') ?? str_pad($items->concepto, 6, '0', STR_PAD_LEFT) }} requiered>
+
         </div> <br>
 
         <div class="form_row">
@@ -51,94 +51,106 @@
 
 
 
-            <div class="form_row">
-                <label for="fperm">Fecha Permiso:</label><br><br>
-                <input type="text" maxlength="08"id="fperm" name="fperm" placeholder="AAAAMMDD" pattern="[0-9]{8}"
-                    value={{ old('fperm') ?? $items->fperm }}><br><br>
-                <small>Format Ejemplo: 20230512</small><br><br>
+
+            <label for="fperm">Fecha Permiso:</label>
+            <input type="text" maxlength="08"id="fperm" name="fperm" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+                value={{ old('fperm') ?? $items->fperm }}> <small>Format Ejemplo: 20230512</small><br><br>
 
 
-            </div> <br>
+        </div> <br>
 
 
-            <div class="form_row">
+        <div class="form_row">
+            <label>Numero de Anuncios Temporales</label>
+            <input class="form-control" maxlength="60" type="text" name="num_anun_temp"
+                value={{ old('num_anun_temp') ?? $items->num_anun_temp }}><br><br>
 
-                <label for="finicio">Fecha Inicio:</label><br><br>
-                <input type="text" maxlength="08"id="finicio" name="finicio" placeholder="AAAAMMDD" pattern="[0-9]{8}"
-                    value={{ old('finicio') ?? $items->finicio }}><br><br>
-                <small>Format Ejemplo: 20230512</small><br><br>
+            <label>dias</label>
+            <input class="form-control" maxlength="60" type="text" name="dias"
+                value={{ old('dias') ?? $items->dias }}>
+        </div> <br>
 
-                <label for="ftermino">Fecha Termino:</label><br><br>
-                <input type="text" maxlength="08"id="ftermino" name="ftermino" placeholder="AAAAMMDD" pattern="[0-9]{8}"
-                    value={{ old('ftermino') ?? $items->ftermino }}><br><br>
-                <small>Format Ejemplo: 20230512</small><br><br>
+        <label for="finicio">Fecha Inicio:</label><br><br>
+        <input type="text" maxlength="08"id="finicio" name="finicio" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+            value={{ old('finicio') ?? $items->finicio }}> <small>Format Ejemplo: 20230512</small><br><br>
 
+        </div> <br>
 
-            </div> <br>
+        <div class="form_row">
 
-            <div class="form_row">
-                <label>tipoanuncio</label>
-                <input class="form-control" maxlength="60" type="text" name="tipoanuncio"
-                    value={{ old('tipoanuncio') ?? $items->tipoanuncio }} requiered>
-            </div> <br>
-
-            <div class="form_row">
-                <label>Tipo Anuncio</label>
+            <label for="ftermino">Fecha Termino:</label><br><br>
+            <input type="text" maxlength="08"id="ftermino" name="ftermino" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+                value={{ old('ftermino') ?? $items->ftermino }}> <small>Format Ejemplo: 20230512</small><br><br>
 
 
-                <input type="radio" id="html" name="tipoanuncio" value="PR"
-                    {{ $items->seguro == ' PR' ? 'checked' : '' }}> {{-- //! Clase  33 --}}
-                <label for="html">Propio</label><br>
-                <input type="radio" id="css" name="tipoanuncio" value="AJ"
-                    {{ $items->seguro == 'AJ' ? 'checked' : '' }}> {{-- //! Clase  33 --}}
-                <label for="css">Ajeno</label><br><br>
-                <input type="radio" id="html" name="tipoanuncio" value="TE"
-                    {{ $items->seguro == 'TE' ? 'checked' : '' }}> {{-- //! Clase  33 --}}
-                <label for="html">Temporal</label><br>
-                <input type="radio" id="css" name="tipoanuncio" value="EL"
-                    {{ $items->seguro == 'EL' ? 'checked' : '' }}> {{-- //! Clase  33 --}}
-                <label for="css">Electronico</label><br><br>
+        </div> <br>
+
+        <div class="form_row">
+            <label>tipoanuncio</label>
+            <input class="form-control" maxlength="60" type="text" name="tipoanuncio" id="tipoanuncio"
+                value={{ old('tipoanuncio') ?? $items->tipoanuncio }} requiered>
+        </div> <br>
+
+        <div class="form_row">
+            <label>Tipo Anuncio</label><br><br>
+            <input type="radio" id="html" name="rtipoanuncio" id="RPR" value="PR"
+                {{ $items->tipoanuncio == ' PR' ? 'checked' : '' }} onchange="cambiaTipos()"> {{-- //! Clase  33 --}}
+            <label for="html">Propio</label><br><br>
+            <input type="radio" id="css" name="rtipoanuncio" id="RAJ" value="AJ"
+                {{ $items->tipoanuncio == 'AJ' ? 'checked' : '' }} onchange="cambiaTipos()"> {{-- //! Clase  33 --}}
+            <label for="css">Ajeno</label><br><br>
+            <input type="radio" id="html" name="rtipoanuncio" id="RTE" value="TE"
+                {{ $items->tipoanuncio == 'TE' ? 'checked' : '' }} onchange="cambiaTipos()"> {{-- //! Clase  33 --}}
+            <label for="html">Temporal</label><br><br>
+            <input type="radio" id="css" name="rtipoanuncio" id="REL" value="EL"
+                {{ $items->tipoanuncio == 'EL' ? 'checked' : '' }} onchange="cambiaTipos()"> {{-- //! Clase  33 --}}
+            <label for="css">Electronico</label><br><br>
 
 
-            </div> <br>
+        </div> <br>
+        <label>Adosado No Adosado</label><br><br>
+        <label for="html">ADOSADO</label>
+        <input type="radio" id="ADOSA" name="ANA" value="A" onchange="cambiaTipos()"> {{-- //! Clase  33 --}}
+        <label for="html">NO ADOSADO</label>
+        <input type="radio" id="NADOSA" name="ANA" value="N" onchange="cambiaTipos()">
+        {{-- //! Clase  33 --}}
 
-            <div class="form_row">
-                <label>vistas</label>
-                <input class="form-control" maxlength="10" type="text" name="vistas" id="vistas"  
-                    value={{ old('vistas') ?? $items->vistas }} requiered>
-
-
-                <label>largo</label>
-                <input class="form-control" type="text"  maxlength="10"  name="largo" id="largo" onchange="cambiaMedidas()" 
-                    value={{ old('largo') ?? $items->largo }} requiered/>
+        {{-- <br><br>   //! aqui voy   --}}
 
 
-                <label>ancho</label>
-                <input class="form-control" type="text"  maxlength="10"  name="ancho" id="ancho" onchange="cambiaMedidas()" 
-              
-                    value={{ old('ancho') ?? $items->ancho }} requiered/>
+        <div class="form_row">
+            <label>vistas</label><br>
+            <input class="form-control" maxlength="10" type="text" name="vistas" id="vistas"
+                value={{ old('vistas') ?? $items->vistas }} requiered><br><br>
 
 
-                <label>area</label>
-                <input class="form-control" type="text" readonly maxlength="10"   name="area" id="area"  
-                    value={{ old('area') ?? $items->area }} requiered/>
-            </div> <br>
+            <label>largo</label><br>
+            <input class="form-control" type="text" maxlength="10" name="largo" id="largo"
+                onchange="cambiaMedidas()" value={{ old('largo') ?? $items->largo }} requiered /><br>
 
-            <div class="form_row">
-                <label>leyendaanuncio</label>
-                <input class="form-control" maxlength="60" type="text" name="leyendaanuncio"
-                    value={{ old('leyendaanuncio') ?? $items->leyendaanuncio }} requiered>
-            </div> <br>
 
-            <div class="form_row">
-                <label>num_anun_temp</label>
-                <input class="form-control" maxlength="60" type="text" name="num_anun_temp"
-                    value={{ old('num_anun_temp') ?? $items->num_anun_temp }}>
+            <label>ancho</label><br>
+            <input class="form-control" type="text" maxlength="10" name="ancho" id="ancho"
+                onchange="cambiaMedidas()" value={{ old('ancho') ?? $items->ancho }} requiered /><br><br>
 
-                <label>dias</label>
-                <input class="form-control" maxlength="60" type="text" name="dias"
-                    value={{ old('dias') ?? $items->dias }}>
-            </div> <br>
+
+            <label>area</label><br>
+            <input class="form-control" type="text" readonly maxlength="10" name="area" id="area"
+                value={{ old('area') ?? $items->area }} requiered />
+        </div> <br><br>
+
+        <div class="form_row">
+            <label>leyendaanuncio</label>
+            <input class="form-control" maxlength="60" type="text" name="leyendaanuncio"
+                value={{ old('leyendaanuncio') ?? $items->leyendaanuncio }} requiered>
+        </div> <br>
+
+        <div class="form_row">
+
+
+
+
+
 
 
             {{-- <div class="row"> --}}
@@ -151,25 +163,24 @@
 
 
             <div class="col-md-4">
-             
-                    <label for="fpago">Fecha Pago:</label><br><br>
-                    <input type="text" maxlength="08"id="fpago" name="fpago" placeholder="AAAAMMDD"
-                        pattern="[0-9]{8}" value={{ old('fpago') ?? $items->fpago }}><br><br>
-                    <small>Format Ejemplo: 20230512</small><br><br>
 
-              
+                <label for="fpago">Fecha Pago:</label><br><br>
+                <input type="text" maxlength="08"id="fpago" name="fpago" placeholder="AAAAMMDD"
+                    pattern="[0-9]{8}" value={{ old('fpago') ?? $items->fpago }}>
+
+
             </div> <br>
 
 
             <div class="col-md-4">
 
-                
-                    <label for="fpagocap">Fecha Captura de Pago:</label><br><br>
-                    <input type="text" maxlength="08"id="fpagocap" name="fpagocap" placeholder="AAAAMMDD"
-                        pattern="[0-9]{8}" value={{ old('fpagocap') ?? $items->fpagocap }}><br><br>
-                    <small>Format Ejemplo: 20230512</small><br><br>
 
-              
+                <label for="fpagocap">Fecha Captura de Pago:</label><br><br>
+                <input type="text" maxlength="08"id="fpagocap" name="fpagocap" placeholder="AAAAMMDD"
+                    pattern="[0-9]{8}" value={{ old('fpagocap') ?? $items->fpagocap }}>
+                <small>Format Ejemplo: 20230512</small><br><br>
+
+
             </div> <br>
 
 
@@ -195,30 +206,30 @@
 
 
 
-         
-                <label for="fbajax">Fecha Baja:</label><br><br>
-                <input type="text" maxlength="08"id="fbajax" name="fbajax" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ old('fbajax') ?? $items->fbajax }}><br><br>
-                <small>Format Ejemplo: 20230512</small><br><br>
 
-          
+            <label for="fbajax">Fecha Baja:</label><br><br>
+            <input type="text" maxlength="08"id="fbajax" name="fbajax" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ old('fbajax') ?? $items->fbajax }}>
+            <small>Format Ejemplo: 20230512</small><br><br>
 
 
-          
-                <label for="fnotifica">Fecha Notifica:</label><br><br>
-                <input type="text" maxlength="08"id="fnotifica" name="fnotifica" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ old('fnotifica') ?? $items->fnotifica }}><br><br>
-                <small>Format Ejemplo: 20230512</small><br><br>
 
-          
 
-           
-                <label for="freq">Fecha Requerimiento:</label><br><br>
-                <input type="text" maxlength="08"id="freq" name="freq" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ old('freq') ?? $items->freq }}><br><br>
-                <small>Format Ejemplo: 20230512</small><br><br>
 
-           
+            <label for="fnotifica">Fecha Notifica:</label><br><br>
+            <input type="text" maxlength="08"id="fnotifica" name="fnotifica" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ old('fnotifica') ?? $items->fnotifica }}>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+
+
+
+            <label for="freq">Fecha Requerimiento:</label><br><br>
+            <input type="text" maxlength="08"id="freq" name="freq" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ old('freq') ?? $items->freq }}>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+
 
 
             <div class="form_row">
@@ -227,13 +238,13 @@
                     value={{ old('cvereq') ?? $items->cvereq }}>
             </div> <br>
 
-           
-                <label for="fembargo">Fecha Embargo:</label><br><br>
-                <input type="text" maxlength="08"id="fembargo" name="fembargo" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ old('fembargo') ?? $items->fembargo }}><br><br>
-                <small>Format Ejemplo: 20230512</small><br><br>
 
-          
+            <label for="fembargo">Fecha Embargo:</label><br><br>
+            <input type="text" maxlength="08"id="fembargo" name="fembargo" placeholder="AAAAMMDD"
+                pattern="[0-9]{8}" value={{ old('fembargo') ?? $items->fembargo }}>
+            <small>Format Ejemplo: 20230512</small><br><br>
+
+
 
             <div class="form_row">
                 <label>status</label>
@@ -251,7 +262,7 @@
             <form action="/action_page.php">
                 <label for="fcaptura">Fecha Captura:</label><br><br>
                 <input type="text" maxlength="08"id="fcaptura" name="fcaptura" placeholder="AAAAMMDD"
-                    pattern="[0-9]{8}" value={{ old('fcaptura') ?? $items->fcaptura }}><br><br>
+                    pattern="[0-9]{8}" value={{ old('fcaptura') ?? $items->fcaptura }}>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
             </form>
@@ -269,12 +280,8 @@
             </div> <br>
 
 
-
-
-
-
             <div class="form_row">
-                <button name="update" type="submit" class="btn btn-primary btn-lg"
+                <button name="BActualiza" type="submit" class="btn btn-primary btn-lg"
                     onclick="document.forms.Actualiza.submit();">Actualiza Anuncio</button>
                 {{-- //! aqui lo resolvi en esta pagina --}}
                 {{-- https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario --}}
@@ -286,29 +293,80 @@
 
     </form>
     <script>
+      
+        function cambiaTipos() {
+
+            var rtipos = document.querySelectorAll('input[name="rtipoanuncio"]');
+            var ranas = document.querySelectorAll('input[name="ANA"]');
+            var siana = "NO";
+            var sana = "C"
+            ranas.forEach(function(rana) {
+                if (rana.checked) {
+                    sana = rana.value;
+                    siana = "SI";
+                }
+            });
+
+            var srta;
+            rtipos.forEach(function(rtipo) {
+                if (rtipo.checked) {
+                    srta = rtipo.value;
+                }
+            });
+
+            if (siana == "SI") {
+
+
+                if (sana == "A") {
+                    if (srta == "PR") {
+                        srta = 'AP'
+                    }
+                    if (srta == "AJ") {
+                        srta = 'AA'
+                    }
+
+                }
+                if (sana == "N") {
+                    if (srta == "PR") {
+                        srta = 'PR'
+                    }
+                    if (srta == "AJ") {
+                        srta = 'AJ'
+                    }
+
+                }
+
+
+            }
+
+            var vtpoanun = document.getElementById("tipoanuncio");
+
+            vtpoanun.value = srta;
+           
+        }
+
         function updateCvecol(value) {
             document.getElementsByName("colonia")[0].value = value;
         }
 
         function cambiaMedidas(sender, e) {
             try {
-                
+
                 var gtbancho = document.getElementById("ancho");
                 var sancho = gtbancho.value;
                 var gtblargo = document.getElementById("largo");
                 var slargo = gtblargo.value;
                 var gdancho = parseFloat(sancho);
                 var gdlargo = parseFloat(slargo);
-               
+
                 var goarea = document.getElementById("area");
 
-                var gdarea = gdancho * gdlargo ;
+                var gdarea = gdancho * gdlargo;
                 gdarea = gdarea.toFixed(2);
 
                 var sarea = gdarea.toString();
                 goarea.value = sarea;
-                // gtbancho.classList.add("largocambiado");
-                // goarea.classList.add("areacambiada");
+             
             } catch (ex) {
                 var sEx = ex.message.toString();
                 document.write("Mensaje de Error: " + sEx);
