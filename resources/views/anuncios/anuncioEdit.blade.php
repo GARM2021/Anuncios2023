@@ -62,11 +62,11 @@
 
         <div class="form_row">
             <label>Numero de Anuncios Temporales</label>
-            <input class="form-control" maxlength="60" type="text" name="num_anun_temp"
+            <input class="form-control" maxlength="60" type="hidden" name="num_anun_temp" id="num_anun_temp"
                 value={{ old('num_anun_temp') ?? $items->num_anun_temp }}><br><br>
 
             <label>dias</label>
-            <input class="form-control" maxlength="60" type="text" name="dias"
+            <input class="form-control" maxlength="60" type="hidden" name="dias" id="dias"
                 value={{ old('dias') ?? $items->dias }}>
         </div> <br>
 
@@ -79,7 +79,7 @@
         <div class="form_row">
 
             <label for="ftermino">Fecha Termino:</label><br><br>
-            <input type="text" maxlength="08"id="ftermino" name="ftermino" placeholder="AAAAMMDD" pattern="[0-9]{8}"
+            <input type="hidden" maxlength="08"id="ftermino" name="ftermino" placeholder="AAAAMMDD" pattern="[0-9]{8}"
                 value={{ old('ftermino') ?? $items->ftermino }}> <small>Format Ejemplo: 20230512</small><br><br>
 
 
@@ -87,7 +87,7 @@
 
         <div class="form_row">
             <label>tipoanuncio</label>
-            <input class="form-control" maxlength="60" type="text" name="tipoanuncio" id="tipoanuncio"
+            <input class="form-control" maxlength="60" readonly type="text" name="tipoanuncio" id="tipoanuncio"
                 value={{ old('tipoanuncio') ?? $items->tipoanuncio }} requiered>
         </div> <br>
 
@@ -293,8 +293,15 @@
 
     </form>
     <script>
-      
         function cambiaTipos() {
+
+            var eftermino = document.getElementById("ftermino");
+            var edias = document.getElementById("dias");
+            var enum_anun = document.getElementById("num_anun_temp");
+
+            eftermino.type = "hidden";
+            edias.type = "hidden";
+            enum_anun.type = "hidden";
 
             var rtipos = document.querySelectorAll('input[name="rtipoanuncio"]');
             var ranas = document.querySelectorAll('input[name="ANA"]');
@@ -342,7 +349,17 @@
             var vtpoanun = document.getElementById("tipoanuncio");
 
             vtpoanun.value = srta;
-           
+
+            if (srta == "TE") {
+
+                edias.type = "text";
+
+                enum_anun.type = "text";
+
+                eftermino.type = "text";
+
+            }
+
         }
 
         function updateCvecol(value) {
@@ -366,7 +383,7 @@
 
                 var sarea = gdarea.toString();
                 goarea.value = sarea;
-             
+
             } catch (ex) {
                 var sEx = ex.message.toString();
                 document.write("Mensaje de Error: " + sEx);
