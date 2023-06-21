@@ -15,7 +15,37 @@ D:\xampp\htdocs\Anuncios2023>php artisan make:controller DuaController --resourc
 
 D:\xampp\htdocs\Anuncios2023>php artisan make:controller --help
 
+20230621
+
+pasar dua y subdua
+1.-  del listado de anuncios x subuda
+anuncioindex.blade.php 
+<a href="{{ route('anuncios.create', ['dua' => $ditems->dua, 'nomdua' => $ditems->nomdua, 'subdua' => $subdua, 'nomsubdua' => $nomsubdua]) }}" class="btn btn-success">Crea nuevo Anuncio</a>
+
+a
+
+2.- MOdificar el archivo de rutas 
+Route::get('/anuncios/create/{dua}/{nomdua}/{subdua}/{nomsubdua}', [AnuncioController::class, 'create'] )->name('anuncios.create');
+
+3.- Modificar el AnuncioController 
+public function create($dua, $nomdua, $subdua, $nomsubdua)
+  
+return  view('anuncios.anuncioCrea')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get(), 'dua' => $dua,  'nomdua' => $nomdua, 'subdua' => $subdua, 'nomsubdua' => $nomsubdua ]);
+    
 
 
+Vista de Create anuncio
 
-?>
+4.- en la anuncioCrea.blade.php guardar los valores pasados en campos hidden 
+
+<div class="form_row">
+           
+<input class="form-control" maxlength="60" type="hidden" name="dua"  value={{ $dua }} requiered>
+</div> <br>
+
+
+<div class="form_row">
+
+<input class="form-control" maxlength="60" type="hidden" name="subdua"  value={{ $subdua}} requiered>
+</div> <br>
+

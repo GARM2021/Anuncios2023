@@ -21,22 +21,22 @@
 
         <div class="form_row">
            
-            <input class="form-control" maxlength="60" type="hidden" name="dua"  value={{ $dua }} requiered>
+            <input class="form-control" maxlength="60" type="hidden" readonly name="dua"  value={{ $dua }} requiered>
         </div> <br>
 
 
         <div class="form_row">
             
-            <input class="form-control" maxlength="60" type="hidden" name="subdua"  value={{ $subdua}} requiered>
+            <input class="form-control" maxlength="60" type="hidden" readonly name="subdua"  value={{ $subdua}} requiered>
         </div> <br>
 
 
 
-        <div class="form_row">
+        {{-- <div class="form_row">
             <label>cuenta</label>
             <input class="form-control" maxlength="60" type="text" name="cuenta" requiered>
 
-            {{-- //! Clase  40 old --}}
+          
             <label>dua</label>
             <input class="form-control" maxlength="60" type="text" name="dua" requiered>
 
@@ -44,7 +44,7 @@
             <label>subdua</label>
             <input class="form-control" maxlength="60" type="text" name="subdua" requiered>
 
-        </div> <br>
+        </div> <br> --}}
 
         <div class="form_row">
             <label>concepto</label>
