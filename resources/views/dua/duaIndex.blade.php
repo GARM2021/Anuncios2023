@@ -12,6 +12,7 @@
 
     @else
       <h1>
+        
         <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
       </h1>
         <div class="table-responsive">

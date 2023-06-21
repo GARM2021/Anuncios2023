@@ -67,7 +67,7 @@ Route::get('/colonias', [ColoniaController::class, 'index'] );
 
 Route::get('/anuncios/{subdua?}/lanuncios', [AnuncioController::class, 'lanuncios'])->name('anuncios.lanuncios');
 Route::post('/anuncios', [AnuncioController::class, 'store'])->name('anuncios.store');
-Route::get('/anuncios/create', [AnuncioController::class, 'create'] )->name('anuncios.create');
+Route::get('/anuncios/create/{dua}/{nomdua}/{subdua}/{nomsubdua}', [AnuncioController::class, 'create'] )->name('anuncios.create');
 Route::get('/anuncios/edit/{cuenta}', [AnuncioController::class, 'edit'])->name('anuncios.edit');
 Route::match(['put', 'patch'], '/anuncios/{cuenta}/update', [AnuncioController::class, 'update'])->name('anuncios.update');
 

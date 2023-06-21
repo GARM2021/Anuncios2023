@@ -78,10 +78,11 @@ class AnuncioController extends Controller
     }
 
 
-    public function create()
+    public function create($dua, $nomdua, $subdua, $nomsubdua)
     {
-
-        // return  view('dua.duaCreate')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get()]);
+       // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
+       //dd($dua);  
+       return  view('anuncios.anuncioCrea')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get(), 'dua' => $dua,  'nomdua' => $nomdua, 'subdua' => $subdua, 'nomsubdua' => $nomsubdua ]);
     }
 
 

@@ -16,7 +16,13 @@
        <h2>SUBDUA {{ $subdua }}</h2>
        <h2>{{ $nomsubdua }}</h2>
       <h3>
-        <a href="{{ route('anuncios.create')  }}" class="btn btn-success">Crea nuevo Anuncio</a>
+
+        {{-- return redirect()->route('nombre_ruta_destino', ['parametro1' => $parametro1, 'parametro2' => $parametro2]);
+        <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
+        <a href="{{ route('anuncios.create')  }}" class="btn btn-success">Crea nuevo Anuncio</a> --}}
+        {{-- <a href="  return redirect()->route('anuncios.create', [{{'dua' => $ditems->dua}}, {{'nomdua' => $ditems->nomdua}}, {{'subdua' => $subdua}}, {{'nomsubdua' => $nomsubdua] }})" class="btn btn-success">Crea nuevo Anuncio</a>; --}}
+        {{ dump($ditems->dua);}}
+        <a href="{{ route('anuncios.create', ['dua' => $ditems->dua, 'nomdua' => $ditems->nomdua, 'subdua' => $subdua, 'nomsubdua' => $nomsubdua]) }}" class="btn btn-success">Crea nuevo Anuncio</a>
       </h3>
         <div class="table-responsive">
             <table class="table-stripped">
