@@ -56,10 +56,13 @@ route::resource('duas', 'App\Http\Controllers\DuaController'); //! Clase 49  si
 //Route::get('/subduas/lista/{dua}', [App\Http\Controllers\SubduaController::class, 'lsubduas'])->name('subduas.lsubduas'); //si
 Route::get('subduas/{dua}/lsubduas', [SubduaController::class, 'lsubduas'])->name('subduas.lsubduas');
 Route::post('/subduas', [SubduaController::class, 'store'])->name('subduas.store');
-Route::get('/subduas/create', [SubduaController::class, 'create'] )->name('subduas.create');
+//Route::get('/subduas/create', [SubduaController::class, 'create'] )->name('subduas.create');
 Route::get('/subduas/edit/{subdua}', [SubduaController::class, 'edit'])->name('subduas.edit');
 Route::match(['put', 'patch'], '/subduas/{subdua}/update', [SubduaController::class, 'update'])->name('subduas.update');
 Route::get('/subduas/{subdua}', [SubduaController::class, 'show'] )->name('subduas.show');
+Route::get('/subduas/create/{dua}/{nomdua}', [SubduaController::class, 'create'] )->name('subduas.create');
+Route::match(['put', 'patch'], '/subduas/store', [SubduaController::class, 'store'])->name('subduas.store');
+
 
 Route::get('/colonias/edit/{colonia}', [ColoniaController::class, 'edit'])->name('colonias.edit');
 Route::match(['put', 'patch'], '/colonias/{colonia}/update', [ColoniaController::class, 'update'])->name('colonias.update');
@@ -71,6 +74,7 @@ Route::get('/anuncios/create/{dua}/{nomdua}/{subdua}/{nomsubdua}', [AnuncioContr
 Route::get('/anuncios/edit/{cuenta}', [AnuncioController::class, 'edit'])->name('anuncios.edit');
 Route::match(['put', 'patch'], '/anuncios/{cuenta}/update', [AnuncioController::class, 'update'])->name('anuncios.update');
 Route::match(['put', 'patch'], '/anuncios/store', [AnuncioController::class, 'store'])->name('anuncios.store');
+
 
 // Route::put('/anuncios/{cuenta}/update', [AnuncioController::class, 'update']) //! maracaba Route [anuncios.update] not defined.  aqui corri php artisan route:clear  me marco error con esta linea por eso la comente y corri el route:clear y reconocia la route que marcaba error
 //     ->name('anuncios.update')

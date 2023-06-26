@@ -56,15 +56,37 @@ class SubduaController extends Controller
     }
    
 
-    public function create()
+    public function create($dua, $nomdua)
     {
+      
 
-        // return  view('dua.duaCreate')->with(['icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get()]);
+        return  view('subdua.subduaCrea')->with([ 'dua' => $dua,  'nomdua' => $nomdua, 'icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get()]);
     }
 
   
     public function store(Request $request)
     {
+       
+        $validatedData = $request->validate([ 
+        'subdua' => 'size:06',
+        'nomsubdua' => 'required|max:40',
+        'dua' => 'size:06',
+        'sububicaion' => 'required|max:40',
+        'zona' => 'max:4',
+        'colonia' => '',
+        'subeexp' => 'required|size:08',
+        'subtelefono' => 'required|max:20',
+        'subdesgiro' => 'required|max:30',
+        'subusossuelo' => 'max:40',
+        'subrfc' => 'required|max:20',
+        'propnom' => 'required|max:40',
+        'propdir' => 'required|max:40',
+        'proptel' => 'required|max:20',
+        'fbajax' => 'max:8'
+        ]);
+        
+
+
 
         return $request;
         // $duas = DuaModel::create(request())->all();  //! Clase  32

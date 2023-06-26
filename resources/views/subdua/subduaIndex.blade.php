@@ -14,7 +14,11 @@
        <h1>DUA {{ $ditems->dua }}</h1>
        <h1>{{ $ditems->nomdua }}</h1>
       <h2>
-        <a href="{{ route('subduas.create')  }}" class="btn btn-success">Crea nuevo SubDua</a>
+        
+       
+
+        <a href="{{ route('subduas.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua]) }}" class="btn btn-success">Crea nuevo SubDua</a>
+        
       </h2>
         <div class="table-responsive">
             <table class="table-stripped">
