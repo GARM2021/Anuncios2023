@@ -48,7 +48,7 @@
 
         <div class="form_row">
             <label>concepto</label>
-            <input class="form-control" maxlength="60" type="text" name="concepto" requiered>
+            <input class="form-control" maxlength="60" type="text" name="concepto" value= "{{ old='concepto' }}" requiered>
 
         </div> <br>
 
@@ -241,7 +241,7 @@
 
             <div class="form_row">
                 <label>status</label>
-                <input class="form-control" maxlength="60" type="text" name="status">
+                <input class="form-control" maxlength="60" type="text" name="status" >
             </div> <br>
 
             <div class="form_row">

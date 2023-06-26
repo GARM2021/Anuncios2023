@@ -84,10 +84,3 @@ Route::get('/anuncios/{cuenta}', [AnuncioController::class, 'show'] )->name('anu
   
 
 
-
-
-
-
-// Route::resource('subduas', SubduaController::class)->except(['show']);
-// Route::get('subduas/{subdua}/lsubduas', [SubduaController::class, 'lsubduas'])->name('subduas.lsubduas');
-
