@@ -72,6 +72,7 @@ Route::get('/anuncios/{subdua?}/lanuncios', [AnuncioController::class, 'lanuncio
 Route::post('/anuncios', [AnuncioController::class, 'store'])->name('anuncios.store');
 Route::get('/anuncios/create/{dua}/{nomdua}/{subdua}/{nomsubdua}', [AnuncioController::class, 'create'] )->name('anuncios.create');
 Route::get('/anuncios/edit/{cuenta}', [AnuncioController::class, 'edit'])->name('anuncios.edit');
+Route::get('/anuncios/show/{cuenta}', [AnuncioController::class, 'edit'])->name('anuncios.show');
 Route::match(['put', 'patch'], '/anuncios/{cuenta}/update', [AnuncioController::class, 'update'])->name('anuncios.update');
 Route::match(['put', 'patch'], '/anuncios/store', [AnuncioController::class, 'store'])->name('anuncios.store');
 

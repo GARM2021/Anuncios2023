@@ -133,9 +133,24 @@ class AnuncioController extends Controller
     }
 
 
-    public function show($dua)
+    public function show($cuenta)
     {
-        dd('estoy en subduaController');
+        $result = AnuncioModel::where('cuenta', $cuenta)->pluck( 'dua', 'subdua'); //! Clase  33 con OpenAI pluck 
+   
+        
+        foreach ($result as $clave => $valor) {
+            $dua =  $valor; //. ", Valor: " . $valor . "<br>"
+            $subdua = $clave;
+        }
+        
+
+
+        return view('anuncios.anuncioShow')->with([
+            'ditems' => DuaModel::findOrFail($dua),
+            'sitems' => SubduaModel::findOrFail($subdua),
+            'items' => AnuncioModel::findOrFail($cuenta),
+      
+        ]);
     }
 
 
