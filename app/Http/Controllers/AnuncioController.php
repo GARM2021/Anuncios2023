@@ -82,7 +82,7 @@ class AnuncioController extends Controller
     {
        // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
        //dd($dua);  
-       return  view('anuncios.anuncioCrea')->with([ 'dua' => $dua,  'nomdua' => $nomdua, 'subdua' => $subdua, 'nomsubdua' => $nomsubdua ]);
+       return  view('anuncios.anuncioCrea')->with([ 'dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua ]);
     }
 
 
