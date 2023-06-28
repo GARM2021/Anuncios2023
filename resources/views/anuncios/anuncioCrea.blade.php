@@ -22,36 +22,21 @@
         <div class="form_row">
 
             <input class="form-control" maxlength="60" type="hidden" name="dua" value="{{ $dua }}" requiered>
-        </div> <br>
+        </div> 
 
 
         <div class="form_row">
 
             <input class="form-control" maxlength="60" type="hidden" name="subdua" value="{{ $subdua }}" requiered>
-        </div> <br>
+        </div> 
 
-        <hr style="border-color: black; border-width: 2px; ">
-
-        {{-- <div class="form_row">
-            <label>cuenta</label>
-            <input class="form-control" maxlength="60" type = "text"   value="{{ old('subdua')  }}"   name="cuenta" requiered>
-
-          
-            <label>dua</label>
-            <input class="form-control" maxlength="60" type = "text"   value="{{ old('subdua')  }}"   name="dua" requiered>
-
-
-            <label>subdua</label>
-            <input class="form-control" maxlength="60" type = "text"   value="{{ old('subdua')  }}"   name="subdua" requiered>
-
-        </div> <br> --}}
-        <br>
+      
         <div class="form_row">
-            <label>concepto</label>
-            <input class="form-control" maxlength="60" type="text" value="{{ old('concepto') }}" name="concepto"
+          
+            <input class="form-control" maxlength="60" type="hidden"  value="{{ old('concepto') }}" id= "concepto" name="concepto"
                 requiered>
 
-        </div> <br> <br>
+        </div> 
         <hr style="border-color: black; border-width: 2px;">
         <div class="form_row">
             <label>numper</label>
@@ -79,7 +64,7 @@
                 id="dias">
         </div> <br>
 
-        <label for="finicio">Fecha Inicio:</label><br><br>
+        <label for="finicio">Fecha Inicio:</label>
         <input type="text" value="{{ old('finicio') }}" maxlength="08"id="finicio" name="finicio"
             placeholder="AAAAMMDD" pattern="[0-9]{8}">
         <small>Format Ejemplo: 20230512</small><br><br>
@@ -88,7 +73,7 @@
 
         <div class="form_row">
 
-            <label for="ftermino">Fecha Termino:</label><br><br>
+            <label for="ftermino">Fecha Termino:</label>
             <input type="hidden" value="{{ old('ftermino') }}" maxlength="08"id="ftermino" name="ftermino"
                 placeholder="AAAAMMDD" pattern="[0-9]{8}">
             <small>Format Ejemplo: 20230512</small><br><br>
@@ -128,9 +113,6 @@
         <input type="radio" id="NADOSA" name="ANA" value="N" onchange="cambiaTipos()">
         {{-- //! Clase  33 --}}
 
-        {{-- <br><br>   //! aqui voy   --}}
-
-
         <div class="form_row">
             <label>vistas</label><br>
             <input class="form-control" maxlength="10" type="text" value="{{ old('vistas') }}" name="vistas"
@@ -159,102 +141,75 @@
         </div> <br>
 
         <div class="form_row">
-            <hr style="border-color: black; border-width: 2px; ">
+           
             {{-- <div class="row"> --}}
             <div class="col-md-4">
-                <label>recof</label>
-                <input class="form-control" maxlength="60" type="text" value="{{ old('recof') }}" name="recof"
+                
+                <input class="form-control" maxlength="60" type="hidden" value="{{ old('recof') }}" name="recof"
                     requiered>
-            </div> <br>
+            </div> 
 
 
 
             <div class="col-md-4">
 
-                <label for="fpago">Fecha Pago:</label><br><br>
-                <input type="text" value="{{ old('fpago') }}" maxlength="08"id="fpago" name="fpago"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
+               
+                <input type="hidden" value="{{ old('fpago') }}" maxlength="08"id="fpago" name="fpago">
 
 
-            </div> <br>
+            </div> 
 
 
             <div class="col-md-4">
 
+                <input type="hidden" value="{{ old('fpagocap') }}" maxlength="08"id="fpagocap" name="fpagocap">
+                
 
-                <label for="fpagocap">Fecha Captura de Pago:</label><br><br>
-                <input type="text" value="{{ old('fpagocap') }}" maxlength="08"id="fpagocap" name="fpagocap"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
-                <small>Format Ejemplo: 20230512</small><br><br>
-
-
-            </div> <br>
-
-
-
+            </div> 
 
             <div class="row">
 
-                <label>recofcap</label>
-                <input class="form-control" maxlength="60" type="text" value="{{ old('recofcap') }}"
+                
+                <input class="form-control" maxlength="60" type="hidden" value="{{ old('recofcap') }}"
                     name="recofcap">
 
 
-                <label>nombrecap</label>
-                <input class="form-control" maxlength="60" type="text" value="{{ old('nombrecap') }}"
+               
+                <input class="form-control" maxlength="60" type="hidden" value="{{ old('nombrecap') }}"
                     name="nombrecap">
 
 
-                <label>yearpagocap</label>
-                <input class="form-control" maxlength="60" type="text" value="{{ old('yearpagocap') }}"
+               
+                <input class="form-control" maxlength="60" type="hidden" value="{{ old('yearpagocap') }}"
                     name="yearpagocap">
 
-            </div> <br>
-            <hr style="border-color: black; border-width: 2px; ">
+            </div> 
+         
 
-
-
-            <label for="fbajax">Fecha Baja:</label><br><br>
-            <input type="text" value="{{ old('fbajax') }}" maxlength="08"id="fbajax" name="fbajax"
-                placeholder="AAAAMMDD" pattern="[0-9]{8}">
-            <small>Format Ejemplo: 20230512</small><br><br>
-
-
-
-
-
-            <label for="fnotifica">Fecha Notifica:</label><br><br>
-            <input type="text" value="{{ old('fnotifica') }}" maxlength="08"id="fnotifica" name="fnotifica"
-                placeholder="AAAAMMDD" pattern="[0-9]{8}">
-            <small>Format Ejemplo: 20230512</small><br><br>
-
-
-
-
-            <label for="freq">Fecha Requerimiento:</label><br><br>
-            <input type="text" value="{{ old('freq') }}" maxlength="08"id="freq" name="freq"
-                placeholder="AAAAMMDD" pattern="[0-9]{8}">
-            <small>Format Ejemplo: 20230512</small><br><br>
-
+            <input type="hidden" value="{{ old('fbajax') }}" maxlength="08"id="fbajax" name="fbajax">
+          
+            <input type="hidden"  value="{{ old('fnotifica') }}" maxlength="08"id="fnotifica" name="fnotifica">
+          
+            <input type="hidden" value="{{ old('freq') }}" maxlength="08"id="freq" name="freq">
+          
 
 
 
             <div class="form_row">
-                <label>cvereq</label>
-                <input class="form-control" maxlength="60" type="text" value="{{ old('cvereq') }}" name="cvereq">
-            </div> <br>
+                
+                <input class="form-control" type="hidden" maxlength="02"  value="{{ old('cvereq') }}" id="cvereq" name="cvereq">
+            </div>
 
 
-            <label for="fembargo">Fecha Embargo:</label><br><br>
-            <input type="text" value="{{ old('fembargo') }}" maxlength="08"id="fembargo" name="fembargo"
-                placeholder="AAAAMMDD" pattern="[0-9]{8}">
-            <small>Format Ejemplo: 20230512</small><br><br>
+          
+            <input type="hidden" value="{{ old('fembargo') }}" maxlength="08"id="fembargo" name="fembargo">
+        
 
             <hr style="border-color: black; border-width: 2px; ">
 
             <div class="form_row">
-                <label>status</label>
-                <input class="form-control" maxlength="60" type="text" value="{{ old('status') }}" name="status">
+                
+                <input class="form-control"  type="hidden" maxlength="02" type="text" value="{{ old('status') }}" id = "status" name="status">
             </div> <br>
 
             <div class="form_row">
@@ -265,19 +220,17 @@
 
 
             <form action="/action_page.php">
-                <label for="fcaptura">Fecha Captura:</label><br><br>
-                <input type="text" value="{{ old('fcaptura') }}" maxlength="08" id="fcaptura" name="fcaptura"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
-                <small>Format Ejemplo: 20230512</small><br><br>
+               
+                <input type="hidden" value="{{ old('fcaptura') }}" maxlength="08" id="fcaptura" name="fcaptura">
+                
 
             </form>
 
 
             <div class="form_row">
-                <label>horacap</label>
-                <input maxlength="08" type="text" value="{{ old('horacap') }}" id="horacap" name="horacap" >
-            </div> <br>
-
+               
+                <input maxlength="08"  type="hidden" value="{{ old('horacap') }}" id="horacap" name="horacap" >
+            </div> 
             <div class="form_row">
                 <label>capturista</label>
                 <input class="form-control" maxlength="60" type="text" value="{{ old('capturista') }}"
@@ -312,9 +265,11 @@
                 var ehcaptura = document.getElementById("horacap");
                 var ecvereq   = document.getElementById("cvereq");
                 var estatus   = document.getElementById("status");
+                var econcepto = document.getElementById("concepto");
 
-                ecvereq.value = '0';
-                estatus.value = '00';
+                ecvereq.value = 0;
+                estatus.value = 0;
+                econcepto.value = '2480';
 
                 const fecha = new Date();
 

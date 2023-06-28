@@ -5,14 +5,13 @@ use App\Http\Controllers\AnuncioController; //! 20230518 aqui lo tenia como Anun
 use App\Http\Controllers\DuaController;
 use App\Http\Controllers\ColoniaController;
 use App\Http\Controllers\SubduaController;
+use App\Models\AnuncioModel;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
 |
 */
 //! Clase 16 20230426 17 20230427
@@ -22,21 +21,6 @@ Route::get('/', function () {
 })->name('main');
 
 Route::get('/pruebaDB', [DuaController::class, 'pruebaDB'] );
-// anuncios pendientes
-// Route::get('/anuncios', [AnunciosController::class, 'index'])->name('anuncios.index');
-// Route::get('/anuncios/create', [AnunciosController::class, 'create'])->name('anuncios.create');
-
-// Route::post('/anuncios','AnunciosController@store')->name('anuncios.store');
-
-// Route::get('/anuncios/{cuenta}','AnunciosController@show')->name('anuncios.show');
-
-// Route::get('/anuncios/{cuenta}/edit', 'AnunciosController@edit')->name('anuncios.edit');
-
-
-// Route::match(['put', 'patch'], '/anuncios/{anuncio}/update', 'AnunciosController@update')->name('anuncios.update');
-
-// Route::delete('/anuncios/{cuenta}/delete', 'AnunciosController@destroy')->name('anuncios.destroy');
-
 
 //duas funcionando
 // Route::post('/duas', [DuaController::class, 'store'])->name('duas.store');
@@ -49,11 +33,7 @@ Route::get('/pruebaDB', [DuaController::class, 'pruebaDB'] );
 // Route::get('/duas/{dua}', [DuaController::class, 'show'] )->name('duas.show');
 
 route::resource('duas', 'App\Http\Controllers\DuaController'); //! Clase 49  si
-//route::resource('subduas', 'App\Http\Controllers\SubduaController'); //! Clase 49  si
-//route::resource('subduas', 'App\Http\Controllers\SubduaController'); //! Clase 49  
 
-
-//Route::get('/subduas/lista/{dua}', [App\Http\Controllers\SubduaController::class, 'lsubduas'])->name('subduas.lsubduas'); //si
 Route::get('subduas/{dua}/lsubduas', [SubduaController::class, 'lsubduas'])->name('subduas.lsubduas');
 Route::post('/subduas', [SubduaController::class, 'store'])->name('subduas.store');
 //Route::get('/subduas/create', [SubduaController::class, 'create'] )->name('subduas.create');
@@ -68,6 +48,7 @@ Route::get('/colonias/edit/{colonia}', [ColoniaController::class, 'edit'])->name
 Route::match(['put', 'patch'], '/colonias/{colonia}/update', [ColoniaController::class, 'update'])->name('colonias.update');
 Route::get('/colonias', [ColoniaController::class, 'index'] );
 
+//Route::resource('anuncios', 'App\Http\Controllers\AnuncioController');
 Route::get('/anuncios/{subdua?}/lanuncios', [AnuncioController::class, 'lanuncios'])->name('anuncios.lanuncios');
 Route::post('/anuncios', [AnuncioController::class, 'store'])->name('anuncios.store');
 Route::get('/anuncios/create/{dua}/{nomdua}/{subdua}/{nomsubdua}', [AnuncioController::class, 'create'] )->name('anuncios.create');
