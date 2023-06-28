@@ -266,7 +266,7 @@
 
             <form action="/action_page.php">
                 <label for="fcaptura">Fecha Captura:</label><br><br>
-                <input type="text" value="{{ old('fcaptura') }}" maxlength="08"id="fcaptura" name="fcaptura"
+                <input type="text" value="{{ old('fcaptura') }}" maxlength="08" id="fcaptura" name="fcaptura"
                     placeholder="AAAAMMDD" pattern="[0-9]{8}">
                 <small>Format Ejemplo: 20230512</small><br><br>
 
@@ -275,9 +275,9 @@
 
             <div class="form_row">
                 <label>horacap</label>
-                <input class="form-control" maxlength="60" type="text" value="{{ old('horacap') }}" name="horacap"
-                    requiered>
+                <input maxlength="08" type="text" value="{{ old('horacap') }}" id="horacap" name="horacap" >
             </div> <br>
+
             <div class="form_row">
                 <label>capturista</label>
                 <input class="form-control" maxlength="60" type="text" value="{{ old('capturista') }}"
@@ -300,15 +300,22 @@
     <script>
         // Obtén el botón por su nombre o clase, en este caso por su nombre "BCrea"
         window.onload = function() {
-        const botonCrea = document.querySelector('button[name="BCrea"]');
+            const botonCrea = document.querySelector('button[name="BCrea"]');
 
-        // Agrega un event listener al botón
-        botonCrea.addEventListener('click', function(event) {
-            // Evita que se envíe el formulario automáticamente
-            event.preventDefault();
+            // Agrega un event listener al botón
+            botonCrea.addEventListener('click', function(event) {
+                // Evita que se envíe el formulario automáticamente
+                event.preventDefault();
 
-            // Aquí puedes realizar acciones personalizadas después de hacer clic en el botón
-           
+                // Aquí puedes realizar acciones personalizadas después de hacer clic en el botón
+                var efcaptura = document.getElementById("fcaptura");
+                var ehcaptura = document.getElementById("horacap");
+                var ecvereq   = document.getElementById("cvereq");
+                var estatus   = document.getElementById("status");
+
+                ecvereq.value = '0';
+                estatus.value = '00';
+
                 const fecha = new Date();
 
                 const año = fecha.getFullYear();
@@ -316,25 +323,24 @@
                 const dia = String(fecha.getDate()).padStart(2, '0');
 
                 // return `${año}${mes}${dia}`;
-                var efcaptura = document.getElementById("fcaptura");
-                efcaptura.value = `${año}${mes}${dia}`;
+                
+                const ecaptura = `${año}${mes}${dia}`.padEnd(8, ' ');
+                efcaptura.value =  ecaptura ;
+           
 
-        
-                const hora = new Date();
+                const horas = String(fecha.getHours()).padStart(2, '0');
+                const minutos = String(fecha.getMinutes()).padStart(2, '0');
 
-                const horas = String(hora.getHours()).padStart(2, '0');
-                const minutos = String(hora.getMinutes()).padStart(2, '0');
+                
+                const horacap = `${horas}:${minutos}`.padEnd(8, ' ');
 
-                var ehcaptura = document.getElementById("horacap");
-                ehcaptura.value = `${horas}:${minutos}`;
+                ehcaptura.value = horacap;
 
-              
 
-        
-            // También puedes enviar el formulario manualmente si lo deseas
-            document.forms.Crea.submit();
-        });
-    }
+                // También puedes enviar el formulario manualmente si lo deseas
+                document.forms.Crea.submit();
+            });
+        }
 
         function cambiaTipos() {
 

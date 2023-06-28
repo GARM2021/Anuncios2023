@@ -119,7 +119,7 @@ class AnuncioController extends Controller
             'status' => 'max:02',
             'usuario_mov' => 'max:70',
             'fcaptura' => 'between:0,8',
-            //'horacap' => 'between:0,8',
+            'horacap' => 'between:0,8',//! aqui lo tenia comentado y no se me reflejaba en el request 20230628
             'capturista' => 'between:0,8'
 
         ]);
@@ -178,8 +178,7 @@ class AnuncioController extends Controller
 
     public function update(Request $request, $cuenta)
     {
-        // dump($cuenta);
-        // dd($request);
+        
        
         $validatedData = $request->validate([ 
             'cuenta' => 'required|size:06',
@@ -212,7 +211,7 @@ class AnuncioController extends Controller
             'status' => 'max:02',
             'usuario_mov' => 'max:70',
             'fcaptura' => 'between:0,8',
-            'horacap' => 'between:0,8',
+             'horacap' => 'between:0,8',
             'capturista' => 'between:0,8'
 
         ]);

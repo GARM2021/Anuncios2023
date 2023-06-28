@@ -1,5 +1,10 @@
 <?php 
 
+20230628
+
+'horacap' => 'between:0,8',//! aqui lo tenia comentado en el store y no se me reflejaba en el request 20230628
+
+//? ==============================================================================
 Transcribir el siguiente codigo a  PHP 5.6.40  Laravel 5.4  composer 2.0.011  
 
                         <td class="style24">
