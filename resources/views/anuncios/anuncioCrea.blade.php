@@ -298,6 +298,44 @@
 
     </form>
     <script>
+        // Obtén el botón por su nombre o clase, en este caso por su nombre "BCrea"
+        window.onload = function() {
+        const botonCrea = document.querySelector('button[name="BCrea"]');
+
+        // Agrega un event listener al botón
+        botonCrea.addEventListener('click', function(event) {
+            // Evita que se envíe el formulario automáticamente
+            event.preventDefault();
+
+            // Aquí puedes realizar acciones personalizadas después de hacer clic en el botón
+           
+                const fecha = new Date();
+
+                const año = fecha.getFullYear();
+                const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+                const dia = String(fecha.getDate()).padStart(2, '0');
+
+                // return `${año}${mes}${dia}`;
+                var efcaptura = document.getElementById("fcaptura");
+                efcaptura.value = `${año}${mes}${dia}`;
+
+        
+                const hora = new Date();
+
+                const horas = String(hora.getHours()).padStart(2, '0');
+                const minutos = String(hora.getMinutes()).padStart(2, '0');
+
+                var ehcaptura = document.getElementById("horacap");
+                ehcaptura.value = `${horas}:${minutos}`;
+
+              
+
+        
+            // También puedes enviar el formulario manualmente si lo deseas
+            document.forms.Crea.submit();
+        });
+    }
+
         function cambiaTipos() {
 
             var eftermino = document.getElementById("ftermino");

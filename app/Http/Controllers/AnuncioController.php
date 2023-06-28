@@ -212,7 +212,7 @@ class AnuncioController extends Controller
             'status' => 'max:02',
             'usuario_mov' => 'max:70',
             'fcaptura' => 'between:0,8',
-            //'horacap' => 'between:0,8',
+            'horacap' => 'between:0,8',
             'capturista' => 'between:0,8'
 
         ]);
