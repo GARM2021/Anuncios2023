@@ -37,18 +37,18 @@
                         <th>ftermino</th>
                         <th>tipoanuncio</th>
                         <th>vistas</th>
-                        <th>largo</th>
-                        <th>ancho</th>
+                        {{-- <th>largo</th>
+                        <th>ancho</th> --}}
                         <th>area</th>
                         <th>leyendaanuncio</th>
                         <th>num_anun_temp</th>
                         <th>dias</th>
                         <th>fpago</th>
-                        <th>recof</th>
+                        {{-- <th>recof</th>
                         <th>fpagocap</th>
                         <th>recofcap</th>
                         <th>nombrecap</th>
-                        <th>yearpagocap</th>
+                        <th>yearpagocap</th> --}}
                         <th>fbajax</th>
                         <th>fnotifica</th>
                         <th>freq</th>
@@ -82,18 +82,18 @@
                         <td>{{ $item->ftermino}}</td>
                         <td>{{ $item->tipoanuncio}}</td>
                         <td>{{ $item->vistas}}</td>
-                        <td>{{ $item->largo}}</td>
-                        <td>{{ $item->ancho}}</td>
+                        {{-- <td>{{ $item->largo}}</td>
+                        <td>{{ $item->ancho}}</td> --}}
                         <td>{{ $item->area}}</td>
                         <td>{{ $item->leyendaanuncio}}</td>
                         <td>{{ $item->num_anun_temp}}</td>
                         <td>{{ $item->dias}}</td>
                         <td>{{ $item->fpago}}</td>
-                        <td>{{ $item->recof}}</td>
+                        {{-- <td>{{ $item->recof}}</td>
                         <td>{{ $item->fpagocap}}</td>
                         <td>{{ $item->recofcap}}</td>
                         <td>{{ $item->nombrecap}}</td>
-                        <td>{{ $item->yearpagocap}}</td>
+                        <td>{{ $item->yearpagocap}}</td> --}}
                         <td>{{ $item->fbajax}}</td>
                         <td>{{ $item->fnotifica}}</td>
                         <td>{{ $item->freq}}</td>

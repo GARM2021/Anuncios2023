@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h1>Crea Anuncio</h1>
+    <h1>Crea Anuncio OK</h1>
 
     {{-- @dump($errors)
     @dump($dua) --}}

@@ -116,7 +116,7 @@ class AnuncioController extends Controller
             'freq' => 'between:0,8',
             'cvereq' => 'numeric|between:0,8',
             'fembargo' => 'between:0,8',
-            'status' => 'max:02',
+            'status' => 'numeric',
             'usuario_mov' => 'max:70',
             'fcaptura' => 'between:0,8',
             'horacap' => 'between:0,8',//! aqui lo tenia comentado y no se me reflejaba en el request 20230628
@@ -208,7 +208,7 @@ class AnuncioController extends Controller
             'freq' => 'between:0,8',
             'cvereq' => 'numeric|between:0,8',
             'fembargo' => 'between:0,8',
-            'status' => 'max:02',
+            'status' => 'numeric',
             'usuario_mov' => 'max:70',
             'fcaptura' => 'between:0,8',
              'horacap' => 'between:0,8',

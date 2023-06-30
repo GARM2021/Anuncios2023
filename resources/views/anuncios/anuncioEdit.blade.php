@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h1>Edita Anuncio</h1>
+    <h1>Edita Anuncio OK</h1>
 
-    @dump($errors)
+    
     <h1>Dua {{ $ditems->dua }}</h1>
     <h1>Dom. Dua {{ $ditems->nomdua }}</h1>
     <h2>Sub Dua {{ $items->subdua }}</h2>
@@ -255,7 +255,7 @@
 
             <form action="/action_page.php">
                 <label for="fcaptura">Fecha Captura:</label><br><br>
-                <input type="text" maxlength="08"id="fcaptura" name="fcaptura" placeholder="AAAAMMDD"
+                <input readonly type="text" maxlength="08"id="fcaptura" name="fcaptura" placeholder="AAAAMMDD"
                     pattern="[0-9]{8}" value={{ old('fcaptura') ?? $items->fcaptura }}>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
@@ -264,9 +264,11 @@
 
             <div class="form_row">
                 <label>horacap</label>
-                <input class="form-control" maxlength="60" type="text" name="horacap"
+                <input class="form-control" maxlength="12" readonly type="text" id="horacap" name="horacap"
                     value={{ old('horacap') ?? $items->horacap }} requiered>
             </div> <br>
+
+
             <div class="form_row">
                 <label>capturista</label>
                 <input class="form-control" maxlength="60" type="text" name="capturista"
@@ -287,6 +289,47 @@
 
     </form>
     <script>
+          window.onload = function() {  
+            const botonActualiza = document.querySelector('button[name="BActualiza"]');
+
+            // Agrega un event listener al botón
+            botonActualiza.addEventListener('click', function(event) {
+                // Evita que se envíe el formulario automáticamente
+                event.preventDefault();
+
+                // Aquí puedes realizar acciones personalizadas después de hacer clic en el botón
+                var efcaptura = document.getElementById("fcaptura");
+                var ehcaptura = document.getElementById("horacap");
+               
+
+               
+
+                const fecha = new Date();
+
+                const año = fecha.getFullYear();
+                const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+                const dia = String(fecha.getDate()).padStart(2, '0');
+
+                // return `${año}${mes}${dia}`;
+                
+                const ecaptura = `${año}${mes}${dia}`.padEnd(8, ' ');
+                efcaptura.value =  ecaptura ;
+           
+
+                const horas = String(fecha.getHours()).padStart(2, '0');
+                const minutos = String(fecha.getMinutes()).padStart(2, '0');
+
+                
+                const horacap = `${horas}:${minutos}`.padEnd(8, ' ');
+
+                ehcaptura.value = horacap;
+
+
+                // También puedes enviar el formulario manualmente si lo deseas
+                document.forms.Crea.submit();
+            });
+        }
+
         function cambiaTipos() {
 
             var eftermino = document.getElementById("ftermino");
