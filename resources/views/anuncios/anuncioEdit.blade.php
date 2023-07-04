@@ -253,18 +253,18 @@
             </div> <br>
 
 
-            <form action="/action_page.php">
+            <div class="form_row">
                 <label for="fcaptura">Fecha Captura:</label><br><br>
-                <input readonly type="text" maxlength="08"id="fcaptura" name="fcaptura" placeholder="AAAAMMDD"
+                <input  type="text" maxlength="08"id="fcaptura" name="fcaptura" placeholder="AAAAMMDD"
                     pattern="[0-9]{8}" value={{ old('fcaptura') ?? $items->fcaptura }}>
                 <small>Format Ejemplo: 20230512</small><br><br>
 
-            </form>
+            </div> <br>
 
 
             <div class="form_row">
                 <label>horacap</label>
-                <input class="form-control" maxlength="12" readonly type="text" id="horacap" name="horacap"
+                <input  maxlength="12" type="text" id="horacap" name="horacap"
                     value={{ old('horacap') ?? $items->horacap }} requiered>
             </div> <br>
 
@@ -277,8 +277,8 @@
 
 
             <div class="form_row">
-                <button name="BActualiza" type="submit" class="btn btn-primary btn-lg"
-                    onclick="document.forms.Actualiza.submit();">Actualiza Anuncio</button>
+                {{-- <button name="update" type="submit" class="btn btn-primary btn-lg" onclick="document.forms.Actualiza.submit();">Actualiza Anuncio</button> --}}
+                <button  name="BActualiza" type="submit" class="btn btn-primary btn-lg" onclick="document.forms.Actualiza.submit();">Actualiza Anuncio</button>
                 {{-- //! aqui lo resolvi en esta pagina --}}
                 {{-- https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario --}}
                 {{--  --}}
@@ -326,7 +326,7 @@
 
 
                 // También puedes enviar el formulario manualmente si lo deseas
-                document.forms.Crea.submit();
+                document.forms.Actualiza.submit();  //! aqui lo tenia document.forms.Crea.submit(); OjO
             });
         }
 
