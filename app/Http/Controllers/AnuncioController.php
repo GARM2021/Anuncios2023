@@ -156,7 +156,7 @@ class AnuncioController extends Controller
 
     public function edit($cuenta)
     {
-        
+       
         $result = AnuncioModel::where('cuenta', $cuenta)->pluck( 'dua', 'subdua'); //! Clase  33 con OpenAI pluck 
    
         

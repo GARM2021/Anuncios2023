@@ -1,4 +1,22 @@
 <?php 
+
+paso 17.
+20230705
+laravel ui vue auth 
+https://www.youtube.com/watch?v=tIFkbdgdhKk&t=184s
+
+composer require laravel/ui
+php artisan ui vue --auth
+npm install && npm run 
+
+para vue 20230706
+
+npm install laravel-mix --save-dev //! no creo el webpack.mix.js
+npm install vue-loader vue-template-compiler --save-dev
+
+20230724
+https://www.youtube.com/watch?v=HBmfAc4SS2M minuto 29
+
 paso 13.
 20230426
 D:\xampp\htdocs\Anuncios2023>php artisan key:generate
@@ -14,6 +32,7 @@ paso 16
 D:\xampp\htdocs\Anuncios2023>php artisan make:controller DuaController --resource
 
 D:\xampp\htdocs\Anuncios2023>php artisan make:controller --help
+==================================================================================================
 
 20230621
 
@@ -48,4 +67,7 @@ Vista de Create anuncio
 
 <input class="form-control" maxlength="60" type="hidden" name="subdua"  value={{ $subdua}} requiered>
 </div> <br>
+
+===============================================================================================================
+20230705
 
