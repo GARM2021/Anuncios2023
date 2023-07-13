@@ -66,3 +66,7 @@ Route::get('/anuncios/{cuenta}', [AnuncioController::class, 'show'] )->name('anu
   
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

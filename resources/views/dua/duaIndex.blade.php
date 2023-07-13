@@ -34,7 +34,7 @@
                     @foreach ($items as $item ) 
                         
                   
-                    <tr>
+                    <tr class="highlight-on-hover">
                         
                         <td>{{ $item->dua}}</td>
                         <td>{{ $item->nomdua}}</td>

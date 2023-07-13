@@ -48,7 +48,7 @@
                     @foreach ($items as $item ) {{-- //! Clase 29 --}}
                         
                   
-                    <tr>
+                    <tr class="highlight-on-hover">
                         <td>{{ $item->subdua}}</td> 
                         <td>{{ $item->nomsubdua}}</td>
                         <td>{{ $item->dua}}</td>

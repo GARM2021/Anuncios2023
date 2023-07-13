@@ -73,7 +73,7 @@
                     @foreach ($items as $item ) {{-- //! Clase 29 --}}
                         
                   
-                    <tr>
+                    <tr class="highlight-on-hover">
                         <td>{{ $item->cuenta}}</td>
                         <td>{{ $item->concepto}}</td>
                         <td>{{ $item->numper}}</td>

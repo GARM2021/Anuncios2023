@@ -1,4 +1,12 @@
 <?php 
+
+paso 17.
+20230705
+laravel ui vue auth 
+https://www.youtube.com/watch?v=tIFkbdgdhKk&t=184s
+
+composer require laravl/ui
+
 paso 13.
 20230426
 D:\xampp\htdocs\Anuncios2023>php artisan key:generate
@@ -14,6 +22,7 @@ paso 16
 D:\xampp\htdocs\Anuncios2023>php artisan make:controller DuaController --resource
 
 D:\xampp\htdocs\Anuncios2023>php artisan make:controller --help
+==================================================================================================
 
 20230621
 
@@ -48,4 +57,7 @@ Vista de Create anuncio
 
 <input class="form-control" maxlength="60" type="hidden" name="subdua"  value={{ $subdua}} requiered>
 </div> <br>
+
+===============================================================================================================
+20230705
 
