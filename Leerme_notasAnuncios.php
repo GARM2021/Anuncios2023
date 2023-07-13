@@ -5,7 +5,21 @@ paso 17.
 laravel ui vue auth 
 https://www.youtube.com/watch?v=tIFkbdgdhKk&t=184s
 
+<<<<<<< HEAD
 composer require laravl/ui
+=======
+composer require laravel/ui
+php artisan ui vue --auth
+npm install && npm run 
+
+para vue 20230706
+
+npm install laravel-mix --save-dev //! no creo el webpack.mix.js
+npm install vue-loader vue-template-compiler --save-dev
+
+20230724
+https://www.youtube.com/watch?v=HBmfAc4SS2M minuto 29
+>>>>>>> b13887318f23ddee793c3d80e99bc41aa1d2ed3f
 
 paso 13.
 20230426
