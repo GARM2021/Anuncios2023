@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -15,6 +16,14 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <!-- Enlaces a las vistas -->
+                    <div>
+                        <a href="http://localhost:8000/duas">Gestion de DUAS</a>
+                    </div>
+                    {{-- <div>
+                        <a href="{{ route('colonia.index') }}">Colonia</a>
+                    </div> --}}
                 </div>
             </div>
         </div>
