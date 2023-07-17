@@ -25,9 +25,9 @@
              {{-- str_pad($items->cuenta, 6, '0', STR_PAD_LEFT)    'dua' => $ditems->dua, --}}
                             <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua]) }}" class="btn btn-success">Crea nuevo Anuncio</a>
                         </h3>
-        <div class="table-responsive">
-            <table class="table-stripped">
-                <thead class="thead-light">
+        <div class="table-container table-responsive"> 
+            <table class="table-striped table-container">
+                <thead class= "thead-fixed text-secondary">
                     <tr>
                         <th>cuenta</th>
                         <th>concepto</th>

@@ -20,9 +20,9 @@
         <a href="{{ route('subduas.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua]) }}" class="btn btn-success">Crea nuevo SubDua</a>
         
       </h2>
-        <div class="table-responsive">
-            <table class="table-stripped">
-                <thead class="thead-light">
+      <div class="table-container table-responsive"> 
+              <table class="table-striped table-container">
+               <thead class= "thead-fixed text-secondary">
                     <tr>
                         <th>subdua</th>
                         <th>nomsubdua</th>
@@ -41,7 +41,9 @@
                         <th>proptel</th>
                         <th>fbajax</th>
                        
-                        <th>A C T I O N</th>
+                        <th>    A C    </th>
+                        <th>    T I    </th>
+                        <th>    O N    </th>
                     </tr>
                 </thead>
                 <tbody>

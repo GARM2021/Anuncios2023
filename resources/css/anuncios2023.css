@@ -1,0 +1,36 @@
+
+
+        .highlight-on-hover:hover {
+            background-color: yellow !important;
+        }
+
+        .table-container {
+            max-height: 1000px;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+        }
+
+        .table-header-container {
+            max-height: 40px;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+        }
+
+        .table-row-container {
+            max-height: 0px;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+        }
+
+ 
+
+
+
+         .thead-fixed {
+            position: sticky !important;
+            top: 0;
+            background-color: hsla(210, 6%, 6%, 1); 
+            color: blue !important;
+              /* el ultimo parametro de background-color es 1 solido si es menor de 1 es traslucido */
+        }
+ 
