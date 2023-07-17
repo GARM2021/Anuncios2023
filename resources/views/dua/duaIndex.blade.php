@@ -15,7 +15,7 @@
          <div class="table-container table-responsive"> 
 
              <table class="table-striped table-container">
-                <div class="table-header-container"> 
+                {{-- <div class="table-header-container">  --}}
                  <thead class= "thead-fixed text-secondary">
                      <tr>
                          <th>DUA</th>
@@ -32,7 +32,7 @@
                            
                      </tr>
                  </thead>
-                </div> 
+                {{-- </div> --}}
                  <tbody>
                      @foreach ($items as $item)
                          <tr class="highlight-on-hover">

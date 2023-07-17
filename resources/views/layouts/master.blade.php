@@ -14,7 +14,27 @@
  
         .highlight-on-hover:hover {
             background-color: yellow !important;
+           
         }
+
+        .highlight-on-hover_g:hover {
+            background-color: rgb(123, 116, 133,1)!important;
+            color: white;
+        }
+
+        .div-container {
+            max-height: 500px;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+        }
+
+        .head_uno {
+            background-color: rgb(65, 71, 77, 1); 
+            color: white !important;
+              /* el ultimo parametro de background-color es 1 solido si es menor de 1 es traslucido */
+        }
+
+
 
         .table-container {
             max-height: 1000px;

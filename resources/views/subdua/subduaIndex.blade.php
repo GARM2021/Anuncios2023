@@ -22,6 +22,7 @@
       </h2>
       <div class="table-container table-responsive"> 
               <table class="table-striped table-container">
+               
                <thead class= "thead-fixed text-secondary">
                     <tr>
                         <th>subdua</th>
@@ -46,6 +47,7 @@
                         <th>    O N    </th>
                     </tr>
                 </thead>
+           
                 <tbody>
                     @foreach ($items as $item ) {{-- //! Clase 29 --}}
                         
