@@ -18,51 +18,33 @@
         }
 
         .table-container {
-            max-height: 500px;
+            max-height: 1000px;
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
         }
 
         .table-header-container {
-            max-height: 50px;
+            max-height: 40px;
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
         }
 
         .table-row-container {
-            max-height: 400px;
+            max-height: 0px;
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
         }
 
-        /* .header_fijo {
-  width: 1000px;
-  table-layout: sticky !important;
-  border-collapse: collapse; 
-}
-.header_fijo thead {
-  background-color: #333;
-  color: #FDFDFD;
-}
-
-.header_fijo thead tr {
-  display: block;
-  position: relative;
-}
-.header_fijo tbody {
-  display: block;
-  overflow: auto;
-  width: 100%;
-  height: 1000px;
-} */
+ 
 
 
 
-         .thead {
+         .thead-fixed {
             position: sticky !important;
-            top: 100;
-            background-color: #0b6fe2;
-            /* Ajusta el color de fondo según tu diseño */
+            top: 0;
+            background-color: hsla(210, 6%, 6%, 1); 
+            color: white !important;
+              /* el ultimo parametro de background-color es 1 solido si es menor de 1 es traslucido */
         }
          
     </style>

@@ -15,8 +15,8 @@
          <div class="table-container table-responsive"> 
 
              <table class="table-striped table-container">
-                
-                 <thead class="table-header-container">
+                <div class="table-header-container"> 
+                 <thead class= "thead-fixed text-secondary">
                      <tr>
                          <th>DUA</th>
                          <th>nomdua</th>
@@ -27,11 +27,15 @@
                          <th>fechafin</th>
                          <th>fbajax</th>
                          <th>A C T I O N</th>
+                         <th>           </th>
+                         <th>           </th>
+                           
                      </tr>
                  </thead>
+                </div> 
                  <tbody>
                      @foreach ($items as $item)
-                         <tr class="highlight-on-hover table-row-container">
+                         <tr class="highlight-on-hover">
 
                              <td>{{ $item->dua }}</td>
                              <td>{{ $item->nomdua }}</td>
@@ -44,7 +48,7 @@
                              <td> <a href="{{ route('duas.show', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
                                      class="btn btn-link"> Muestra </td>
                              <td> <a href="{{ route('duas.edit', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link"> Actualizaxx </td>
+                                     class="btn btn-link"> Actualiza </td>
                              <td> <a href="{{ route('subduas.lsubduas', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
                                      class="btn btn-link"> Lista SubDuas</td>
 
