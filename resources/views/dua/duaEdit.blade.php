@@ -5,23 +5,24 @@
     <form method="POST" action="{{ route('duas.update', ['dua' => $items->dua]) }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
         @method('PUT') {{-- //! Clase  33 --}}
-
+         
+       
         <div class="head_uno">
 
             <div tabindex="0" class="form_row ">
                 <label>Dua</label>
-                <input class="form-control" minlength="6" maxlength="6" type="readonly" name="dua"
-                    value={{ $items->dua }}>
+                <input id="idua" class="form-control" minlength="6" maxlength="6" type="text" name="dua"
+                  readonly  value="{{ $items->dua }}">
 
             </div>
             <div tabindex="0" class="form_row ">
-                <label>NomDua</label>
-                <input class="form-control" maxlength="60" type="text" name="nomdua" value={{ $items->nomdua }}
+                <label>NomDuax</label>
+                <input class="form-control" maxlength="60" type="text" name="nomdua" value="{{ $items->nomdua }}"
                     requiered>
             </div>
             <div tabindex="0" class="form_row ">
                 <label>DomDua</label>
-                <input class="form-control" maxlength="40" type="text" name="domdua" value={{ $items->domdua }}
+                <input class="form-control" maxlength="40" type="text" name="domdua" value="{{ $items->domdua }}"
                     requiered>
 
             </div> <br>
@@ -31,7 +32,7 @@
 
             <div tabindex="0" class="form_row highlight-on-hover_g ">
                 <label>Colonia</label>
-                <input class="form-control" maxlength="40" type="text" name="nomcol" value={{ $nomcol }}
+                <input class="form-control" maxlength="40" type="text" name="nomcol" value="{{ $nomcol }}"
                     requiered>
                 <br>
             </div> <br>
@@ -47,38 +48,37 @@
                     Colonia
                 </select>
             </div> <br>
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <input class="form-control" type="hidden" name="colonia" value={{ $items->colonia }} requiered>
-                <br>
-            </div> <br>
+            {{-- <div  class="form_row highlight-on-hover_g"> --}}
+               
+            {{-- </div> <br> --}}
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Ciudad</label>
-                <input class="form-control" maxlength="40" type="text" name="ciudad" value={{ $items->ciudad }}
+                <input class="form-control" maxlength="40" type="text" name="ciudad" value="{{ $items->ciudad }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Propietario</label>
-                <input class="form-control" maxlength="40" type="text" name="prop" value={{ $items->prop }}
+                <input class="form-control" maxlength="40" type="text" name="prop" value="{{ $items->prop }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Tel. Propietario</label>
-                <input class="form-control" maxlength="20" type="text" name="telprop" value={{ $items->telprop }}
+                <input class="form-control" maxlength="20" type="text" name="telprop" value="{{ $items->telprop }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Rep. Legal</label>
-                <input class="form-control" maxlength="40" type="text" name="rep_legal" value={{ $items->rep_legal }}
+                <input class="form-control" maxlength="40" type="text" name="rep_legal" value="{{ $items->rep_legal }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>RFC Dua</label>
-                <input class="form-control" maxlength="20" type="text" name="rfc_dua" value={{ $items->rfc_dua }}
+                <input class="form-control" maxlength="20" type="text" name="rfc_dua" value="{{ $items->rfc_dua }}"
                     requiered>
                 <br>
             </div> <br>
@@ -100,7 +100,7 @@
                 <form action="/action_page.php">
                     <label for="fechaini">Fecha Inicial:</label><br><br>
                     <input type="text" maxlength="08" id="fechaini" name="fechaini" placeholder="AAAAMMDD"
-                        pattern="[0-9]{8}" value={{ $items->fechaini }}><br><br>
+                        pattern="[0-9]{8}" value="{{ $items->fechaini }}"><br><br>
                     <small>Format Ejemplo: 20230512</small><br><br>
 
                 </form>
@@ -110,7 +110,7 @@
                 <form action="/action_page.php">
                     <label for="fechabaja">Fecha Baja:</label><br><br>
                     <input type="text" maxlength="08"id="fechabaja" name="fechabaja" placeholder="AAAAMMDD"
-                        pattern="[0-9]{8}" value={{ $items->fechabaja }}><br><br>
+                        pattern="[0-9]{8}" value="{{ $items->fechabaja }}"><br><br>
                     <small>Format Ejemplo: 20230512</small><br><br>
 
                 </form>
@@ -122,12 +122,18 @@
 
             </div> <br>
 
-        </div>
+        </div> 
+        <input class="form-control" type="hidden" name="colonia" value="{{ $items->colonia }}" requiered>
+        <input id="fdua" class="form-control" minlength="6" maxlength="6" type="hidden" name="duaf">
+        
 
     </form>
     <script>
-         window.onload = function() {  
-        
+         window.onload = function() { 
+
+            let cuenta = document.getElementById("idua").value;
+               cuenta = cuenta.padStart(6, '0');
+             document.getElementById("idua").value = cuenta;
        
             const divs = document.querySelectorAll('div');
             for (const div of divs) {
@@ -136,12 +142,10 @@
                     this.style.color = 'white !important';
            });
                 div.addEventListener('blur', function() {
-                    this.style.backgroundColor = white; 
+                    this.style.backgroundColor = 'white'; 
                     this.style.color = 'black !important';
                 
                 });
-
-
             }
 
         }
