@@ -5,14 +5,14 @@
     <form method="POST" action="{{ route('duas.update', ['dua' => $items->dua]) }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
         @method('PUT') {{-- //! Clase  33 --}}
-         
-       
+
+
         <div class="head_uno">
 
             <div tabindex="0" class="form_row ">
                 <label>Dua</label>
-                <input id="idua" class="form-control" minlength="6" maxlength="6" type="text" name="dua"
-                  readonly  value="{{ $items->dua }}">
+                <input id="idua" class="form-control" minlength="6" maxlength="6" type="text" name="dua" readonly
+                    value="{{ $items->dua }}">
 
             </div>
             <div tabindex="0" class="form_row ">
@@ -49,7 +49,7 @@
                 </select>
             </div> <br>
             {{-- <div  class="form_row highlight-on-hover_g"> --}}
-               
+
             {{-- </div> <br> --}}
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
@@ -122,29 +122,29 @@
 
             </div> <br>
 
-        </div> 
+        </div>
         <input class="form-control" type="hidden" name="colonia" value="{{ $items->colonia }}" requiered>
-        <input id="fdua" class="form-control" minlength="6" maxlength="6" type="hidden" name="duaf">
-        
+
+
 
     </form>
     <script>
-         window.onload = function() { 
+        window.onload = function() {
 
             let cuenta = document.getElementById("idua").value;
-               cuenta = cuenta.padStart(6, '0');
-             document.getElementById("idua").value = cuenta;
-       
+            cuenta = cuenta.padStart(6, '0');
+            document.getElementById("idua").value = cuenta;
+
             const divs = document.querySelectorAll('div');
             for (const div of divs) {
                 div.addEventListener('focus', function() {
                     this.style.backgroundColor = 'rgb(123, 116, 133,1)';
                     this.style.color = 'white !important';
-           });
+                });
                 div.addEventListener('blur', function() {
-                    this.style.backgroundColor = 'white'; 
+                    this.style.backgroundColor = 'white';
                     this.style.color = 'black !important';
-                
+
                 });
             }
 
