@@ -18,19 +18,41 @@
         }
 
         .highlight-on-hover_g:hover {
+            background-color: rgb(126, 197, 230)!important;
+            color: white;
+        }
+        
+        .highlight-on-hover_t:hover {
+            
             background-color: rgb(123, 116, 133,1)!important;
             color: white;
         }
+       
 
         .div-container {
             max-height: 500px;
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
+            margin-left: 2%;
+           
+        }
+        
+        h1 h2 h3 h4 {
+            margin-left: 5% !important;
+        }
+
+        /* h2 {
+            margin-left: 5% !important;
+        } */
+        label {
+            margin-left: 1%;
         }
 
         .head_uno {
             background-color: rgb(65, 71, 77, 1); 
             color: white !important;
+            margin-left: 2%;
+            
               /* el ultimo parametro de background-color es 1 solido si es menor de 1 es traslucido */
         }
 

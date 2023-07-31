@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h1>Crea DUA</h1>
+    <h1>  Crea DUA</h1>
     <form method="POST" action="{{ route('duas.store') }}">{{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
         {{-- <div tabindex="0" class="form_row highlight-on-hover_g"> --}}
@@ -14,7 +14,7 @@
                 </div> <br>
                 <div tabindex="0" class="form_row highlight-on-hover_g">
                     <label>NomDua</label>
-                    <input class="form-control" maxlength="60" type="text" name="nomdua" required>
+                    <input class="form-control " maxlength="60" type="text" name="nomdua" required>
                 </div> <br>
                 <div tabindex="0" class="form_row highlight-on-hover_g">
                     <label>DomDua</label>
@@ -23,7 +23,7 @@
                 </div>
             </div> <br>
 
-            <div class="div-container ">
+            <div class="div-container">
                 <div tabindex="0" class="form_row highlight-on-hover_g">
                     {{-- <select id="ddlCol" class="ddl" onchange="this.form.submit()"> --}}
                     <select id="ddlCol" onchange="updateCvecol(this.value)">
@@ -35,7 +35,7 @@
                         Colonia
                     </select>
                 </div> <br>
-                <div tabindex="0" class="form_row highlight-on-hover_g">
+                <div tabindex="0" class="form_row ">
                     <input class="form-control" type="hidden" name="colonia" required>
                     <br>
                 </div> <br>

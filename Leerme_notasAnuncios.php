@@ -1,5 +1,9 @@
 <?php 
 
+
+TODO SOBRE CSS
+https://www.youtube.com/watch?v=3yM5uXp-T_0&list=PLOIvuivTitrpFypmFA9PB4ez3fISsh992&index=1&t=494s
+
 paso 17.
 20230705
 laravel ui vue auth 

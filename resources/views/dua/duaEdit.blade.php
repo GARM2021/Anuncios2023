@@ -1,7 +1,8 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h1>Edita DUA</h1>
+
+    <h4>     Edita DUA OK</h4>
     <form method="POST" action="{{ route('duas.update', ['dua' => $items->dua]) }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
         @method('PUT') {{-- //! Clase  33 --}}
@@ -11,18 +12,18 @@
 
             <div tabindex="0" class="form_row ">
                 <label>Dua</label>
-                <input id="idua" class="form-control" minlength="6" maxlength="6" type="text" name="dua" readonly
+                <input id="idua" class="form-control  highlight-on-hover_t" minlength="6" maxlength="6" type="text" name="dua" 
                     value="{{ $items->dua }}">
 
             </div>
             <div tabindex="0" class="form_row ">
                 <label>NomDuax</label>
-                <input class="form-control" maxlength="60" type="text" name="nomdua" value="{{ $items->nomdua }}"
+                <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="nomdua" value="{{ $items->nomdua }}"
                     requiered>
             </div>
             <div tabindex="0" class="form_row ">
                 <label>DomDua</label>
-                <input class="form-control" maxlength="40" type="text" name="domdua" value="{{ $items->domdua }}"
+                <input class="form-control highlight-on-hover_t" maxlength="40" type="text" name="domdua" value="{{ $items->domdua }}"
                     requiered>
 
             </div> <br>
@@ -32,14 +33,14 @@
 
             <div tabindex="0" class="form_row highlight-on-hover_g ">
                 <label>Colonia</label>
-                <input class="form-control" maxlength="40" type="text" name="nomcol" value="{{ $nomcol }}"
+                <input class="form-control highlight-on-hover_t" maxlength="40" readonly type="text" name="nomcol" value="{{ $nomcol }}"
                     requiered>
                 <br>
             </div> <br>
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 {{-- <select id="ddlCol" class="ddl" onchange="this.form.submit()"> --}}
-                <select id="ddlCol" onchange="updateCvecol(this.value)">
+                <select id="ddlCol" onchange="updateCvecol(this.value)" class="highlight-on-hover_t">
 
                     <option value="" selected>Selecciona Colonia</option>
                     @foreach ($icolonias as $colonia)
@@ -54,31 +55,31 @@
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Ciudad</label>
-                <input class="form-control" maxlength="40" type="text" name="ciudad" value="{{ $items->ciudad }}"
+                <input class="form-control highlight-on-hover_t" maxlength="40" type="text" name="ciudad" value="{{ $items->ciudad }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Propietario</label>
-                <input class="form-control" maxlength="40" type="text" name="prop" value="{{ $items->prop }}"
+                <input class="form-control highlight-on-hover_t" maxlength="40" type="text" name="prop" value="{{ $items->prop }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Tel. Propietario</label>
-                <input class="form-control" maxlength="20" type="text" name="telprop" value="{{ $items->telprop }}"
+                <input class="form-control highlight-on-hover_t" maxlength="20" type="text" name="telprop" value="{{ $items->telprop }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Rep. Legal</label>
-                <input class="form-control" maxlength="40" type="text" name="rep_legal" value="{{ $items->rep_legal }}"
+                <input class="form-control highlight-on-hover_t" maxlength="40" type="text" name="rep_legal" value="{{ $items->rep_legal }}"
                     requiered>
                 <br>
             </div> <br>
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>RFC Dua</label>
-                <input class="form-control" maxlength="20" type="text" name="rfc_dua" value="{{ $items->rfc_dua }}"
+                <input class="form-control highlight-on-hover_t" maxlength="20" type="text" name="rfc_dua" value="{{ $items->rfc_dua }}"
                     requiered>
                 <br>
             </div> <br>
@@ -117,13 +118,13 @@
             </div> <br>
 
 
-            <div tabindex="0" class="form_row highlight-on-hover_g">
+            <div tabindex="0">
                 <button type="submit" class="btn btn-primary btn-lg">Edita DUA</button>
 
             </div> <br>
 
         </div>
-        <input class="form-control" type="hidden" name="colonia" value="{{ $items->colonia }}" requiered>
+        <input class="form-control highlight-on-hover_t" type="hidden" name="colonia" value="{{ $items->colonia }}" requiered>
 
 
 
