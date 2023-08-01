@@ -15,6 +15,7 @@
        <h1>{{ $ditems->nomdua }}</h1>
        <h2>SUBDUA {{ $subdua }}</h2>
        <h2>{{ $nomsubdua }}</h2>
+       <h2>{{ $sububicaion }}</h2>
       <h3>
 
         {{-- return redirect()->route('nombre_ruta_destino', ['parametro1' => $parametro1, 'parametro2' => $parametro2]);
@@ -22,8 +23,8 @@
         <a href="{{ route('anuncios.create')  }}" class="btn btn-success">Crea nuevo Anuncio</a> --}}
         {{-- <a href="  return redirect()->route('anuncios.create', [{{'dua' => $ditems->dua}}, {{'nomdua' => $ditems->nomdua}}, {{'subdua' => $subdua}}, {{'nomsubdua' => $nomsubdua] }})" class="btn btn-success">Crea nuevo Anuncio</a>; --}}
         {{-- {{ dump($ditems->dua);}}  --}} 
-             {{-- str_pad($items->cuenta, 6, '0', STR_PAD_LEFT)    'dua' => $ditems->dua, --}}
-                            <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua]) }}" class="btn btn-success">Crea nuevo Anuncio</a>
+             {{-- str_pad($items->cuenta, 6, '0', STR_PAD_LEFT)    'dua' => $ditems->dua, --}}sububicaion
+                            <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}" class="btn btn-success">Crea nuevo Anuncio</a>
                         </h3>
         <div class="table-container table-responsive"> 
             <table class="table-striped table-container">

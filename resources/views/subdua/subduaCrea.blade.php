@@ -7,7 +7,7 @@
     @dump($dua) --}}
     <div class="head_uno">
         <h2>Dua {{ $dua }}</h2>
-        <h2>Dom. Dua {{ $nomdua }}</h2>
+        <h2> {{ $nomdua }}</h2>
     </div> <br>
 
 

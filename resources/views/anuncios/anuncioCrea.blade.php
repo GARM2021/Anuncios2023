@@ -7,9 +7,9 @@
     @dump($dua) --}}
     <div class="head_uno">
         <h2>Dua {{ $dua }}</h2>
-        <h2>Dom. Dua {{ $nomdua }}</h2>
-        <h3>Sub Dua {{ $subdua }}</h3>
-        <h3>Dom. SubDua {{ $nomsubdua }}</h3>
+        <h2> {{ $nomdua }}</h2>
+        <h3>SubDua {{ $subdua }}</h3>
+        <h3>Dom. SubDua: {{ $sububicaion }}</h3>
     </div> <br>
     <div class="div-container">
         <form id="Crea" name="Crea" method="POST" action="{{ route('anuncios.store') }}">

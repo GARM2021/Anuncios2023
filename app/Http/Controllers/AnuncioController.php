@@ -23,12 +23,25 @@ class AnuncioController extends Controller
 
     public function lanuncios($subdua)
     {
-        $result = SubduaModel::where('subdua', $subdua)->pluck( 'dua', 'nomsubdua'); //! Clase  33 con OpenAI pluck
-       
-        foreach ($result as $clave => $valor) {
-             $dua = $valor;
-             $nomsubdua = $clave;
-        };
+        $result = SubduaModel::where('subdua', $subdua)
+            ->select('dua',  'subdua', 'nomsubdua', 'sububicaion')
+            ->get();
+       // dd($result);
+
+       foreach ($result as $valor) {
+        $dua = $valor->dua;
+        $nomsubdua = $valor->nomsubdua;
+        $sububicaion = $valor->sububicaion;
+    }
+
+
+
+        // $result = SubduaModel::where('subdua', $subdua)->pluck( 'dua', 'nomsubdua'); //! Clase  33 con OpenAI pluck
+
+        // foreach ($result as $clave => $valor) {
+        //      $dua = $valor;
+        //      $nomsubdua = $clave;
+        // };
 
         return view('anuncios.anuncioindex')->with([  //! Clase  29 20230509
 
@@ -70,32 +83,33 @@ class AnuncioController extends Controller
                 ->where('subdua', '=', $subdua)
                 ->get(),
 
-                'ditems' =>  DuaModel::findOrFail($dua),
-                 'nomsubdua' => $nomsubdua,
-                 'subdua' => $subdua,
+            'ditems' =>  DuaModel::findOrFail($dua),
+            'nomsubdua' => $nomsubdua,
+            'subdua' => $subdua,
+            'sububicaion' =>  $sububicaion
 
         ]);
     }
 
 
-    public function create($dua, $nomdua, $subdua, $nomsubdua)
+    public function create($dua, $nomdua, $subdua, $nomsubdua, $sububicaion)
     {
-       // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
-       //dd($dua);  
-       return  view('anuncios.anuncioCrea')->with([ 'dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua ]);
+        // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
+        //dd($dua);  
+        return  view('anuncios.anuncioCrea')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]);
     }
 
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([ 
+        $validatedData = $request->validate([
             'cuenta' => 'size:06',
-            'dua' => 'required|size:06',  
+            'dua' => 'required|size:06',
             'subdua' =>  'required|size:06',
             'concepto' => 'required|between:04,06',
-            'numper' => 'between:0,10',//! required
-            'fperm' => 'between:0,8',//! required
-            'finicio' => 'between:1,8',//! required
+            'numper' => 'between:0,10', //! required
+            'fperm' => 'between:0,8', //! required
+            'finicio' => 'between:1,8', //! required
             'ftermino' => 'between:0,8',
             'tipoanuncio' => 'required',
             'vistas' => 'required|between:1,9999',
@@ -119,75 +133,71 @@ class AnuncioController extends Controller
             'status' => 'numeric',
             'usuario_mov' => 'max:70',
             'fcaptura' => 'between:0,8',
-            'horacap' => 'between:0,8',//! aqui lo tenia comentado y no se me reflejaba en el request 20230628
+            'horacap' => 'between:0,8', //! aqui lo tenia comentado y no se me reflejaba en el request 20230628
             'capturista' => 'between:0,8'
 
         ]);
 
-        
-       return  $validatedData;
 
-       
-
-
+        return  $validatedData;
     }
 
 
     public function show($cuenta)
     {
-        $result = AnuncioModel::where('cuenta', $cuenta)->pluck( 'dua', 'subdua'); //! Clase  33 con OpenAI pluck 
-   
-        
+        $result = AnuncioModel::where('cuenta', $cuenta)->pluck('dua', 'subdua'); //! Clase  33 con OpenAI pluck 
+
+
         foreach ($result as $clave => $valor) {
             $dua =  $valor; //. ", Valor: " . $valor . "<br>"
             $subdua = $clave;
         }
-        
+
 
 
         return view('anuncios.anuncioShow')->with([
             'ditems' => DuaModel::findOrFail($dua),
             'sitems' => SubduaModel::findOrFail($subdua),
             'items' => AnuncioModel::findOrFail($cuenta),
-      
+
         ]);
     }
 
 
     public function edit($cuenta)
     {
-       
-        $result = AnuncioModel::where('cuenta', $cuenta)->pluck( 'dua', 'subdua'); //! Clase  33 con OpenAI pluck 
-   
-        
+
+        $result = AnuncioModel::where('cuenta', $cuenta)->pluck('dua', 'subdua'); //! Clase  33 con OpenAI pluck 
+
+
         foreach ($result as $clave => $valor) {
             $dua =  $valor; //. ", Valor: " . $valor . "<br>"
             $subdua = $clave;
         }
-        
+
 
 
         return view('anuncios.anuncioEdit')->with([
             'ditems' => DuaModel::findOrFail($dua),
             'sitems' => SubduaModel::findOrFail($subdua),
             'items' => AnuncioModel::findOrFail($cuenta),
-      
+
         ]);
     }
 
 
     public function update(Request $request, $cuenta)
     {
-        
-       
-        $validatedData = $request->validate([ 
+
+
+        $validatedData = $request->validate([
             'cuenta' => 'required|size:06',
-            'dua' => 'required|size:06',  
+            'dua' => 'required|size:06',
             'subdua' =>  'required|size:06',
             'concepto' => 'required|between:04,06',
-            'numper' => 'between:0,10',//! required
-            'fperm' => 'between:0,8',//! required
-            'finicio' => 'between:1,8',//! required
+            'numper' => 'between:0,10', //! required
+            'fperm' => 'between:0,8', //! required
+            'finicio' => 'between:1,8', //! required
             'ftermino' => 'between:0,8',
             'tipoanuncio' => 'required',
             'vistas' => 'required|between:1,9999',
@@ -211,13 +221,13 @@ class AnuncioController extends Controller
             'status' => 'numeric',
             'usuario_mov' => 'max:70',
             'fcaptura' => 'between:0,8',
-             'horacap' => 'between:0,8',
+            'horacap' => 'between:0,8',
             'capturista' => 'between:0,8'
 
         ]);
 
-        
-       return  $validatedData;
+
+        return  $validatedData;
     }
 
 
