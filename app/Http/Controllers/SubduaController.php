@@ -45,6 +45,10 @@ class SubduaController extends Controller
                     'propdir',
                     'proptel',
                     'fbajax',
+                    DB::raw("(SELECT     SUM(area) AS totalarea
+                    FROM    anundanuncios  
+                    where subdua = anunmsubdua.subdua
+                    GROUP BY dua) AS totalarea"),
                 )
                     ->where('dua', '=', $dua)
                     ->get(),
