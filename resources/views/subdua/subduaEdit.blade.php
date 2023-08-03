@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h4>Edita SUBDUA</h4>
+    <h6 style="margin-left: 2%;">Edita SUBDUA</h6>
     {{-- 'subdua',
     'nomsubdua',
     'dua',
@@ -20,10 +20,10 @@
 
     <div class="head_uno">
 
-        <h2>Dua {{ $ditems->dua }}</h2>
-        <h2>Dom. Dua {{ $ditems->nomdua }}</h2>
-        <h4>Sub Dua {{ $items->subdua }}</h4>
-        <h4>Dom. SubDua {{ $items->sububicaion }}</h4>
+        <h5>Dua {{ $ditems->dua }}</h5>
+        <h5>Dom. Dua {{ $ditems->nomdua }}</h5>
+        <h6>Sub Dua {{ $items->subdua }}</h6>
+        <h6>Dom. SubDua {{ $items->sububicaion }}</h6>
 
     </div>
 
@@ -67,7 +67,7 @@
                     </select>
                 </div> <br>
                 <div tabindex="0" class="form_row highlight-on-hover_g ">
-                    <input class="form-control highlight-on-hover_t"type="hidden" name="colonia"
+                    <input class="form-control highlight-on-hover_t" type="hidden" name="colonia"
                         value="{{ $items->colonia }}" requiered>
                     <br>
                 </div> <br>

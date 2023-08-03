@@ -1,15 +1,15 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h4>Crea Anuncio OK</h4>
+    <h6 style="margin-left: 2%;">Crea Anuncio OK</h6>
 
     {{-- @dump($errors)
     @dump($dua) --}}
     <div class="head_uno">
-        <h2>Dua {{ $dua }}</h2>
-        <h2> {{ $nomdua }}</h2>
-        <h3>SubDua {{ $subdua }}</h3>
-        <h3>Dom. SubDua: {{ $sububicaion }}</h3>
+        <h5 >Dua {{ $dua }}</h5 >
+        <h5 > {{ $nomdua }}</h5 >
+        <h6>SubDua {{ $subdua }}</h6>
+        <h6>Dom. SubDua: {{ $sububicaion }}</h6>
     </div> <br>
     <div class="div-container">
         <form id="Crea" name="Crea" method="POST" action="{{ route('anuncios.store') }}">

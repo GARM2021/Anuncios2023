@@ -31,7 +31,7 @@ class AnuncioController extends Controller
        foreach ($result as $valor) {
         $dua = $valor->dua;
         $nomsubdua = $valor->nomsubdua;
-        $sububicaion = $valor->sububicaion;
+        $sububicaion = $valor->sububicaion; 
     }
 
 

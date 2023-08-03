@@ -2,7 +2,7 @@
 @section('content')
     {{-- //! Clase 31 --}}
 
-    <h4>     Edita DUA OK</h4>
+    <h6 style="margin-left: 2%;">     Edita DUA OK</h6>
     <form method="POST" action="{{ route('duas.update', ['dua' => $items->dua]) }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
         @method('PUT') {{-- //! Clase  33 --}}

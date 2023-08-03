@@ -55,6 +55,11 @@ class DuaController extends Controller
                     'fechaini',
                     'fechafin',
                     'fbajax',
+                            DB::raw("(SELECT     SUM(area) AS totalarea
+                            FROM    anundanuncios  
+                            where dua = anunmdua.dua
+                            GROUP BY dua) AS totalarea"),
+
                 )
                     ->where('dua', '>', $valor)
                     ->get()
@@ -120,7 +125,7 @@ class DuaController extends Controller
                 'fechafin',
                 'fbajax',
             )->where('dua', '=', $dua)->first(), //! con get marca error 
-            
+
         ]);
     }
 
@@ -133,12 +138,12 @@ class DuaController extends Controller
     public function edit($dua)
     {
         $icolonia = DuaModel::where('dua', $dua)->value('colonia'); //! Clase  33 con OpenAI
-        
+
         return view('dua.duaEdit')->with([
             'nomcol' => ColoniaModel::where('colonia', $icolonia)->value('nomcol'),
             'items' => DuaModel::findOrFail($dua),
             'icolonias' => ColoniaModel::select('colonia', 'nomcol')->where('colonia', '>', '0')->orderBy('nomcol')->get(),
-           
+
         ]);
     }
 
@@ -151,7 +156,7 @@ class DuaController extends Controller
      */
     public function update(Request $request, $dua)
     {
-          return $request;
+        return $request;
     }
 
     /**

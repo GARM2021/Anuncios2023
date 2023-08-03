@@ -1,26 +1,26 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h1>  Crea DUA</h1>
+    <h6 style="margin-left: 2%;">  Crea DUA</h6>
     <form method="POST" action="{{ route('duas.store') }}">{{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
         {{-- <div tabindex="0" class="form_row highlight-on-hover_g"> --}}
             <div class="head_uno">
-                <div tabindex="0" class="form_row highlight-on-hover_g">
+                
                     <label>Dua</label>
-                    <input id="idua" class="form-control" minlength="6" maxlength="6" type="text" name="dua"
+                    <input id="idua" class="form-control  highlight-on-hover_t"  minlength="6" maxlength="6" type="text" name="dua"
                         required>
                     <br>
-                </div> <br>
-                <div tabindex="0" class="form_row highlight-on-hover_g">
+                
+                
                     <label>NomDua</label>
-                    <input class="form-control " maxlength="60" type="text" name="nomdua" required>
-                </div> <br>
-                <div tabindex="0" class="form_row highlight-on-hover_g">
+                    <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="nomdua" required>
+                 <br>
+                
                     <label>DomDua</label>
-                    <input class="form-control" maxlength="40" type="text" name="domdua" required>
+                    <input class="form-control highlight-on-hover_t"  maxlength="40" type="text" name="domdua" required>
                     <br>
-                </div>
+               
             </div> <br>
 
             <div class="div-container">

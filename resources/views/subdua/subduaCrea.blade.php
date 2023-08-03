@@ -1,19 +1,14 @@
 @extends('layouts.master')
 @section('content')
     {{-- //! Clase 31 --}}
-    <h4>Crea SUBDUA</h4>
+    <h6 style="margin-left: 2%;">Crea SUBDUA</h6>
 
     {{-- @dump($errors)
     @dump($dua) --}}
     <div class="head_uno">
-        <h2>Dua {{ $dua }}</h2>
-        <h2> {{ $nomdua }}</h2>
-    </div> <br>
-
-
-
-
-
+        <h5>Dua {{ $dua }}</h5> 
+        <h5> {{ $nomdua }}</h5>
+    </div>
 
     {{-- <form method="POST" action="{{ route('subduas.store', ['dua' => $dua]) }}">  //! Clase  31 tenia action en lugar de method --}}
     <form method="POST" action="{{ route('subduas.store') }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
@@ -28,15 +23,15 @@
                 <label>Nom SubDua</label>
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="nomsubdua"
                     value="{{ old('nomsubdua') }}" requiered>
-                <br>
-            </div> <br>
+               
+            </div>
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>Dom SubDua</label>
                 <input class="form-control highlight-on-hover_t" maxlength="40" type="text" name="sububicaion"
                     value="{{ old('sububicaion') }}" requiered>
                 <br>
-            </div> <br>
+            </div> 
         </div> <br>
 
         <div class="div-container">
@@ -127,7 +122,7 @@
 
             </div> <br>
 
-        </div> <br> 
+        </div> <br>
 
     </form>
     <script>
