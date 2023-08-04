@@ -55,15 +55,17 @@ class DuaController extends Controller
                     'fechaini',
                     'fechafin',
                     'fbajax',
-                            DB::raw("(SELECT     SUM(area) AS totalarea
-                            FROM    anundanuncios  
-                            where dua = anunmdua.dua
-                            GROUP BY dua) AS totalarea"),
+                    DB::raw("(SELECT     SUM(area) AS totalarea
+                    FROM    anundanuncios  
+                    where dua = anunmdua.dua and fbajax < '01' 
+                    GROUP BY dua) AS totalarea"),
 
                 )
                     ->where('dua', '>', $valor)
+                    ->orderBy('totalarea', 'desc')
                     ->get()
             ]);
+            
         } catch (\Exception $e) {
             die("Error al conectar: " . $e->getMessage());
         }

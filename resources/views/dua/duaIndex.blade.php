@@ -47,7 +47,7 @@
                              <td>{{ $item->fechaini }}</td>
                              <td>{{ $item->fechafin }}</td>
                              <td>{{ $item->fbajax }}</td>
-                             <td>{{ number_format($item->totalarea, 2, ',', '.') }}</td>
+                             <td>{{ number_format($item->totalarea,  2, '.', ',') }}</td>
                              <td> <a href="{{ route('duas.show', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
                                      class="btn btn-link"> Muestra </td>
                              <td> <a href="{{ route('duas.edit', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"

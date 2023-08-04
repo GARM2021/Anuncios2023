@@ -66,7 +66,7 @@
                              <td>{{ $item->propdir }}</td>
                              <td>{{ $item->proptel }}</td>
                              <td>{{ $item->fbajax }}</td>
-                             <td>{{ number_format($item->totalarea, 2, ',', '.') }}</td>
+                             <td>{{ number_format($item->totalarea, 2, '.', ',') }}</td>
 
 
                              <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"

@@ -60,10 +60,9 @@
                          <th>fcaptura</th>
                          <th>horacap</th>
                          <th>capturista</th>
-
-
-
-                         <th>A C T I O N</th>
+                         <th>A C </th>
+                         <th>T I </th>
+                         <th>O N </th>
 
 
 
@@ -86,7 +85,7 @@
                              <td>{{ $item->vistas }}</td>
                              {{-- <td>{{ $item->largo}}</td>
                         <td>{{ $item->ancho}}</td> --}}
-                             <td>{{ $item->area }}</td>
+                        <td>{{ number_format($item->area, 2, '.', ',') }}</td>
                              <td>{{ $item->leyendaanuncio }}</td>
                              <td>{{ $item->num_anun_temp }}</td>
                              <td>{{ $item->dias }}</td>
