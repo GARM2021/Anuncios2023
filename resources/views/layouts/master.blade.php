@@ -26,14 +26,20 @@
             color: white;
         }
 
+        .highlight-on-hover_t:hover::placeholder {
+            color: white;
+        }
+
 
         .div-container {
             max-height: 550px;
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
             margin-left: 2%;
-
+            background-color: rgb(115, 148, 167) !important;
         }
+
+
 
         h1 h2 h3 h4 h5 h6 {
             margin-left: 2% !important;

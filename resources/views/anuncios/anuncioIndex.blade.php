@@ -9,11 +9,11 @@
      @else
          <h6 style="margin-left: 2%;"> Lista de ANUNCIOS</h6>
 
-         <h5>DUA {{ $ditems->dua }}</h5>
-         <h5>{{ $ditems->nomdua }}</h5>
-         <h6>SUBDUA {{ $subdua }}</h6>
-         <h6>{{ $nomsubdua }}</h6>
-         <h6>{{ $sububicaion }}</h6>
+         <h5 style="margin-left: 2%;">DUA {{ $ditems->dua }}</h5>
+            <h5 style="margin-left: 2%;">{{ $ditems->nomdua }}</h5>
+            <h6 style="margin-left: 2%;">SUBDUA {{ $subdua }}</h6>
+            <h6 style="margin-left: 2%;">{{ $nomsubdua }}</h6>
+            <h6 style="margin-left: 2%;">{{ $sububicaion }}</h6>
 
 
 
@@ -24,7 +24,7 @@
          {{-- {{ dump($ditems->dua);}}  --}}
          {{-- str_pad($items->cuenta, 6, '0', STR_PAD_LEFT)    'dua' => $ditems->dua, --}}
          <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}"
-             class="btn btn-success">Crea nuevo Anuncio</a>
+            style="margin-left: 2%;"  class="btn btn-success">Crea nuevo Anuncio</a>
 
          <div class="table-container table-responsive">
              <table class="table-striped table-container">
@@ -63,10 +63,6 @@
                          <th>A C </th>
                          <th>T I </th>
                          <th>O N </th>
-
-
-
-
                      </tr>
                  </thead>
                  <tbody>
@@ -85,7 +81,7 @@
                              <td>{{ $item->vistas }}</td>
                              {{-- <td>{{ $item->largo}}</td>
                         <td>{{ $item->ancho}}</td> --}}
-                        <td>{{ number_format($item->area, 2, '.', ',') }}</td>
+                             <td>{{ number_format($item->area, 2, '.', ',') }}</td>
                              <td>{{ $item->leyendaanuncio }}</td>
                              <td>{{ $item->num_anun_temp }}</td>
                              <td>{{ $item->dias }}</td>
