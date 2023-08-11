@@ -26,19 +26,19 @@
                 <label>cuenta</label>
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="cuenta" readonly
                     value={{ old('') ?? str_pad($items->cuenta, 6, '0', STR_PAD_LEFT) }} requiered>
-
+                <br>
                 {{-- //! Clase  40 old --}}
-                <label>dua</label>
+
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="dua"
                     value={{ old('dua') ?? $items->dua }} readonly requiered>
 
 
-                <label>subdua</label>
+
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="subdua" readonly
                     value={{ old('subdua') ?? $items->subdua }} requiered>
 
-            </div> <br>
-        </div> <br>
+            </div>
+        </div>
 
         <div class="div-container ">
             <div tabindex="0" class="form_row highlight-on-hover_g ">

@@ -19,14 +19,14 @@
             value={{ $dua }}>
 
         <div class="head_uno">
-            <div tabindex="0" class="form_row highlight-on-hover_g">
+            <div tabindex="0" class="form_row ">
                 <label>Nom SubDua</label>
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="nomsubdua"
                     value="{{ old('nomsubdua') }}" requiered>
                
             </div>
 
-            <div tabindex="0" class="form_row highlight-on-hover_g">
+            <div tabindex="0" class="form_row ">
                 <label>Dom SubDua</label>
                 <input class="form-control highlight-on-hover_t" maxlength="40" type="text" name="sububicaion"
                     value="{{ old('sububicaion') }}" requiered>
