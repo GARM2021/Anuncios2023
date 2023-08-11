@@ -9,7 +9,7 @@
         <h5>SubDua {{ $items->subdua }}</h5>
         <h5>Dom. SubDua {{ $items->sububicaion }}</h5>
     </div>
-
+   
 
     <form id="Actualiza" name="Actualiza" method="POST"
         action="{{ route('anuncios.update', ['cuenta' => str_pad($items->cuenta, 6, '0', STR_PAD_LEFT)]) }}">
@@ -38,7 +38,7 @@
                     value={{ old('subdua') ?? $items->subdua }} requiered>
 
             </div>
-        </div>
+        </div>  <br>
 
         <div class="div-container ">
             <div tabindex="0" class="form_row highlight-on-hover_g ">

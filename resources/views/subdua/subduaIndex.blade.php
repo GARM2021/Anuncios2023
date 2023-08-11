@@ -38,9 +38,7 @@
                          <th>fbajax</th>
                          <th>Total Area</th>
 
-                         <th> A C </th>
-                         <th> T I </th>
-                         <th> O N </th>
+                         <th colspan="3" width="100px">A C T I O N</th>
                      </tr>
                  </thead>
 
@@ -72,7 +70,7 @@
                              <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
                                      class="btn btn-link"> Actualiza SUBDUA</td>
                              <td> <a href="{{ route('anuncios.lanuncios', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link"> ANUNCIOS</td>
+                                     class="btn btn-link"> Anuncios</td>
 
 
 

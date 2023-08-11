@@ -9,7 +9,7 @@
         <h5>Dua {{ $dua }}</h5> 
         <h5> {{ $nomdua }}</h5>
     </div>
-
+     
     {{-- <form method="POST" action="{{ route('subduas.store', ['dua' => $dua]) }}">  //! Clase  31 tenia action en lugar de method --}}
     <form method="POST" action="{{ route('subduas.store') }}"> {{--  //! Clase  31 tenia action en lugar de method --}}
         @csrf
@@ -37,9 +37,9 @@
         <div class="div-container">
 
             {{-- <select id="ddlCol" class="ddl" onchange="this.form.submit()"> --}}
-            <select id="ddlCol" onchange="updateCvecol(this.value)">
+            <select id="ddlCol" class=" highlight-on-hover_t" onchange="updateCvecol(this.value)">
 
-                <option value="" selected>Selecciona Colonia</option>
+                <option   value="" selected>Selecciona Colonia</option>
                 @foreach ($icolonias as $colonia)
                     <option value="{{ $colonia->colonia }}">{{ $colonia->nomcol }}</option>
                 @endforeach

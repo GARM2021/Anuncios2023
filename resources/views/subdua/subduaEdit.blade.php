@@ -57,7 +57,7 @@
 
                 <div tabindex="0" class="form_row highlight-on-hover_g ">
                     {{-- <select id="ddlCol" class="ddl" onchange="this.form.submit()"> --}}
-                    <select id="ddlCol" onchange="updateCvecol(this.value)">
+                    <select id="ddlCol" class="highlight-on-hover_t"  onchange="updateCvecol(this.value)">
 
                         <option value="" selected>Selecciona Colonia</option>
                         @foreach ($icolonias as $colonia)

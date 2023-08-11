@@ -3,7 +3,7 @@
  @section('content')
 
 
-     <h5 style="margin-left: 2%;"> Lista de DUAS</h5>
+     <h5 style="margin-left: 2%;"> Lista de DUAS </h5>
   {{-- @dd($items) --}}
 
      @empty($items)
@@ -13,6 +13,7 @@
 
              <a href="{{ route('duas.create') }}"  style="margin-left: 2%;" class="btn btn-success">Crea nuevo Dua</a>
          </h1>
+       
          <div class="table-container table-responsive">
 
              <table class="table-striped table-container">
@@ -28,9 +29,8 @@
                          <th>fechafin</th>
                          <th>fbajax</th>
                          <th>Total AREA </th>
-                         <th>A C T I O N</th>
-                         <th> </th>
-                         <th> </th>
+                         {{-- <th colspan="3">A C T I O N</th> --}}
+                         <th colspan="3" width="100px">A C T I O N</th>
 
                      </tr>
                  </thead>
@@ -61,5 +61,6 @@
                  </tbody>
              </table>
          </div>
+        
      @endempty
  @endsection
