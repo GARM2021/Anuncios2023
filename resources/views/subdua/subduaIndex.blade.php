@@ -8,30 +8,32 @@
      @empty($items)
          <div class="alert alert-warning"> The list de Duas esta vacia</div>
      @else
+        
          <h6 style="margin-left: 2%;">DUA {{ $ditems->dua }}</h6>
          <h6 style="margin-left: 2%;">{{ $ditems->nomdua }}</h6>
 
          <a href="{{ route('subduas.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua]) }}"
-            style="margin-left: 2%;" class="btn btn-success">Crea nuevo SubDua</a>
+             style="margin-left: 2%;" class="btn btn-success">Crea nuevo SubDua</a>
 
          </h2>
+        
          <div class="table-container table-responsive">
              <table class="table-striped table-container">
 
                  <thead class="thead-fixed text-secondary">
                      <tr>
-                         <th>subdua</th>
+                         <th>dua</th>
                          <th>nomsubdua</th>
                          <th>dua</th>
-                         <th>sububicacion</th>
+                         <th>ubicacion</th>
                          <th>zona</th>
                          <th>colonia</th>
                          <th>Nombre Colonia</th>
-                         <th>subeexp</th>
-                         <th>subtelefono</th>
-                         <th>subdesgiro</th>
-                         <th>subusossuelo</th>
-                         <th>subrfc</th>
+                         <th>eexp</th>
+                         <th>telefono</th>
+                         <th>desgiro</th>
+                         <th>usossuelo</th>
+                         <th>rfc</th>
                          <th>propnom</th>
                          <th>propdir</th>
                          <th>proptel</th>
@@ -66,11 +68,11 @@
                              <td>{{ $item->fbajax }}</td>
                              <td>{{ number_format($item->totalarea, 2, '.', ',') }}</td>
 
+                             <td> <a href="{{ route('anuncios.lanuncios', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
+                                     class="btn btn-link">Anuncios</td>
 
                              <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link"> Actualiza SUBDUA</td>
-                             <td> <a href="{{ route('anuncios.lanuncios', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link"> Anuncios</td>
+                                     class="btn btn-link">Actualiza SubDua</td>
 
 
 

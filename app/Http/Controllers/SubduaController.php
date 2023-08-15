@@ -13,6 +13,10 @@ use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class SubduaController extends Controller
 {
+    public function __construct()  //! Clase  47
+    {
+        $this->middleware('auth');
+    }
 
 
 

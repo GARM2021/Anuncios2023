@@ -8,7 +8,16 @@ use Illuminate\Http\Request;
 
 class ColoniaController extends Controller
 {
-    /**
+
+    public function __construct()  //! Clase  47
+    {
+        $this->middleware('auth');
+    }
+    /*
+    
+    
+    
+    *
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

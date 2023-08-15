@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class AdeudosController extends Controller
 {
+    public function __construct()  //! Clase  47
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *

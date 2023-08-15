@@ -41,16 +41,16 @@
                          {{-- <th>largo</th>
                         <th>ancho</th> --}}
                          <th>area</th>
-                         <th>leyendaanuncio</th>
+                         <th>leyenda</th>
                          <th>num_anun_temp</th>
                          <th>dias</th>
-                         <th>fpago</th>
+                         <th> fpago </th>
                          {{-- <th>recof</th>
                         <th>fpagocap</th>
                         <th>recofcap</th>
                         <th>nombrecap</th>
                         <th>yearpagocap</th> --}}
-                         <th>fbajax</th>
+                         <th> fbajax </th>
                          <th>fnotifica</th>
                          <th>freq</th>
                          <th>cvereq</th>

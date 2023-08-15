@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Validator;
 
 class AnuncioController extends Controller
 {
-
+    public function __construct()  //! Clase  47
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {

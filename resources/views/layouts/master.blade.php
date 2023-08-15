@@ -36,10 +36,8 @@
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
             margin-left: 2%;
-            background-color: rgb(119, 170, 199) !important;
+            background-color: rgb(179, 192, 184) !important;
         }
-
-
 
         h1 h2 h3 h4 h5 h6 {
             margin-left: 2% !important;
@@ -63,10 +61,10 @@
 
 
         .table-container {
-            max-height: 1000px;
+           max-height: 1000px;
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
-            overflow-y: auto;
+            /*overflow-x: auto;*/
            margin-left: 1%;
            margin-right: 1%; 
         }
