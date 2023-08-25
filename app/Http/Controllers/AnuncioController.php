@@ -3,15 +3,17 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 
-use App\Rules\InValues;
+// use App\Rules\InValues; 
 use App\Models\DuaModel;
-use App\Models\ColoniaModel;
+// use App\Models\ColoniaModel;
 use App\Models\SubduaModel;
 use App\Models\AnuncioModel;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+// use App\Models\AdeudosModel;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Validator;
 
 class AnuncioController extends Controller
 {
@@ -24,27 +26,20 @@ class AnuncioController extends Controller
     {
     }
 
-    public function lanuncios($subdua)
+
+    public function lanuncios(SubduaModel $subduas, $subdua) //! Clase  47
     {
-        $result = SubduaModel::where('subdua', $subdua)
-            ->select('dua',  'subdua', 'nomsubdua', 'sububicaion')
-            ->get();
-       // dd($result);
+        $result = $subduas->where('subdua', $subdua)
+            ->select('dua', 'subdua', 'nomsubdua', 'sububicaion')
+            ->first();
 
-       foreach ($result as $valor) {
-        $dua = $valor->dua;
-        $nomsubdua = $valor->nomsubdua;
-        $sububicaion = $valor->sububicaion; 
-    }
-
-
-
-        // $result = SubduaModel::where('subdua', $subdua)->pluck( 'dua', 'nomsubdua'); //! Clase  33 con OpenAI pluck
-
-        // foreach ($result as $clave => $valor) {
-        //      $dua = $valor;
-        //      $nomsubdua = $clave;
-        // };
+        if ($result) {
+            $dua = $result->dua;
+            $subdua = $result->subdua;
+            $nomsubdua = $result->nomsubdua;
+            $sububicaion = $result->sububicaion;
+        }
+          
 
         return view('anuncios.anuncioindex')->with([  //! Clase  29 20230509
 
@@ -238,4 +233,37 @@ class AnuncioController extends Controller
     {
         //
     }
+
+
+
+
+      // public function lanuncios(SubduaModel $subduas, $subdua)
+    // {
+    //     //   $result = SubduaModel::select('dua',  'subdua', 'nomsubdua', 'sububicaion')->get(); 
+
+    //      $result = $subduas::where('subdua', $subdua)
+    //     // $result = SubduaModel::where('subdua', $subdua)
+    //         ->select('dua',  'subdua', 'nomsubdua', 'sububicaion')
+    //         ->get();
+    //     // dd($result);
+
+    //     foreach ($result as $valor) {
+    //         $dua = $valor->dua;
+    //         $subdua = $valor->subdua;
+    //         $nomsubdua = $valor->nomsubdua;
+    //         $sububicaion = $valor->sububicaion;
+    //     }
+
+
+
+    // $result = SubduaModel::where('subdua', $subdua)->pluck( 'dua', 'nomsubdua'); //! Clase  33 con OpenAI pluck
+
+    // foreach ($result as $clave => $valor) {
+    //      $dua = $valor;
+    //      $nomsubdua = $clave;
+    // };
+
+    
+
+
 }

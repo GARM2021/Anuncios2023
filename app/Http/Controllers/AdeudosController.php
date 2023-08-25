@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// use App\Rules\InValues; 
+// use App\Models\DuaModel;
+// use App\Models\ColoniaModel;
+// use App\Models\SubduaModel;
+use App\Models\AnuncioModel;
+// use App\Models\AdeudosModel;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Validator;
+
+
 class AdeudosController extends Controller
 {
     public function __construct()  //! Clase  47
@@ -84,5 +94,25 @@ class AdeudosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function BGenaraAdeudos(Request $request, $dua, $subdua)
+    {
+        $dsanun = new AnuncioModel();
+        $DTAnu = $dsanun->FSubDUA($dua, $subdua);
+
+        $sypag = $request->input('LBAñopagado');
+
+        $sycap = $request->input('TBFechaRecibo');
+        $sycap = substr($sycap, 0, 4);
+        $syade = $request->input('LBAñoGenerado');
+        $dyade = (float)$syade;
+        $dyade1 = $dyade;
+        $syade04 = substr($syade, 0, 4) . "04";
+
+        $iyade = (int)$syade;
+        $iyade1 = $iyade;
+        $iypag = (int)$sypag;
+        $iycap = (int)$sycap;
     }
 }

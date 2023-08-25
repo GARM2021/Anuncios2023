@@ -49,11 +49,11 @@
                              <td>{{ $item->fbajax }}</td>
                              <td>{{ number_format($item->totalarea,  2, '.', ',') }}</td>
                              <td> <a href="{{ route('duas.show', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link"> Muestra </td>
+                                class="btn btn-info btn-sm"> Muestra </td>
                              <td> <a href="{{ route('duas.edit', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link"> Actualiza </td>
+                                class="btn btn-warning btn-sm"> Actualiza </td>
                              <td> <a href="{{ route('subduas.lsubduas', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link"> Lista SubDuas</td>
+                                class="btn btn-primary btn-sm"> Lista SubDuas</td>
 
 
                          </tr>

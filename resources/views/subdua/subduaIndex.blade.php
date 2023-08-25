@@ -69,10 +69,10 @@
                              <td>{{ number_format($item->totalarea, 2, '.', ',') }}</td>
 
                              <td> <a href="{{ route('anuncios.lanuncios', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link">Anuncios</td>
+                                class="btn btn-info btn-sm">Anuncios</td>
 
                              <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
-                                     class="btn btn-link">Actualiza SubDua</td>
+                                class="btn btn-warning btn-sm">Actualiza</td>
 
 
 

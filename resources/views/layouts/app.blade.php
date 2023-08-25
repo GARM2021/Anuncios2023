@@ -15,6 +15,94 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <style>
+        .highlight-on-hover:hover {
+            background-color: yellow !important;
+
+        }
+
+        .highlight-on-hover_g:hover {
+            background-color: rgb(126, 197, 230) !important;
+            color: white;
+        }
+
+        .highlight-on-hover_t:hover {
+
+            background-color: rgb(123, 116, 133, 1) !important;
+            color: white;
+        }
+
+        .highlight-on-hover_t:hover::placeholder {
+            color: white;
+        }
+
+
+        .div-container {
+            max-height: 1550px;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+            margin-left: 2%;
+            background-color: rgb(179, 192, 184) !important;
+        }
+
+        h1 h2 h3 h4 h5 h6 {
+            margin-left: 2% !important;
+        }
+
+        /* h2 {
+            margin-left: 5% !important;
+        } */
+        label {
+            margin-left: 1%;
+        }
+
+        .head_uno {
+            background-color: rgb(65, 71, 77, 1);
+            color: white !important;
+            margin-left: 2%;
+
+            /* el ultimo parametro de background-color es 1 solido si es menor de 1 es traslucido */
+        }
+
+
+
+        .table-container {
+           max-height: 1000px;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+            /*overflow-x: auto;*/
+           margin-left: 1%;
+           margin-right: 1%; 
+        }
+
+        .table-header-container {
+            max-height: 40px;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+        }
+
+        .table-row-container {
+            max-height: auto;
+            /* Ajusta la altura máxima según tus necesidades */
+            overflow-y: auto;
+        }
+
+        .thead-fixed {
+            position: sticky !important;
+            top: 0;
+            background-color: hsla(210, 6%, 6%, 1);
+            color: white !important;
+            /* el ultimo parametro de background-color es 1 solido si es menor de 1 es traslucido */
+        }
+
+        td {
+            padding: 3px;
+        }
+
+        td:first-child {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -72,9 +160,9 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        {{-- <main class="py-4"> --}}
             @yield('content')
-        </main>
+        {{-- </main> --}}
     </div>
 </body>
 </html>
