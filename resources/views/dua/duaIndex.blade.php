@@ -1,4 +1,5 @@
- @extends('layouts.master') {{-- //! Clase  30  --}}
+ {{-- @extends('layouts.master') --}}
+@extends('layouts.app') {{-- //! Clase  30  --}}
 
  @section('content')
 
@@ -53,7 +54,7 @@
                              <td> <a href="{{ route('duas.edit', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
                                 class="btn btn-warning btn-sm"> Actualiza </td>
                              <td> <a href="{{ route('subduas.lsubduas', ['dua' => str_pad($item->dua, 6, '0', STR_PAD_LEFT)]) }}"
-                                class="btn btn-primary btn-sm"> Lista SubDuas</td>
+                                class="btn btn-primary btn-sm"> SubDuas</td>
 
 
                          </tr>

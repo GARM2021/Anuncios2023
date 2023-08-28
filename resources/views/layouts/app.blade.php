@@ -38,7 +38,7 @@
 
 
         .div-container {
-            max-height: 1550px;
+            max-height: 550px;
             /* Ajusta la altura máxima según tus necesidades */
             overflow-y: auto;
             margin-left: 2%;

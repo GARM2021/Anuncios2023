@@ -1,4 +1,5 @@
- @extends('layouts.master') {{-- //! Clase  30  --}}
+ {{-- @extends('layouts.master') --}}
+@extends('layouts.app') {{-- //! Clase  30  --}}
 
  @section('content')
 

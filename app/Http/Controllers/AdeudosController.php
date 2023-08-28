@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 // use App\Models\ColoniaModel;
 // use App\Models\SubduaModel;
 use App\Models\AnuncioModel;
-// use App\Models\AdeudosModel;
+use App\Models\AdeudosModel;
 // use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\Validator;
 
@@ -35,9 +35,11 @@ class AdeudosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($dua, $nomdua, $subdua, $nomsubdua, $sububicaion)
     {
-        //
+       // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
+        //dd($dua);  
+        return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]);
     }
 
     /**
@@ -96,7 +98,7 @@ class AdeudosController extends Controller
         //
     }
 
-    public function BGenaraAdeudos(Request $request, $dua, $subdua)
+    public function GenaraAdeudos(Request $request, $dua, $subdua)
     {
         $dsanun = new AnuncioModel();
         $DTAnu = $dsanun->FSubDUA($dua, $subdua);

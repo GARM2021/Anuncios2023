@@ -29,6 +29,7 @@ class AnuncioController extends Controller
 
     public function lanuncios(SubduaModel $subduas, $subdua) //! Clase  47
     {
+       
         $result = $subduas->where('subdua', $subdua)
             ->select('dua', 'subdua', 'nomsubdua', 'sububicaion')
             ->first();

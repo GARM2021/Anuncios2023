@@ -5,6 +5,7 @@ use App\Http\Controllers\AnuncioController; //! 20230518 aqui lo tenia como Anun
 use App\Http\Controllers\DuaController;
 use App\Http\Controllers\ColoniaController;
 use App\Http\Controllers\SubduaController;
+use App\Http\Controllers\AdeudosController;
 use App\Models\AnuncioModel;
 
 /*
@@ -50,6 +51,7 @@ Route::get('/colonias', [ColoniaController::class, 'index'] );
 
 //Route::resource('anuncios', 'App\Http\Controllers\AnuncioController');
 Route::get('/anuncios/{subdua?}/lanuncios', [AnuncioController::class, 'lanuncios'])->name('anuncios.lanuncios');
+//Route::get('/anuncios/{SubduaModel:subdua?}/lanuncios', [AnuncioController::class, 'lanuncios'])->name('anuncios.lanuncios');
 Route::post('/anuncios', [AnuncioController::class, 'store'])->name('anuncios.store');
 Route::get('/anuncios/create/{dua}/{nomdua}/{subdua}/{nomsubdua}/{sububicaion}', [AnuncioController::class, 'create'] )->name('anuncios.create');
 Route::get('/anuncios/edit/{cuenta}', [AnuncioController::class, 'edit'])->name('anuncios.edit');
@@ -57,6 +59,8 @@ Route::get('/anuncios/show/{cuenta}', [AnuncioController::class, 'edit'])->name(
 Route::match(['put', 'patch'], '/anuncios/{cuenta}/update', [AnuncioController::class, 'update'])->name('anuncios.update');
 Route::match(['put', 'patch'], '/anuncios/store', [AnuncioController::class, 'store'])->name('anuncios.store');
 
+Route::get('/adeudos/create/{dua}/{nomdua}/{subdua}/{nomsubdua}/{sububicaion}', [AdeudosController::class, 'create'] )->name('adeudos.create');
+//Route::get('/adeudos/GeneraAdeudos/{dua}/{subdua}}', [AdeudoController::class, 'GeneraAdeudos'] )->name('adeudos.genera');
 
 // Route::put('/anuncios/{cuenta}/update', [AnuncioController::class, 'update']) //! maracaba Route [anuncios.update] not defined.  aqui corri php artisan route:clear  me marco error con esta linea por eso la comente y corri el route:clear y reconocia la route que marcaba error
 //     ->name('anuncios.update')
