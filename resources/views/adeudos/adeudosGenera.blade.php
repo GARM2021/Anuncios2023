@@ -36,7 +36,7 @@
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
 
-               
+
                 <label for="AñoIni">Año Inicial:</label>
                 <select name="AñoIni" id="AñoIni" class="form-control highlight-on-hover_t" requiered>
                     <?php
@@ -46,16 +46,22 @@
                     ?>
                 </select>
 
-                {{-- <label for="cars">Choose a car:</label>
+            </div>
 
-<select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select> --}}
+            <div tabindex="0" class="form_row highlight-on-hover_g">
+
+
+                <label for="AñoFin">Año Final:</label>
+                <select name="AñoFin" id="AñoFin" class="form-control highlight-on-hover_t" requiered>
+                    <?php
+                    for ($yearf = 1999; $yearf <= 2024; $yearf++) {
+                        echo "<option value='$yearf'>$yearf</option>";
+                    }
+                    ?>
+                </select>
 
             </div>
+
             <hr style="border-color: black; border-width: 2px;">
             <div tabindex="0" class="form_row highlight-on-hover_g">
                 <label>numper</label>

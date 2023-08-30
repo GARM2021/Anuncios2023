@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('content')
     {{-- //! Clase 31 --}}
     <h6>Muestra Anuncio</h6>
