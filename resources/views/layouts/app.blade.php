@@ -14,6 +14,10 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
@@ -108,7 +112,7 @@
 </head>
 
 <body>
-    <div  style=" margin-left: 2%" >
+    <div  style=" margin-left: 2%; margin-right: 1%;" >
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 
             <a class="navbar-brand" href="{{ url('/') }}">
@@ -167,7 +171,7 @@
 
     </div>
 
-    <div id="app" style=" margin-left: 2%">
+    <div id="app"  style=" margin-left: 2%; margin-right: 1%;">
 
         <nav class="navbar navbar-expand-md  navbar-dark bg-dark  shadow-sm">
             <div class="container-fluid"><a class="navbar-brand text-white" href="#">Navbar</a>

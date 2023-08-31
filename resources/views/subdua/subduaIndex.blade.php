@@ -12,7 +12,7 @@
         
          <h6 style="margin-left: 2%;">DUA {{ $ditems->dua }}</h6>
          <h6 style="margin-left: 2%;">{{ $ditems->nomdua }}</h6>
-
+        <h2>
          <a href="{{ route('subduas.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua]) }}"
              style="margin-left: 2%;" class="btn btn-success">Crea nuevo SubDua</a>
 
