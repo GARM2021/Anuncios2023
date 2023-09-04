@@ -37,8 +37,8 @@ class AdeudosController extends Controller
      */
     public function create($dua, $nomdua, $subdua, $nomsubdua, $sububicaion)
     {
-       // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
-       // dd($dua);  
+        // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
+        // dd($dua);  
         return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]);
     }
 
@@ -98,16 +98,22 @@ class AdeudosController extends Controller
         //
     }
 
-    public function GenaraAdeudos(Request $request, $dua, $subdua)
+    public function GeneraAdeudos(Request $request)
     {
         $dsanun = new AnuncioModel();
-        $DTAnu = $dsanun->FSubDUA($dua, $subdua);
+        //$DTAnu = $dsanun->FSubDUA($request->input('dua'), $request->input('subdua');
+        $psubdua =  $request->input('subdua');
+        $pdua = $request->input('dua');
+        $DTAnu = $dsanun->FSubDUA($pdua, $psubdua);
+  
+      
+        $sypag = $request->input('AñoPagado');
 
-        $sypag = $request->input('LBAñopagado');
+        dump($sypag); 
 
-        $sycap = $request->input('TBFechaRecibo');
+        $sycap = $request->input('fupago');
         $sycap = substr($sycap, 0, 4);
-        $syade = $request->input('LBAñoGenerado');
+        $syade = $request->input('AñoGenerado');
         $dyade = (float)$syade;
         $dyade1 = $dyade;
         $syade04 = substr($syade, 0, 4) . "04";
@@ -116,5 +122,11 @@ class AdeudosController extends Controller
         $iyade1 = $iyade;
         $iypag = (int)$sypag;
         $iycap = (int)$sycap;
+
+
+        
+        dump($sycap); 
+        dump($syade); 
+        dump($dyade); 
     }
 }

@@ -60,6 +60,7 @@ Route::match(['put', 'patch'], '/anuncios/{cuenta}/update', [AnuncioController::
 Route::match(['put', 'patch'], '/anuncios/store', [AnuncioController::class, 'store'])->name('anuncios.store');
 
 Route::get('/adeudos/create/{dua}/{nomdua}/{subdua}/{nomsubdua}/{sububicaion}', [AdeudosController::class, 'create'] )->name('adeudos.create');
+Route::post('/adeudos/genera', [AdeudosController::class, 'GeneraAdeudos'] )->name('adeudos.genera');
 //Route::get('/adeudos/GeneraAdeudos/{dua}/{subdua}}', [AdeudoController::class, 'GeneraAdeudos'] )->name('adeudos.genera');
 
 // Route::put('/anuncios/{cuenta}/update', [AnuncioController::class, 'update']) //! maracaba Route [anuncios.update] not defined.  aqui corri php artisan route:clear  me marco error con esta linea por eso la comente y corri el route:clear y reconocia la route que marcaba error

@@ -10,7 +10,7 @@ class AnuncioModel extends Model
     protected $table = 'anundanuncios'; //! clase 24
     protected $primaryKey = 'cuenta'; //! Clase  24
 
-    
+
     public static  $gsDUA;
     public static  $gsDUAnomcol;
     public static  $gsSubDUA;
@@ -119,24 +119,24 @@ class AnuncioModel extends Model
         $gdfechahoy = (float)$gsfechahoy;
 
         $gdcuota = 103.74;
-
-
     }
 
-    
+
     public function FSubDUA($gsDUA, $gsSubDUA)
     {
+       
         $anundanuncios = AnuncioModel::where('dua', $gsDUA)
-                                ->where('subdua', $gsSubDUA)
-                                ->where(function ($query) {
-                                    $query->whereNull('fbajax')
-                                        ->orWhere('fbajax', '=', '')
-                                        ->orWhere('fbajax', '=', '0   ')
-                                        ->orWhere('fbajax', '=', '00000000');
-                                })
-                                ->get();
+            ->where('subdua', $gsSubDUA)
+            ->where(function ($query) {
+                $query->whereNull('fbajax')
+                    ->orWhere('fbajax', '=', '')
+                    ->orWhere('fbajax', '=', '0   ')
+                    ->orWhere('fbajax', '=', '00000000');
+            })
+            ->get();
 
+         
+
+        return ($anundanuncios);
     }
-
-    
 }

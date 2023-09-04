@@ -12,45 +12,56 @@
         <h6>Dom. SubDua: {{ $sububicaion }}</h6>
     </div> <br>
     <div class="div-container">
-        <form id="Crea" name="Crea" method="POST" action="{{ route('anuncios.store') }}">
+        <form id="Genera" name="Genera" method="POST" action="{{ route('adeudos.genera') }}">
             {{-- //! aqui lo resolvi asi  --}}
             {{-- //! https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario  --}}
             {{-- //! tenia unos elementos form intermedios? y en la lina 299  --}}
             {{--  //! Clase  31 tenia action en lugar de method --}}
             @csrf
-            @method('PUT')
 
-            <div tabindex="0" class="form_row highlight-on-hover_g">
 
+            <div tabindex="0" >
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="dua"
                     value="{{ $dua }}" requiered>
             </div>
 
 
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-
+            <div tabindex="0">
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="subdua"
                     value="{{ $subdua }}" requiered>
             </div>
-
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>Recibo del Ultimo pago</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="recibo"
-                    placeholder="CCCCNNNNNN C=CAJA N=CONSECUTIVO">
-
-            </div> <br> <br>
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label for="fperm">Fecha Ultimo Pago:</label>
-                <input type="text" value="{{ old('fperm') }}" maxlength="08" id="fperm" name="fperm"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
-                <small>Format Ejemplo: 20230512</small>
-
-
+            <div tabindex="0" >
+                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="nomdua"
+                    value="{{ $nomdua }}" requiered>
             </div>
 
+
+            <div tabindex="0">
+                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="sububicacion"
+                    value="{{ $sububicaion }}" requiered>
+            </div>
+
+
             <br>
+
+            <div class="input-group mb-3 ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Recibo del Ultimo pago</span>
+                </div>
+                <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="recibo"
+                    placeholder="CCCCNNNNNN C=CAJA N=CONSECUTIVO">
+            </div>
+
+            <div class="input-group mb-3 ">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Fecha Ultimo Pago:</span>
+                </div>
+                <input class=" form-control highlight-on-hover_t" type="text" maxlength="08" id="fupago" name="fupago"
+                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
+                <small>Format Ejemplo: 20230512</small>
+            </div>
+
+    
 
             <hr style="border-color: black; border-width: 2px;">
 
@@ -58,11 +69,11 @@
 
 
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 form_row highlight-on-hover_g">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Año Inicial</span>
                 </div>
-                <select name="AñoIni" id="AñoIni" class="form-control highlight-on-hover_t" requiered>
+                <select name="AñoPagado" id="AñoPagado" class="form-control highlight-on-hover_t" requiered>
                     <?php
                     for ($year = 1999; $year <= 2024; $year++) {
                         echo "<option value='$year'>$year</option>";
@@ -72,23 +83,23 @@
             </div>
 
 
-           <br>
+            <br>
 
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Año Final</span>
                 </div>
-                <select name="AñoFin" id="AñoFin" class="form-control highlight-on-hover_t" requiered>
+                <select name="AñoGenerado" id="AñoGenerado" class="form-control highlight-on-hover_t" requiered>
                     <?php
                     for ($yearf = 1999; $yearf <= 2024; $yearf++) {
                         echo "<option value='$yearf'>$yearf</option>";
                     }
-                    ?>  
+                    ?>
                 </select>
             </div>
 
-            
+
 
             <br>
 
@@ -98,7 +109,7 @@
 
             <div tabindex="0">
                 <button name="BCrea" type="submit" class="btn btn-primary btn-sm"
-                    onclick="document.forms.Crea.submit();">Genera Adeudos</button>
+                    onclick="document.forms.Genera.submit();">Genera Adeudos</button>
                 {{-- //! aqui lo resolvi en esta pagina --}}
                 {{-- https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario --}}
                 {{--  --}}
