@@ -4,7 +4,7 @@
  @section('content')
 
 
-     <h6 style="margin-left: 2%;"> Lista de SUBDUAS</h6>
+     <h5 style="margin-left: 2%;"> Lista de SUBDUAS</h5>
 
      @empty($items)
          <div class="alert alert-warning"> The list de Duas esta vacia</div>
@@ -14,7 +14,7 @@
          <h6 style="margin-left: 2%;">{{ $ditems->nomdua }}</h6>
         <h2>
          <a href="{{ route('subduas.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua]) }}"
-             style="margin-left: 2%;" class="btn btn-success">Crea nuevo SubDua</a>
+             style="margin-left: 2%;" class="btn btn-success">Nuevo SubDua</a>
 
          </h2>
         
@@ -70,7 +70,7 @@
                              <td>{{ number_format($item->totalarea, 2, '.', ',') }}</td>
 
                              <td> <a href="{{ route('anuncios.lanuncios', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
-                                class="btn btn-info btn-sm">Anuncios</td>
+                                class="btn btn-primary btn-sm">Anuncios</td>
 
                              <td> <a href="{{ route('subduas.edit', ['subdua' => str_pad($item->subdua, 6, '0', STR_PAD_LEFT)]) }}"
                                 class="btn btn-warning btn-sm">Actualiza</td>

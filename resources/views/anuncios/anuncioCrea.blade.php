@@ -248,7 +248,7 @@
 
 
                 <div tabindex="0">
-                    <button name="BCrea" type="submit" class="btn btn-primary btn-lg"
+                    <button name="BCrea" type="submit" class="btn btn-primary btn-sm"
                         onclick="document.forms.Crea.submit();">Crea Anuncio</button>
                     {{-- //! aqui lo resolvi en esta pagina --}}
                     {{-- https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario --}}

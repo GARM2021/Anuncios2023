@@ -38,7 +38,7 @@ class AdeudosController extends Controller
     public function create($dua, $nomdua, $subdua, $nomsubdua, $sububicaion)
     {
        // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
-        //dd($dua);  
+       // dd($dua);  
         return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]);
     }
 

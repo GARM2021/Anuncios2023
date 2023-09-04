@@ -12,16 +12,16 @@
      @else
          <h1>
 
-             <a href="{{ route('duas.create') }}"  style="margin-left: 2%;" class="btn btn-success">Crea nuevo Dua</a>
+             <a href="{{ route('duas.create') }}"  style="margin-left: 2%;" class="btn btn-success">Nuevo Dua</a>
          </h1>
        
-         <div class="table-container table-responsive">
+         <div class="table-container table-responsive" >
 
              <table class="table-striped table-container">
                  {{-- <div class="table-header-container">  --}}
                  <thead class="thead-fixed text-secondary">
                      <tr>
-                         <th>DUA</th>
+                         <th>DUA</th>   
                          <th>nomdua</th>    
                          <th>domdua</th>
                          <th>colonia</th>

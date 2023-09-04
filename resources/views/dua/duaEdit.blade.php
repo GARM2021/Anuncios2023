@@ -119,7 +119,7 @@
 
 
             <div tabindex="0">
-                <button type="submit" class="btn btn-primary btn-lg">Edita DUA</button>
+                <button type="submit" class="btn btn-primary btn-sm">Edita DUA</button>
 
             </div> <br>
 

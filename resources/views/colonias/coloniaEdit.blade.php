@@ -15,7 +15,7 @@
 
 
             <div class="form_row">
-                <button type="submit" class="btn btn-primary btn-lg">Edita COLONIA/button>
+                <button type="submit" class="btn btn-primary btn-sm">Edita COLONIA/button>
 
             </div> <br>
 

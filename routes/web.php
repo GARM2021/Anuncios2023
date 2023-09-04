@@ -66,10 +66,6 @@ Route::get('/adeudos/create/{dua}/{nomdua}/{subdua}/{nomsubdua}/{sububicaion}', 
 //     ->name('anuncios.update')
 //     ->only(['update']);
 
-Route::get('/anuncios/{cuenta}', [AnuncioController::class, 'show'] )->name('anuncios.show');
-  
-
-
 
 Auth::routes();
 

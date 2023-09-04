@@ -118,7 +118,7 @@
 
 
             <div tabindex="0">
-                <button type="submit" class="btn btn-primary btn-lg">Crea SUBDUA</button>
+                <button type="submit" class="btn btn-primary btn-sm">Crea SUBDUA</button>
 
             </div> <br>
 

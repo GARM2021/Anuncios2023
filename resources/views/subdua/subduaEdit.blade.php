@@ -139,7 +139,7 @@
 
 
                 <div tabindex="0" >
-                    <button type="submit" class="btn btn-primary btn-lg">Actualiza SUBDUA</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Actualiza SUBDUA</button>
 
                 </div> <br>
             </div> <br>

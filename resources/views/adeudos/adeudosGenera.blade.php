@@ -35,9 +35,33 @@
 
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
+                <label>Recibo del Ultimo pago</label>
+                <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="recibo"
+                    placeholder="CCCCNNNNNN C=CAJA N=CONSECUTIVO">
+
+            </div> <br> <br>
+
+            <div tabindex="0" class="form_row highlight-on-hover_g">
+                <label for="fperm">Fecha Ultimo Pago:</label>
+                <input type="text" value="{{ old('fperm') }}" maxlength="08" id="fperm" name="fperm"
+                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
+                <small>Format Ejemplo: 20230512</small>
 
 
-                <label for="AñoIni">Año Inicial:</label>
+            </div>
+
+            <br>
+
+            <hr style="border-color: black; border-width: 2px;">
+
+            <br>
+
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Año Inicial</span>
+                </div>
                 <select name="AñoIni" id="AñoIni" class="form-control highlight-on-hover_t" requiered>
                     <?php
                     for ($year = 1999; $year <= 2024; $year++) {
@@ -45,233 +69,36 @@
                     }
                     ?>
                 </select>
-
             </div>
 
-            <div tabindex="0" class="form_row highlight-on-hover_g">
+
+           <br>
 
 
-                <label for="AñoFin">Año Final:</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Año Final</span>
+                </div>
                 <select name="AñoFin" id="AñoFin" class="form-control highlight-on-hover_t" requiered>
                     <?php
                     for ($yearf = 1999; $yearf <= 2024; $yearf++) {
                         echo "<option value='$yearf'>$yearf</option>";
                     }
-                    ?>
+                    ?>  
                 </select>
-
             </div>
+
+            
+
+            <br>
 
             <hr style="border-color: black; border-width: 2px;">
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>numper</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="text" value="{{ old('numper') }}"
-                    name="numper">
 
-
-
-
-                <label for="fperm">Fecha Permiso:</label>
-                <input type="text" value="{{ old('fperm') }}" maxlength="08" id="fperm" name="fperm"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
-                <small>Format Ejemplo: 20230512</small><br><br>
-
-
-            </div> <br>
-
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>Numero de Anuncios Temporales</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="num_anun_temp"
-                    value="{{ old('num_anun_temp') }}" id="num_anun_temp"><br><br>
-
-                <label>dias</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" value="{{ old('dias') }}"
-                    name="dias" id="dias">
-            </div> <br>
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label for="finicio">Fecha Inicio:</label>
-                <input type="text" value="{{ old('finicio') }}" maxlength="08"id="finicio" name="finicio"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
-                <small>Format Ejemplo: 20230512</small><br><br>
-            </div> <br>
-
-
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-
-                <label for="ftermino">Fecha Termino:</label>
-                <input type="hidden" value="{{ old('ftermino') }}" maxlength="08"id="ftermino" name="ftermino"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
-                <small>Format Ejemplo: 20230512</small><br><br>
-            </div> <br>
-
-            <hr style="border-color: black; border-width: 2px; ">
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>tipoanuncio</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" readonly type="text"
-                    value="{{ old('tipoanuncio') }}" name="tipoanuncio" id="tipoanuncio" requiered>
-            </div> <br>
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>Tipo Anuncio</label><br><br>
-                <input type="radio" id="html" name="rtipoanuncio" id="RPR" value="PR"
-                    onchange="cambiaTipos()">
-                {{-- //! Clase  33 --}}
-                <label for="html">Propio</label><br><br>
-                <input type="radio" id="css" name="rtipoanuncio" id="RAJ" value="AJ"
-                    onchange="cambiaTipos()">
-                {{-- //! Clase  33 --}}
-                <label for="css">Ajeno</label><br><br>
-                <input type="radio" id="html" name="rtipoanuncio" id="RTE" value="TE"
-                    onchange="cambiaTipos()">
-                {{-- //! Clase  33 --}}
-                <label for="html">Temporal</label><br><br>
-                <input type="radio" id="css" name="rtipoanuncio" id="REL" value="EL"
-                    onchange="cambiaTipos()">
-                {{-- //! Clase  33 --}}
-                <label for="css">Electronico</label><br><br>
-
-            </div> <br>
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>Adosado No Adosado</label><br><br>
-                <label for="html">ADOSADO</label>
-                <input type="radio" id="ADOSA" name="ANA" value="A" onchange="cambiaTipos()">
-                {{-- //! Clase  33 --}}
-                <label for="html">NO ADOSADO</label>
-                <input type="radio" id="NADOSA" name="ANA" value="N" onchange="cambiaTipos()">
-                {{-- //! Clase  33 --}}
-            </div> <br>
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>vistas</label><br>
-                <input class="form-control highlight-on-hover_t" maxlength="10" type="text"
-                    value="{{ old('vistas') }}" name="vistas" id="vistas" requiered><br><br>
-            </div> <br>
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>largo</label><br>
-                <input class="form-control highlight-on-hover_t" type="text" value="{{ old('largo') }}"
-                    maxlength="10" name="largo" id="largo" onchange="cambiaMedidas()" requiered /><br>
-            </div> <br>
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>ancho</label><br>
-                <input class="form-control highlight-on-hover_t" type="text" value="{{ old('ancho') }}"
-                    maxlength="10" name="ancho" id="ancho" onchange="cambiaMedidas()" requiered /><br><br>
-            </div> <br>
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>area</label><br>
-                <input class="form-control highlight-on-hover_t" type="text" value="{{ old('area') }}" readonly
-                    maxlength="10" name="area" id="area" requiered />
-            </div> <br><br>
-            <hr style="border-color: black; border-width: 2px; ">
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>Leyenda Anuncio</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="text"
-                    value="{{ old('leyendaanuncio') }}" name="leyendaanuncio" requiered>
-            </div> <br>
-
-
-
-            {{-- <div class="row"> --}}
-            <div class="col-md-4">
-
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden"
-                    value="{{ old('recof') }}" name="recof" requiered>
-            </div>
-
-
-
-            <div class="col-md-4">
-
-
-                <input type="hidden" value="{{ old('fpago') }}" maxlength="08"id="fpago" name="fpago">
-
-
-            </div>
-
-
-            <div class="col-md-4">
-
-                <input type="hidden" value="{{ old('fpagocap') }}" maxlength="08"id="fpagocap" name="fpagocap">
-
-
-            </div>
-
-            <div class="row">
-
-                <div tabindex="0" class="form_row highlight-on-hover_g">
-                    <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden"
-                        value="{{ old('recofcap') }}" name="recofcap">
-                </div> <br>
-
-                <div tabindex="0" class="form_row highlight-on-hover_g">
-                    <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden"
-                        value="{{ old('nombrecap') }}" name="nombrecap">
-
-                </div> <br>
-
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden"
-                    value="{{ old('yearpagocap') }}" name="yearpagocap">
-
-            </div>
-
-
-            <input type="hidden" value="{{ old('fbajax') }}" maxlength="08"id="fbajax" name="fbajax">
-
-            <input type="hidden" value="{{ old('fnotifica') }}" maxlength="08"id="fnotifica" name="fnotifica">
-
-            <input type="hidden" value="{{ old('freq') }}" maxlength="08"id="freq" name="freq">
-
-
-
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-
-                <input class="form-control highlight-on-hover_t" type="hidden" maxlength="02"
-                    value="{{ old('cvereq') }}" id="cvereq" name="cvereq">
-            </div>
-
-
-
-            <input type="hidden" value="{{ old('fembargo') }}" maxlength="08"id="fembargo" name="fembargo">
-
-
-            <hr style="border-color: black; border-width: 2px; ">
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-
-                <input class="form-control highlight-on-hover_t" type="hidden" maxlength="02" type="text"
-                    value="{{ old('status') }}" id="status" name="status">
-            </div> <br>
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>usuario_mov</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="text"
-                    value="{{ old('usuario_mov') }}" name="usuario_mov" requiered>
-            </div> <br>
-
-
-            <form action="/action_page.php">
-
-                <input type="hidden" value="{{ old('fcaptura') }}" maxlength="08" id="fcaptura" name="fcaptura">
-
-
-            </form>
-
-
-
-            <input maxlength="08" type="hidden" value="{{ old('horacap') }}" id="horacap" name="horacap">
-
-            <div tabindex="0" class="form_row highlight-on-hover_g">
-                <label>capturista</label>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="text"
-                    value="{{ old('capturista') }}" name="capturista">
-            </div> <br>
-
+            <br>
 
             <div tabindex="0">
-                <button name="BCrea" type="submit" class="btn btn-primary btn-lg"
-                    onclick="document.forms.Crea.submit();">Crea Anuncio</button>
+                <button name="BCrea" type="submit" class="btn btn-primary btn-sm"
+                    onclick="document.forms.Crea.submit();">Genera Adeudos</button>
                 {{-- //! aqui lo resolvi en esta pagina --}}
                 {{-- https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario --}}
                 {{--  --}}

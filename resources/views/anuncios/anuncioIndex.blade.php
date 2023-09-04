@@ -24,18 +24,20 @@
         {{-- <a href="  return redirect()->route('anuncios.create', [{{'dua' => $ditems->dua}}, {{'nomdua' => $ditems->nomdua}}, {{'subdua' => $subdua}}, {{'nomsubdua' => $nomsubdua] }})" class="btn btn-success">Crea nuevo Anuncio</a>; --}}
         {{-- {{ dump($ditems->dua);}}  --}}
         {{-- str_pad($items->cuenta, 6, '0', STR_PAD_LEFT)    'dua' => $ditems->dua, --}}
-        <table class="table-striped table-container">
-            <tr>
-                <td>
-                <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}"
-                    style="margin-left: 2%;" class="btn btn-success">Crea nuevo Anuncio</a>
-                </td>
-                <td>
-                    <a href="{{ route('adeudos.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}"
-                        style="margin-left: 2%;" class="btn btn-success">Genera Adeudos</a>
-                </td>
+        <div class="table-container table-responsive">
+            <table class="table-striped table-container">
+                <tr style="margin-left: 3%;">
+                    <td>
+                        <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}"
+                            class="btn btn-success">Nuevo Anuncio</a>
+                    </td>
+                    <td>
+                        <a href="{{ route('adeudos.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}"
+                            class="btn btn-success">Genera Adeudos</a>
+                    </td>
                 </tr>
-        </table>
+            </table>
+        </div>
         <div class="table-container table-responsive">
             <table class="table-striped table-container">
                 <thead class="thead-fixed text-secondary">

@@ -284,8 +284,8 @@
 
 
             <div tabindex="0" class="form_row highlight-on-hover_g ">
-                {{-- <button name="update" type="submit" class="btn btn-primary btn-lg" onclick="document.forms.Actualiza.submit();">Actualiza Anuncio</button> --}}
-                <button name="BActualiza" type="submit" class="btn btn-primary btn-lg"
+                {{-- <button name="update" type="submit" class="btn btn-primary btn-sm" onclick="document.forms.Actualiza.submit();">Actualiza Anuncio</button> --}}
+                <button name="BActualiza" type="submit" class="btn btn-primary btn-sm"
                     onclick="document.forms.Actualiza.submit();">Actualiza Anuncio</button>
             </div> <br>
             {{-- //! aqui lo resolvi en esta pagina --}}

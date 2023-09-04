@@ -99,7 +99,7 @@
             </div> <br>
 
             <div tabindex="0" class="form_row highlight-on-hover_g">
-                <button type="submit" class="btn btn-primary btn-lg">Inserta DUA</button>
+                <button type="submit" class="btn btn-primary btn-sm">Inserta DUA</button>
 
             </div> <br>
 
