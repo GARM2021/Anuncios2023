@@ -122,21 +122,21 @@ class AnuncioModel extends Model
     }
 
 
-    public function FSubDUA($gsDUA, $gsSubDUA)
+    public function FSubDUA($frmitem)
     {
-       
-        $anundanuncios = AnuncioModel::where('dua', $gsDUA)
-            ->where('subdua', $gsSubDUA)
-            ->where(function ($query) {
-                $query->whereNull('fbajax')
-                    ->orWhere('fbajax', '=', '')
-                    ->orWhere('fbajax', '=', '0   ')
-                    ->orWhere('fbajax', '=', '00000000');
-            })
-            ->get();
+       dd($frmitem);
+        // $anundanuncios = AnuncioModel::where('dua', $gsDUA)
+        //     ->where('subdua', $gsSubDUA)
+        //     ->where(function ($query) {
+        //         $query->whereNull('fbajax')
+        //             ->orWhere('fbajax', '=', '')
+        //             ->orWhere('fbajax', '=', '0   ')
+        //             ->orWhere('fbajax', '=', '00000000');
+        //     })
+        //     ->get();
 
-         
+        //  dd($anundanuncios);
 
-        return ($anundanuncios);
+        // return ($anundanuncios);
     }
 }

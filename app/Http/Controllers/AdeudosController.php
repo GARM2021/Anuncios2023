@@ -100,33 +100,38 @@ class AdeudosController extends Controller
 
     public function GeneraAdeudos(Request $request)
     {
-        $dsanun = new AnuncioModel();
-        //$DTAnu = $dsanun->FSubDUA($request->input('dua'), $request->input('subdua');
-        $psubdua =  $request->input('subdua');
-        $pdua = $request->input('dua');
-        $DTAnu = $dsanun->FSubDUA($pdua, $psubdua);
-  
-      
-        $sypag = $request->input('AñoPagado');
 
-        dump($sypag); 
+        $frmitem = [];
+
+        $frmitem["frmdua"] =  $request->input('dua');
+        $frmitem["frmsubdua"] =  $request->input('subdua');
+
+        $sypag =  $request->input('AñoPagado');
+        $frmitem["frmsypag"] = $sypag;
+        $frmitem["frmiypag"] = (int)$sypag;
 
         $sycap = $request->input('fupago');
-        $sycap = substr($sycap, 0, 4);
+        $frmitem["frmsycap"] =   substr($sycap, 0, 4);
+
         $syade = $request->input('AñoGenerado');
         $dyade = (float)$syade;
-        $dyade1 = $dyade;
-        $syade04 = substr($syade, 0, 4) . "04";
+
 
         $iyade = (int)$syade;
-        $iyade1 = $iyade;
-        $iypag = (int)$sypag;
-        $iycap = (int)$sycap;
+
+        $frmitem["syade"] = $request->input('AñoGenerado');
+        $frmitem["dyade"] = (float)$syade;
+        $frmitem["dyade1"] =  $dyade;
+        $frmitem["syade04"] =  substr($syade, 0, 4) . "04";
+
+        $frmitem["iyade"] = (int)$syade;
+        $frmitem["iyade1"] =  $iyade;
+        $frmitem["iypag"] = (int)$sypag;
+        $frmitem["iycap"] = (int)$sycap;
 
 
-        
-        dump($sycap); 
-        dump($syade); 
-        dump($dyade); 
+
+        $dsanun = new AnuncioModel();
+        $DTAnu = $dsanun->FSubDUA($frmitem);
     }
 }

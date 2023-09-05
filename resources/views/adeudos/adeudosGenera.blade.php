@@ -27,17 +27,17 @@
 
 
             <div tabindex="0">
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="subdua"
+                <input   type="hidden" name="subdua"
                     value="{{ $subdua }}" requiered>
             </div>
             <div tabindex="0" >
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="nomdua"
+                <input  type="hidden" name="nomdua"
                     value="{{ $nomdua }}" requiered>
             </div>
 
 
             <div tabindex="0">
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="sububicacion"
+                <input  type="hidden" name="sububicacion"
                     value="{{ $sububicaion }}" requiered>
             </div>
 
@@ -46,19 +46,19 @@
 
             <div class="input-group mb-3 ">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Recibo del Ultimo pago</span>
+                    <span class="input-group-text"> Recibo del Ultimo pago </span>
                 </div>
-                <input class="form-control highlight-on-hover_t" maxlength="60" type="text" name="recibo"
+                <input class=" highlight-on-hover_t" maxlength="60" type="text" name="recibo" id="recibo"
                     placeholder="CCCCNNNNNN C=CAJA N=CONSECUTIVO">
             </div>
 
             <div class="input-group mb-3 ">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Fecha Ultimo Pago:</span>
+                    <span class="input-group-text"> Fecha Ultimo Pago: </span>
                 </div>
-                <input class=" form-control highlight-on-hover_t" type="text" maxlength="08" id="fupago" name="fupago"
+                <input class=" highlight-on-hover_t" type="text" maxlength="08" id="fupago" name="fupago"
                     placeholder="AAAAMMDD" pattern="[0-9]{8}">
-                <small>Format Ejemplo: 20230512</small>
+                <small> Format Ejemplo: 20230512</small>
             </div>
 
     
@@ -69,11 +69,11 @@
 
 
 
-            <div class="input-group mb-3 form_row highlight-on-hover_g">
+            <div class="input-group mb-3 ">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Año Inicial</span>
+                    <span class="input-group-text"> Año Pagado </span>
                 </div>
-                <select name="AñoPagado" id="AñoPagado" class="form-control highlight-on-hover_t" requiered>
+                <select name="AñoPagado" id="AñoPagado" class="highlight-on-hover_t" requiered>
                     <?php
                     for ($year = 1999; $year <= 2024; $year++) {
                         echo "<option value='$year'>$year</option>";
@@ -88,9 +88,9 @@
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Año Final</span>
+                    <span class="input-group-text"> Año Generado </span>
                 </div>
-                <select name="AñoGenerado" id="AñoGenerado" class="form-control highlight-on-hover_t" requiered>
+                <select name="AñoGenerado" id="AñoGenerado" class=" highlight-on-hover_t" requiered>
                     <?php
                     for ($yearf = 1999; $yearf <= 2024; $yearf++) {
                         echo "<option value='$yearf'>$yearf</option>";

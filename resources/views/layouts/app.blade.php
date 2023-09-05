@@ -101,11 +101,12 @@
             color: white !important;
             /* el ultimo parametro de background-color es 1 solido si es menor de 1 es traslucido */
         }
-        
+
         th {
-             padding: 5px;
+            padding: 5px;
             text-align: center;
         }
+
         td {
             padding: 3px;
             text-align: center;
@@ -114,6 +115,17 @@
 
         td:first-child {
             white-space: nowrap;
+        }
+
+        #fupago,
+        #recibo,
+        #AñoGenerado,
+        #AñoPagado {
+
+            width: 200px;
+            border: none;
+            outline: none;
+
         }
     </style>
 </head>
