@@ -123,20 +123,43 @@ class AnuncioModel extends Model
 
 
     public function FSubDUA($frmitem)
-    {
-       dd($frmitem);
-        // $anundanuncios = AnuncioModel::where('dua', $gsDUA)
-        //     ->where('subdua', $gsSubDUA)
-        //     ->where(function ($query) {
-        //         $query->whereNull('fbajax')
-        //             ->orWhere('fbajax', '=', '')
-        //             ->orWhere('fbajax', '=', '0   ')
-        //             ->orWhere('fbajax', '=', '00000000');
-        //     })
-        //     ->get();
+    { 
+        $ierror = 0;
+        $gsDUA = $frmitem["frmdua"];
+        $gsSubDUA = $frmitem["frmsubdua"];
+       
+        $anundanuncios = AnuncioModel::where('dua', $gsDUA)
+            ->where('subdua', $gsSubDUA)
+            ->where(function ($query) {
+                $query->whereNull('fbajax')
+                    ->orWhere('fbajax', '=', '')
+                    ->orWhere('fbajax', '=', '0   ')
+                    ->orWhere('fbajax', '=', '00000000');
+            })
+            ->get();
 
-        //  dd($anundanuncios);
+            // dd($anundanuncios);
 
-        // return ($anundanuncios);
+            for ($i = 0; $i < $anundanuncios->count(); $i++) {
+                $arow = $anundanuncios[$i];
+                $syini = substr($arow->finicio, 0, 4);
+                $dmini = (float)substr($arow->finicio, 4, 2);
+                $dyini = (float)$syini;
+                $iyini = (int)$syini;
+
+                if ($iyini > $frmitem["iypag"] ) {
+                    $ierror += 0;
+                }
+                if ($iyini > $frmitem["iycap"] ) {
+                    $ierror += 0;
+                }
+                if ($frmitem["iypag"] > $frmitem["iyade"] ) {
+                    $ierror += 1;
+                }
+            }
+          dump($arow);
+          dd($iyini);
+            /////////////////////////////
+   
     }
 }
