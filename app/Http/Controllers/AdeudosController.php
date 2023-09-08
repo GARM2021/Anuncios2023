@@ -101,6 +101,14 @@ class AdeudosController extends Controller
     public function GeneraAdeudos(Request $request)
     {
 
+        $dua =  $request->input('dua');
+        $subdua =  $request->input('subdua');
+        $nomdua      = $request->input('nomdua');
+        $subdua      = $request->input('subdua');
+        $nomsubdua   = $request->input('nomsubdua');
+        $sububicaion = $request->input('sububicaion');
+
+
         $frmitem = [];
 
         $frmitem["frmdua"] =  $request->input('dua');
@@ -133,5 +141,15 @@ class AdeudosController extends Controller
 
         $dsanun = new AnuncioModel();
         $DTAnu = $dsanun->FSubDUA($frmitem);
+
+        // dd($DTAnu);
+        if (isset($DTAnu['error']) && $DTAnu['error'] === 'error') {
+            session()->flash('alert', 'Fecha de pago erronea.');
+        }
+
+       
+
+            return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]);
+       
     }
 }
