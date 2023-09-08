@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class AnuncioModel extends Model
 {
     protected $table = 'anundanuncios'; //! clase 24
@@ -123,11 +124,12 @@ class AnuncioModel extends Model
 
 
     public function FSubDUA($frmitem)
-    { 
+    {
+        $errors = [];
         $ierror = 0;
         $gsDUA = $frmitem["frmdua"];
         $gsSubDUA = $frmitem["frmsubdua"];
-       
+
         $anundanuncios = AnuncioModel::where('dua', $gsDUA)
             ->where('subdua', $gsSubDUA)
             ->where(function ($query) {
@@ -138,28 +140,64 @@ class AnuncioModel extends Model
             })
             ->get();
 
-            // dd($anundanuncios);
+        // dd($anundanuncios);
 
-            for ($i = 0; $i < $anundanuncios->count(); $i++) {
-                $arow = $anundanuncios[$i];
-                $syini = substr($arow->finicio, 0, 4);
-                $dmini = (float)substr($arow->finicio, 4, 2);
-                $dyini = (float)$syini;
-                $iyini = (int)$syini;
+        for ($i = 0; $i < $anundanuncios->count(); $i++) {
+            $arow = $anundanuncios[$i];
+            $syini = substr($arow->finicio, 0, 4);
+            $dmini = (float)substr($arow->finicio, 4, 2);
+            $dyini = (float)$syini;
+            $iyini = (int)$syini;
 
-                if ($iyini > $frmitem["iypag"] ) {
-                    $ierror += 0;
-                }
-                if ($iyini > $frmitem["iycap"] ) {
-                    $ierror += 0;
-                }
-                if ($frmitem["iypag"] > $frmitem["iyade"] ) {
-                    $ierror += 1;
-                }
+            $sycap = substr($frmitem["iycap"], 0, 4);
+            $dycap = (float)$sycap;
+            $iycap = (int)$sycap;
+
+            $syade = substr($frmitem["iyade"], 0, 4);
+            $dyade = (float)$syade;
+            $iyade = (int)$syade;
+
+
+            dump("iyini", $iyini);
+            dump("iycap", $iycap); 
+            dump( "iypag", $frmitem["iypag"]);
+            dump( "iyade", $frmitem["iyade"]);
+           
+            
+            
+           
+
+            if ($iyini > $frmitem["iypag"]) {
+                $ierror += 1;
             }
-          dump($arow);
-          dd($iyini);
-            /////////////////////////////
-   
+            dump($ierror);
+            if ($iyini > $iycap) {
+                $ierror += 1;
+            }
+            dump($ierror);
+            if ($frmitem["iypag"] > $frmitem["iyade"]) {
+                $ierror += 1;
+            }
+            dump($ierror);
+            if ($iycap > $iyade) {
+                $ierror += 1;
+            }
+
+            dump($ierror);
+        }
+
+
+        $errors["error"] = "no";
+        if ($ierror > 0) {
+
+      
+            $errors["error"] = "error";
+            $errors["mensaje"] = "Fecha de pago erronea";
+           
+        }
+        return $errors;
+
     }
+    /////////////////////////////
+
 }

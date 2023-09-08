@@ -130,7 +130,12 @@
     </style>
 </head>
 
-<body>
+<body> 
+    @if (session('alert'))
+    <div class="alert alert-danger">
+        {{ session('alert') }}
+    </div>
+@endif
     <div style=" margin-left: 2%; margin-right: 1%;">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 

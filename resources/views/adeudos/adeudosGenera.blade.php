@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
     {{-- //! Clase 31 --}}
+
+    
+
     <h6 style="margin-left: 2%;">Genera Adeudos</h6>
 
     {{-- @dump($errors)
@@ -20,25 +23,22 @@
             @csrf
 
 
-            <div tabindex="0" >
+            <div tabindex="0">
                 <input class="form-control highlight-on-hover_t" maxlength="60" type="hidden" name="dua"
                     value="{{ $dua }}" requiered>
             </div>
 
 
             <div tabindex="0">
-                <input   type="hidden" name="subdua"
-                    value="{{ $subdua }}" requiered>
+                <input type="hidden" name="subdua" value="{{ $subdua }}" requiered>
             </div>
-            <div tabindex="0" >
-                <input  type="hidden" name="nomdua"
-                    value="{{ $nomdua }}" requiered>
+            <div tabindex="0">
+                <input type="hidden" name="nomdua" value="{{ $nomdua }}" requiered>
             </div>
 
 
             <div tabindex="0">
-                <input  type="hidden" name="sububicacion"
-                    value="{{ $sububicaion }}" requiered>
+                <input type="hidden" name="sububicacion" value="{{ $sububicaion }}" requiered>
             </div>
 
 
@@ -61,7 +61,7 @@
                 <small> Format Ejemplo: 20230512</small>
             </div>
 
-    
+
 
             <hr style="border-color: black; border-width: 2px;">
 
