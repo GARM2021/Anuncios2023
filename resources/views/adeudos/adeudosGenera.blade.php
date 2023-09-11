@@ -2,7 +2,7 @@
 @section('content')
     {{-- //! Clase 31 --}}
 
-    
+
 
     <h6 style="margin-left: 2%;">Genera Adeudos</h6>
 
@@ -49,15 +49,16 @@
                     <span class="input-group-text"> Recibo del Ultimo pago </span>
                 </div>
                 <input class=" highlight-on-hover_t" maxlength="60" type="text" name="recibo" id="recibo"
-                    placeholder="CCCCNNNNNN C=CAJA N=CONSECUTIVO">
+                    value="{{ old('recibo') ?? $frmitems['frmrecibo'] }}" placeholder="CCCCNNNNNN C=CAJA N=CONSECUTIVO">
             </div>
 
             <div class="input-group mb-3 ">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Fecha Ultimo Pago: </span>
                 </div>
-                <input class=" highlight-on-hover_t" type="text" maxlength="08" id="fupago" name="fupago"
-                    placeholder="AAAAMMDD" pattern="[0-9]{8}">
+                <input class=" highlight-on-hover_t" type="text" maxlength="08" id="fupago" v-model="fupago"
+                    name="fupago" value="{{ old('fupago') ?? $frmitems['frmfupago'] }}" placeholder="AAAAMMDD"
+                    pattern="[0-9]{8}">
                 <small> Format Ejemplo: 20230512</small>
             </div>
 
@@ -73,10 +74,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Año Pagado </span>
                 </div>
-                <select name="AñoPagado" id="AñoPagado" class="highlight-on-hover_t" requiered>
+              
+
+                <select name="AñoPagado" id="AñoPagado" class="highlight-on-hover_t"
+                    option value="{{ old('AñoPagado') ?? $frmitems['frmAñoPagado'] }}" requiered>
                     <?php
                     for ($year = 1999; $year <= 2024; $year++) {
-                        echo "<option value='$year'>$year</option>";
+                        echo "<option value='$year' " . ($year == $frmitems['frmAñoPagado'] ? "selected" : "") . ">$year</option>";
                     }
                     ?>
                 </select>
@@ -90,10 +94,12 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Año Generado </span>
                 </div>
-                <select name="AñoGenerado" id="AñoGenerado" class=" highlight-on-hover_t" requiered>
+
+                <select name="AñoGenerado" id="AñoGenerado" class="highlight-on-hover_t"
+                    option value="{{ old('AñoGenerado') ?? $frmitems['frmAñoGenerado'] }}" requiered>
                     <?php
-                    for ($yearf = 1999; $yearf <= 2024; $yearf++) {
-                        echo "<option value='$yearf'>$yearf</option>";
+                    for ($year = 1999; $year <= 2024; $year++) {
+                        echo "<option value='$year' " . ($year == $frmitems['frmAñoGenerado'] ? "selected" : "") . ">$year</option>";
                     }
                     ?>
                 </select>
@@ -121,6 +127,14 @@
 
         </form>
         <script>
+            export default {
+                data() {
+                    return {
+                        fupago: '',
+                    };
+                },
+            };
+
             // Obtén el botón por su nombre o clase, en este caso por su nombre "BCrea"
             window.onload = function() {
                 const botonCrea = document.querySelector('button[name="BCrea"]');

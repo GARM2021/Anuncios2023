@@ -37,9 +37,14 @@ class AdeudosController extends Controller
      */
     public function create($dua, $nomdua, $subdua, $nomsubdua, $sububicaion)
     {
-        // <a href="{{ route('duas.create')  }}" class="btn btn-success">Crea nuevo Dua</a>
-        // dd($dua);  
-        return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]);
+        $frmitems = [];
+        $frmitems["frmrecibo"] = '000000000000';
+        $frmitems["frmfupago"] = '000000000000';
+        $frmitems["frmAñoPagado"] = '1999';
+        $frmitems["frmAñoGenerado"] = '1999';
+       // dd($frmitems);
+
+        return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitems]);
     }
 
     /**
@@ -107,14 +112,22 @@ class AdeudosController extends Controller
         $subdua      = $request->input('subdua');
         $nomsubdua   = $request->input('nomsubdua');
         $sububicaion = $request->input('sububicaion');
-
+        $frmitems = [];
+        $frmitems['frmrecibo'] =  $request->input('recibo');
+        $frmitems['frmfupago'] = $request->input('fupago');
+        $frmitems['frmAñoPagado'] =  $request->input('AñoPagado');
+        $frmitems['frmAñoGenerado'] = $request->input('AñoGenerado');
+        
 
         $frmitem = [];
+        $sypag =  $request->input('AñoPagado');
+
 
         $frmitem["frmdua"] =  $request->input('dua');
         $frmitem["frmsubdua"] =  $request->input('subdua');
 
         $sypag =  $request->input('AñoPagado');
+
         $frmitem["frmsypag"] = $sypag;
         $frmitem["frmiypag"] = (int)$sypag;
 
@@ -147,11 +160,11 @@ class AdeudosController extends Controller
         session()->forget('alert');
         if (isset($DTAnu['error']) && $DTAnu['error'] === 'error') {
             session()->flash('alert', 'Fecha de pago erronea.');
+           
         }
 
-       
+        
 
-            return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]);
-       
+        return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitems]);
     }
 }
