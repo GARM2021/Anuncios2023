@@ -62,6 +62,11 @@
                 <small> Format Ejemplo: 20230512</small>
             </div>
 
+            <div class=" mb-3 ">
+                
+                <span id="datosrecibo" style="margin-left: 2%;" contenteditable="false">{{ $frmitems['datorecibo'] }}</span>
+            </div>
+
 
 
             <hr style="border-color: black; border-width: 2px;">

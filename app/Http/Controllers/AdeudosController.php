@@ -159,7 +159,12 @@ class AdeudosController extends Controller
 
         session()->forget('alert');
         if (isset($DTAnu['error']) && $DTAnu['error'] === 'error') {
-            session()->flash('alert', 'Fecha de pago erronea.');
+            session()->flash('alert', $DTAnu['mensaje']);
+            $frmitem["datorecibo"] = " ";
+
+        }
+        if (isset($DTAnu['datorecibo']) ) {
+           $frmitem["datorecibo"] = $DTAnu["datorecibo"];
            
         }
 

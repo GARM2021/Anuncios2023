@@ -126,11 +126,16 @@ class AnuncioModel extends Model
     public function FSubDUA($frmitem)
     {
         $errors = [];
+        $datosrecibo = [];
         $ierror = 0;
         $gsDUA = $frmitem["frmdua"];
         $gsSubDUA = $frmitem["frmsubdua"];
         $frmrecibo = $frmitem["frmrecibo"];
         $frmfupago  = $frmitem["frmfupago"];
+
+        $dyini0 = 0;
+
+        
 
         $anundanuncios = AnuncioModel::where('dua', $gsDUA)
             ->where('subdua', $gsSubDUA)
@@ -144,18 +149,26 @@ class AnuncioModel extends Model
 
         $recibo = IngresdingresosModel::where('recibo', $frmrecibo)
             ->where('fecha', $frmfupago)
-            ->get();
+            ->first();
 
-        dd($recibo);
-        $dyini0 = 0;
-         // en este for solo debe considerar la finicio y todo lo demas fuera del for
+        if ($recibo !== null) {
+
+            $datorecibo =  $recibo->nombre . " " . $recibo->concepto_1 . $recibo->concepto_2 . $recibo->concepto_3 ;
+            $datosrecibo["datosrecibo"] = $datorecibo;
+            // dump($datorecibo);
+        } else {
+           $ierror = 5;
+        }
+      
+
+        // en este for solo debe considerar la finicio y todo lo demas fuera del for
         for ($i = 0; $i < $anundanuncios->count(); $i++) {
             $arow = $anundanuncios[$i];
             $syini = substr($arow->finicio, 0, 4);
             $dmini = (float)substr($arow->finicio, 4, 2);
             $dyini = (float)$syini;
             $iyini = (int)$syini;
-            
+
             $sycap = substr($frmitem["iycap"], 0, 4);
             $dycap = (float)$sycap;
             $iycap = (int)$sycap;
@@ -167,7 +180,6 @@ class AnuncioModel extends Model
             if ($dyini0 < $dyini) {
 
                 $dyini0 = $dyini;
-               
             }
 
             if ($iyini > $frmitem["iypag"]) {
@@ -191,15 +203,25 @@ class AnuncioModel extends Model
 
 
         $errors["error"] = "no";
-        if ($ierror > 0) {
+        if ($ierror > 0 && $ierror < 5) {
 
-      
+
             $errors["error"] = "error";
             $errors["mensaje"] = "Fecha de pago erronea";
-           
+        }
+        if ($ierror == 5) {
+
+
+            $errors["error"] = "error";
+            $errors["mensaje"] = "Numero o fecha de Recibo incorrectas. Favor Verificar.";
+        }
+        if ($ierror == 0) {
+
+
+            $errors["datorecibo"] = $datorecibo;
+            
         }
         return $errors;
-
     }
     /////////////////////////////
 
