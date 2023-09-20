@@ -155,7 +155,7 @@ class AnuncioModel extends Model
 
             $datorecibo =  $recibo->nombre . " " . $recibo->concepto_1 . $recibo->concepto_2 . $recibo->concepto_3 ;
             $datosrecibo["datosrecibo"] = $datorecibo;
-            // dump($datorecibo);
+           
         } else {
            $ierror = 5;
         }
@@ -197,8 +197,7 @@ class AnuncioModel extends Model
             if ($iycap > $iyade) {
                 $ierror += 1;
             }
-
-            // dump($ierror);
+          
         }
 
 

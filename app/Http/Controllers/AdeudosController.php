@@ -42,6 +42,7 @@ class AdeudosController extends Controller
         $frmitems["frmfupago"] = '000000000000';
         $frmitems["frmAñoPagado"] = '1999';
         $frmitems["frmAñoGenerado"] = '1999';
+        $frmitems["datorecibo"] = ' ';
        // dd($frmitems);
 
         return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitems]);
@@ -149,6 +150,8 @@ class AdeudosController extends Controller
         $frmitem["iyade1"] =  $iyade;
         $frmitem["iypag"] = (int)$sypag;
         $frmitem["iycap"] = (int)$sycap;
+
+        $frmitem["datorecibo"] = " ";
 
 
 
