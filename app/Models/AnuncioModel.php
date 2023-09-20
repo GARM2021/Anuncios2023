@@ -129,6 +129,8 @@ class AnuncioModel extends Model
         $ierror = 0;
         $gsDUA = $frmitem["frmdua"];
         $gsSubDUA = $frmitem["frmsubdua"];
+        $frmrecibo = $frmitem["frmrecibo"];
+        $frmfupago  = $frmitem["frmfupago"];
 
         $anundanuncios = AnuncioModel::where('dua', $gsDUA)
             ->where('subdua', $gsSubDUA)
@@ -140,15 +142,20 @@ class AnuncioModel extends Model
             })
             ->get();
 
-        // dd($anundanuncios);
+        $recibo = IngresdingresosModel::where('recibo', $frmrecibo)
+            ->where('fecha', $frmfupago)
+            ->get();
 
+        dd($recibo);
+        $dyini0 = 0;
+         // en este for solo debe considerar la finicio y todo lo demas fuera del for
         for ($i = 0; $i < $anundanuncios->count(); $i++) {
             $arow = $anundanuncios[$i];
             $syini = substr($arow->finicio, 0, 4);
             $dmini = (float)substr($arow->finicio, 4, 2);
             $dyini = (float)$syini;
             $iyini = (int)$syini;
-
+            
             $sycap = substr($frmitem["iycap"], 0, 4);
             $dycap = (float)$sycap;
             $iycap = (int)$sycap;
@@ -157,33 +164,29 @@ class AnuncioModel extends Model
             $dyade = (float)$syade;
             $iyade = (int)$syade;
 
+            if ($dyini0 < $dyini) {
 
-            dump("iyini", $iyini);
-            dump("iycap", $iycap); 
-            dump( "iypag", $frmitem["iypag"]);
-            dump( "iyade", $frmitem["iyade"]);
-           
-            
-            
-           
+                $dyini0 = $dyini;
+               
+            }
 
             if ($iyini > $frmitem["iypag"]) {
                 $ierror += 1;
             }
-            dump($ierror);
+            // dump($ierror);
             if ($iyini > $iycap) {
                 $ierror += 1;
             }
-            dump($ierror);
+            // dump($ierror);
             if ($frmitem["iypag"] > $frmitem["iyade"]) {
                 $ierror += 1;
             }
-            dump($ierror);
+            // dump($ierror);
             if ($iycap > $iyade) {
                 $ierror += 1;
             }
 
-            dump($ierror);
+            // dump($ierror);
         }
 
 

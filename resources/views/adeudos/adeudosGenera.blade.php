@@ -74,13 +74,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> Año Pagado </span>
                 </div>
-              
 
-                <select name="AñoPagado" id="AñoPagado" class="highlight-on-hover_t"
-                    option value="{{ old('AñoPagado') ?? $frmitems['frmAñoPagado'] }}" requiered>
+
+                <select name="AñoPagado" id="AñoPagado" class="highlight-on-hover_t" option
+                    value="{{ old('AñoPagado') ?? $frmitems['frmAñoPagado'] }}" requiered>
                     <?php
                     for ($year = 1999; $year <= 2024; $year++) {
-                        echo "<option value='$year' " . ($year == $frmitems['frmAñoPagado'] ? "selected" : "") . ">$year</option>";
+                        echo "<option value='$year' " . ($year == $frmitems['frmAñoPagado'] ? 'selected' : '') . ">$year</option>";
                     }
                     ?>
                 </select>
@@ -95,11 +95,11 @@
                     <span class="input-group-text"> Año Generado </span>
                 </div>
 
-                <select name="AñoGenerado" id="AñoGenerado" class="highlight-on-hover_t"
-                    option value="{{ old('AñoGenerado') ?? $frmitems['frmAñoGenerado'] }}" requiered>
+                <select name="AñoGenerado" id="AñoGenerado" class="highlight-on-hover_t" option
+                    value="{{ old('AñoGenerado') ?? $frmitems['frmAñoGenerado'] }}" requiered>
                     <?php
                     for ($year = 1999; $year <= 2024; $year++) {
-                        echo "<option value='$year' " . ($year == $frmitems['frmAñoGenerado'] ? "selected" : "") . ">$year</option>";
+                        echo "<option value='$year' " . ($year == $frmitems['frmAñoGenerado'] ? 'selected' : '') . ">$year</option>";
                     }
                     ?>
                 </select>

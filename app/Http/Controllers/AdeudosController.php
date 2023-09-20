@@ -112,14 +112,14 @@ class AdeudosController extends Controller
         $subdua      = $request->input('subdua');
         $nomsubdua   = $request->input('nomsubdua');
         $sububicaion = $request->input('sububicaion');
-        $frmitems = [];
-        $frmitems['frmrecibo'] =  $request->input('recibo');
-        $frmitems['frmfupago'] = $request->input('fupago');
-        $frmitems['frmAñoPagado'] =  $request->input('AñoPagado');
-        $frmitems['frmAñoGenerado'] = $request->input('AñoGenerado');
+        $frmitem = [];
+        $frmitem['frmrecibo'] =  $request->input('recibo');
+        $frmitem['frmfupago'] = $request->input('fupago');
+        $frmitem['frmAñoPagado'] =  $request->input('AñoPagado');
+        $frmitem['frmAñoGenerado'] = $request->input('AñoGenerado');
         
 
-        $frmitem = [];
+        
         $sypag =  $request->input('AñoPagado');
 
 
@@ -165,6 +165,6 @@ class AdeudosController extends Controller
 
         
 
-        return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitems]);
+        return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitem]);
     }
 }

@@ -82,20 +82,6 @@ genera un ejemplo usando Laravel PDF donde se imprima un encabezado " Encabezado
 Ver otras versiones
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Claro, aquí tienes un ejemplo de cómo usar Laravel PDF para imprimir un documento con un encabezado, un campo de nombre, una tabla y un campo de nombre de quien lo elabora:
 
 PHP
@@ -151,5 +137,9 @@ Usa el código con precaución. Más información
 Para agregar contenido dinámico al documento, puedes usar la variable data. Esta variable contiene los datos que se pasarán al documento PDF. Por ejemplo, puedes agregar el siguiente código para agregar el nombre del usuario a la vista pdf.document:
 HTML
 <h1>Encabezado: {{ data.nombre }}</h1>
+
+//-----------------------------------------------------------------------------
+20230919
+D:\xampp\htdocs\Anuncios2023>php artisan make:model Ingresdingresos
 
 
