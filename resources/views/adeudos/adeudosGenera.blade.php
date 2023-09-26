@@ -63,8 +63,9 @@
             </div>
 
             <div class=" mb-3 ">
-                
-                <span id="datosrecibo" style="margin-left: 2%;" contenteditable="false">{{ $frmitems['datorecibo'] }}</span>
+
+                <span disabled id="datosrecibo" style="margin-left: 2%;"
+                    contenteditable="false">{{ $frmitems['datorecibo'] }}</span>
             </div>
 
 
@@ -120,167 +121,36 @@
 
             <div tabindex="0">
                 <button name="BCrea" type="submit" class="btn btn-primary btn-sm"
-                    onclick="document.forms.Genera.submit();">Genera Adeudos</button>
+                    onclick="document.forms.Genera.submit();">Valida Datos</button>
                 {{-- //! aqui lo resolvi en esta pagina --}}
                 {{-- https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario --}}
                 {{--  --}}
             </div> <br>
 
+            <br>
 
+            <div tabindex="0">
+                <button disabled id="BCalcula" name="BCalcula" type="submit" class="btn btn-primary btn-sm"
+                    onclick="document.forms.Genera.submit();">Calcula Anuncios</button>
+             </div> <br>
 
 
 
         </form>
         <script>
-            export default {
-                data() {
-                    return {
-                        fupago: '',
-                    };
-                },
-            };
-
-            // Obtén el botón por su nombre o clase, en este caso por su nombre "BCrea"
             window.onload = function() {
-                const botonCrea = document.querySelector('button[name="BCrea"]');
-
-                // Agrega un event listener al botón
-                botonCrea.addEventListener('click', function(event) {
-                    // Evita que se envíe el formulario automáticamente
-                    event.preventDefault();
-
-                    // Aquí puedes realizar acciones personalizadas después de hacer clic en el botón
-                    var efcaptura = document.getElementById("fcaptura");
-                    var ehcaptura = document.getElementById("horacap");
-                    var ecvereq = document.getElementById("cvereq");
-                    var estatus = document.getElementById("status");
-                    var econcepto = document.getElementById("concepto");
-
-                    ecvereq.value = 0;
-                    estatus.value = 0;
-                    econcepto.value = '2480';
-
-                    const fecha = new Date();
-
-                    const año = fecha.getFullYear();
-                    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
-                    const dia = String(fecha.getDate()).padStart(2, '0');
-
-                    // return `${año}${mes}${dia}`;
-
-                    const ecaptura = `${año}${mes}${dia}`.padEnd(8, ' ');
-                    efcaptura.value = ecaptura;
 
 
-                    const horas = String(fecha.getHours()).padStart(2, '0');
-                    const minutos = String(fecha.getMinutes()).padStart(2, '0');
+                frm_idatosrecibo = document.getElementById("datosrecibo");
+                frm_BCalcula = document.getElementById("BCalcula");
 
+              
 
-                    const horacap = `${horas}:${minutos}`.padEnd(8, ' ');
+                if(frm_idatosrecibo.textContent.length > 2) {
 
-                    ehcaptura.value = horacap;
-
-
-                    // También puedes enviar el formulario manualmente si lo deseas
-                    document.forms.Crea.submit();
-                });
-            }
-
-            function cambiaTipos() {
-
-                var eftermino = document.getElementById("ftermino");
-                var edias = document.getElementById("dias");
-                var enum_anun = document.getElementById("num_anun_temp");
-
-                eftermino.type = "hidden";
-                edias.type = "hidden";
-                enum_anun.type = "hidden";
-
-                var rtipos = document.querySelectorAll('input[name="rtipoanuncio"]');
-                var ranas = document.querySelectorAll('input[name="ANA"]');
-                var siana = "NO";
-                var sana = "C"
-                ranas.forEach(function(rana) {
-                    if (rana.checked) {
-                        sana = rana.value;
-                        siana = "SI";
-                    }
-                });
-
-                var srta;
-                rtipos.forEach(function(rtipo) {
-                    if (rtipo.checked) {
-                        srta = rtipo.value;
-                    }
-                });
-
-                if (siana == "SI") {
-
-
-                    if (sana == "A") {
-                        if (srta == "PR") {
-                            srta = 'AP'
-                        }
-                        if (srta == "AJ") {
-                            srta = 'AA'
-                        }
-
-                    }
-                    if (sana == "N") {
-                        if (srta == "PR") {
-                            srta = 'PR'
-                        }
-                        if (srta == "AJ") {
-                            srta = 'AJ'
-                        }
-
-                    }
-
-
+                    frm_BCalcula.disabled = false;
                 }
-
-                var vtpoanun = document.getElementById("tipoanuncio");
-
-                vtpoanun.value = srta;
-
-                if (srta == "TE") {
-
-                    edias.type = "text";
-
-                    enum_anun.type = "text";
-
-                    eftermino.type = "text";
-
-                }
-
-            }
-
-            function updateCvecol(value) {
-                document.getElementsByName("colonia")[0].value = value;
-            }
-
-            function cambiaMedidas(sender, e) {
-                try {
-
-                    var gtbancho = document.getElementById("ancho");
-                    var sancho = gtbancho.value;
-                    var gtblargo = document.getElementById("largo");
-                    var slargo = gtblargo.value;
-                    var gdancho = parseFloat(sancho);
-                    var gdlargo = parseFloat(slargo);
-
-                    var goarea = document.getElementById("area");
-
-                    var gdarea = gdancho * gdlargo;
-                    gdarea = gdarea.toFixed(2);
-
-                    var sarea = gdarea.toString();
-                    goarea.value = sarea;
-
-                } catch (ex) {
-                    var sEx = ex.message.toString();
-                    document.write("Mensaje de Error: " + sEx);
-                }
+             
             }
         </script>
     @endsection

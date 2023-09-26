@@ -76,26 +76,6 @@ class AnuncioModel extends Model
 
     ];
 
-    // public function actualizarPrecio()
-    // {
-    //     $fechaActual = new DateTime();
-    //     $fechaCompra = $this ->fecha_compra;
-
-    //     $diferencia = $fechaActual->diff($fechaCompra);
-
-    //     if ($diferencia->days > 30) {
-    //         $this->precio += $this->precio * 0.10;
-    //         $this->save();
-    //     }
-    // }
-
-    // public function aplicarDescuento()
-    // {
-    //     if (strpos($this->nombre, 'rebajado') !== false) {
-    //         $this->precio -= $this->precio * 0.15;
-    //         $this->save();
-    //     }
-    // }
 
     public function  fechahoy()
     {
@@ -134,8 +114,6 @@ class AnuncioModel extends Model
         $frmfupago  = $frmitem["frmfupago"];
 
         $dyini0 = 0;
-
-        
 
         $anundanuncios = AnuncioModel::where('dua', $gsDUA)
             ->where('subdua', $gsSubDUA)

@@ -43,62 +43,35 @@ class AdeudosController extends Controller
         $frmitems["frmAñoPagado"] = '1999';
         $frmitems["frmAñoGenerado"] = '1999';
         $frmitems["datorecibo"] = ' ';
-       // dd($frmitems);
+        // dd($frmitems);
 
         return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitems]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
@@ -118,9 +91,9 @@ class AdeudosController extends Controller
         $frmitem['frmfupago'] = $request->input('fupago');
         $frmitem['frmAñoPagado'] =  $request->input('AñoPagado');
         $frmitem['frmAñoGenerado'] = $request->input('AñoGenerado');
-        
 
-        
+
+
         $sypag =  $request->input('AñoPagado');
 
 
@@ -151,12 +124,13 @@ class AdeudosController extends Controller
         $frmitem["iypag"] = (int)$sypag;
         $frmitem["iycap"] = (int)$sycap;
 
-        $frmitem["datorecibo"] = " ";
+        $frmitem["datorecibo"] = "**";
 
 
 
         $dsanun = new AnuncioModel();
         $DTAnu = $dsanun->FSubDUA($frmitem);
+
 
         // dd($DTAnu);
 
@@ -165,14 +139,13 @@ class AdeudosController extends Controller
             session()->flash('alert', $DTAnu['mensaje']);
             $frmitem["datorecibo"] = " ";
 
+            return view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitem]);
         }
-        if (isset($DTAnu['datorecibo']) ) {
-           $frmitem["datorecibo"] = $DTAnu["datorecibo"];
-           
+        if (isset($DTAnu['datorecibo'])) {
+            $frmitem["datorecibo"] = $DTAnu["datorecibo"];
+
+
+            return view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitem]);
         }
-
-        
-
-        return  view('adeudos.adeudosGenera')->with(['dua' => str_pad($dua, 6, '0', STR_PAD_LEFT),  'nomdua' => $nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion, 'frmitems' => $frmitem]);
     }
 }
