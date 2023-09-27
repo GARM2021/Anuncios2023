@@ -120,8 +120,9 @@
             <br>
 
             <div tabindex="0">
-                <button name="BCrea" type="submit" class="btn btn-primary btn-sm"
-                    onclick="document.forms.Genera.submit();">Valida Datos</button>
+                <button id="BCrea" name="BCrea" type="submit" value="valida" class="btn btn-primary btn-sm"
+                    {{-- onclick="document.forms.Genera.submit();">Valida Datos</button> --}}
+                    >Valida Datos</button>
                 {{-- //! aqui lo resolvi en esta pagina --}}
                 {{-- https://es.stackoverflow.com/questions/418419/el-bot%C3%B3n-submit-no-funciona-en-formulario --}}
                 {{--  --}}
@@ -130,27 +131,23 @@
             <br>
 
             <div tabindex="0">
-                <button disabled id="BCalcula" name="BCalcula" type="submit" class="btn btn-primary btn-sm"
-                    onclick="document.forms.Genera.submit();">Calcula Anuncios</button>
-             </div> <br>
+                <button disabled id="BCalcula" name="BCalcula" type="submit" value="calcula" class="btn btn-primary btn-sm"
+                    {{-- onclick="document.forms.Genera.submit();">Calcula Anuncios</button> --}}
+                    >Calcula Anuncios</button>
+            </div> <br>
 
 
 
         </form>
         <script>
             window.onload = function() {
-
-
                 frm_idatosrecibo = document.getElementById("datosrecibo");
                 frm_BCalcula = document.getElementById("BCalcula");
 
-              
-
-                if(frm_idatosrecibo.textContent.length > 2) {
+                if (frm_idatosrecibo.textContent.length > 2) {
 
                     frm_BCalcula.disabled = false;
                 }
-             
             }
         </script>
     @endsection

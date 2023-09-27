@@ -184,7 +184,7 @@ class AnuncioModel extends Model
 
 
             $errors["error"] = "error";
-            $errors["mensaje"] = "Fecha de pago erronea";
+            $errors["mensaje"] = "ERROR: Verifique Año Pagado y Año Generado ";
         }
         if ($ierror == 5) {
 
@@ -197,6 +197,12 @@ class AnuncioModel extends Model
 
             $errors["datorecibo"] = $datorecibo;
             
+        }
+        if ($ierror > 5 ) {
+
+
+            $errors["error"] = "error";
+            $errors["mensaje"] = "ERROR: Verifique Año Pagado y Año Generado " . " y Numero o fecha de Recibo incorrectas" ;
         }
         return $errors;
     }

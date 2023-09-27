@@ -126,7 +126,9 @@ class AdeudosController extends Controller
 
         $frmitem["datorecibo"] = "**";
 
-
+        if ($request->input('BCalcula') === 'calcula') {
+            
+        }
 
         $dsanun = new AnuncioModel();
         $DTAnu = $dsanun->FSubDUA($frmitem);
