@@ -279,11 +279,11 @@ class AnuncioModel extends Model
 
             $gdcuota = 103.74;
 
-                      dump("irecof  " .      $irecof          );
-                      dump("ifbajax " .      $ifbajax);
-                      dump("iyade " .        $iyade);
-                      dump("iyini" .         $iyini);
-                      dump("stipoanuncio" .  $stipoanuncio);
+                    //   dump("irecof  " .      $irecof          );
+                    //   dump("ifbajax " .      $ifbajax);
+                    //   dump("iyade " .        $iyade);
+                    //   dump("iyini" .         $iyini);
+                    //   dump("stipoanuncio" .  $stipoanuncio);
 
             if ($irecof > 0) {
                
@@ -337,7 +337,94 @@ class AnuncioModel extends Model
                 $ipasoaj = 1;
             }
 
-            dd("ipasoaj" . $ipasoaj);
+            // dd("ipasoaj" . $ipasoaj);
         }
+
+        /////////////////////////////////////////
+       
+        if ($ipasoaj == 1) {
+            $dlicencia = bcmul($darea, 2.5, 2);
+            if ($dlicencia > 50) {
+                $darea = 50;
+            }
+            if ($dlicencia <= 2.5) {
+                $darea = 2.5;
+            }
+            if ($dlicencia > 2.5) {
+                if ($dlicencia < 51) {
+                    $darea = $dlicencia;
+                }
+            }
+
+            $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
+            $dconstancia = 0;
+        }
+
+        // Calculo de la licencia para anuncios tipo TE
+        if ($stipoanuncio == 'TE') {
+            $ddiast =$arow['ddiast'];
+            $dnum_anun = $arow['dnum_anun'];
+
+            $dlicencia = bcmul(bcmul($darea, $ddiast, 2), bcmul(103.74, 0.4, 2), 2);
+            $dlicencia = bcmul($dlicencia, $dnum_anun, 2);
+            $dconstancia = 0;
+            $syade05 = '000000';
+            $syade04 = '000000';
+            $dbonrec = 0;
+            $dbonsan = 0;
+
+            if ($ifecpag > 0) {
+                $stipoanuncio = 'xx';
+            }
+        }
+
+        // Calculo de la licencia para anuncios tipo EL
+        if ($stipoanuncio == 'EL') {
+            $dlicencia = bcmul($darea, 2.5, 2);
+            if ($dlicencia > 75) {
+                $darea = 75;
+            }
+            if ($dlicencia < 2.5) {
+                $darea = 2.5;
+            }
+            if ($dlicencia > 2.5) {
+                if ($dlicencia < 75) {
+                    $darea = $dlicencia;
+                }
+            }
+
+            $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
+            $dconstancia = 0;
+        }
+
+        // Calculo del rezago, recargos y sanciones
+        if ($dconstancia > 0) {
+            $drezago = 0;
+            $drecargo = 0;
+            $dsancion = 0;
+            $dbonrec = 0;
+            $dbonsan = 0;
+            $dlicencia = 0;
+        }
+
+        // Calculo del indicador de paso 1
+        $ipasouno = 0;
+        if ($stipoanuncio != 'TE') {
+            $ipasouno++;
+        }
+        if ($dconstancia == 0) {
+            $ipasouno++;
+        }
+        if ($stipoanuncio != 'xx') {
+            $ipasouno++;
+        }
+
+        // Retorno de los resultados
+        
+            dump("dlicencia "   . $dlicencia);
+            dump("dconstancia " . $dconstancia);
+            dd("ipasouno "    . $ipasouno);
+     
+        
     }
 }
