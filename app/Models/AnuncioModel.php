@@ -10,7 +10,8 @@ class AnuncioModel extends Model
 {
     protected $table = 'anundanuncios'; //! clase 24
     protected $primaryKey = 'cuenta'; //! Clase  24
-
+  
+    
 
     public static  $gsDUA;
     public static  $gsDUAnomcol;
@@ -131,13 +132,12 @@ class AnuncioModel extends Model
 
         if ($recibo !== null) {
 
-            $datorecibo =  $recibo->nombre . " " . $recibo->concepto_1 . $recibo->concepto_2 . $recibo->concepto_3 ;
+            $datorecibo =  $recibo->nombre . " " . $recibo->concepto_1 . $recibo->concepto_2 . $recibo->concepto_3;
             $datosrecibo["datosrecibo"] = $datorecibo;
-           
         } else {
-           $ierror = 5;
+            $ierror = 5;
         }
-      
+
 
         // en este for solo debe considerar la finicio y todo lo demas fuera del for
         for ($i = 0; $i < $anundanuncios->count(); $i++) {
@@ -175,7 +175,6 @@ class AnuncioModel extends Model
             if ($iycap > $iyade) {
                 $ierror += 1;
             }
-          
         }
 
 
@@ -196,16 +195,149 @@ class AnuncioModel extends Model
 
 
             $errors["datorecibo"] = $datorecibo;
-            
         }
-        if ($ierror > 5 ) {
+        if ($ierror > 5) {
 
 
             $errors["error"] = "error";
-            $errors["mensaje"] = "ERROR: Verifique Año Pagado y Año Generado " . " y Numero o fecha de Recibo incorrectas" ;
+            $errors["mensaje"] = "ERROR: Verifique Año Pagado y Año Generado " . " y Numero o fecha de Recibo incorrectas";
         }
         return $errors;
     }
-    /////////////////////////////
 
+    public function FCalAnun($frmitem)
+    {
+
+        $errors = [];
+        $datosrecibo = [];
+        $ierror = 0;
+        $gsDUA = $frmitem["frmdua"];
+        $gsSubDUA = $frmitem["frmsubdua"];
+        $frmrecibo = $frmitem["frmrecibo"];
+        $frmfupago  = $frmitem["frmfupago"];
+
+        $dyini0 = 0;
+
+        $anundanuncios = AnuncioModel::where('dua', $gsDUA)
+            ->where('subdua', $gsSubDUA)
+            ->where(function ($query) {
+                $query->whereNull('fbajax')
+                    ->orWhere('fbajax', '=', '')
+                    ->orWhere('fbajax', '=', '0   ')
+                    ->orWhere('fbajax', '=', '00000000');
+            })
+            ->get();
+
+            
+        //  dump($frmitem);
+        // dd($anundanuncios);
+
+         
+
+        foreach ($anundanuncios as $arow) {
+            $dyade1 =  $frmitem["dyade"];
+            $syade05 = $frmitem["syade04"];
+
+
+            // dump("arow" . $arow);
+            // dump("dyade1 " . $dyade1);
+            // dd("syade05 " . $syade05);
+
+            $ifbajax = 0;
+           
+            $dbonrec = 0;
+            $dbonsan = 0;
+            $drezago = 0;
+            $drecargo = 0;
+            $dsancion = 0;
+           
+            $darea = 0;
+         
+            $d_meses_acum = 0;
+            $dacum_tasa = 0;
+
+            $iyade =  $frmitem["iyade"];
+
+            $scuenta = $arow['cuenta'];
+
+            $dvistas = floatval($arow['vistas']);
+            $stipoanuncio = $arow['tipoanuncio'];
+            $darea = floatval($arow['area']);
+            $spaso = $arow['finicio'];
+
+            $iyini = (int) substr($spaso, 0, 4);
+            $dyini = floatval($iyini);
+            $imini = (int) substr($spaso, 4, 2);
+            $dmini = floatval($iyini);
+            $imini;
+            $irecof = (int) $arow['recof'];
+       
+            $ifecpag = (int) $arow['fpago'];
+
+            $spaso = $arow['fpago'];
+            $spaso = substr($spaso, 0, 4);
+
+            $gdcuota = 103.74;
+
+                      dump("irecof  " .      $irecof          );
+                      dump("ifbajax " .      $ifbajax);
+                      dump("iyade " .        $iyade);
+                      dump("iyini" .         $iyini);
+                      dump("stipoanuncio" .  $stipoanuncio);
+
+            if ($irecof > 0) {
+               
+                if ($ifecpag > 20221231) {
+                    $ifbajax = 99999;
+                }
+            }
+           
+            if ($ifbajax != 0) {
+                $stipoanuncio = 'xx';
+            }
+            if ($iyade < $iyini) { // Evita generar adeudos anteriores a la fecha de inicio del anuncio
+                $stipoanuncio = 'xx';
+            }
+            if ($stipoanuncio == 'AP') {
+                $dconstancia = $gdcuota;
+                $dlicencia = 0;
+            }
+            if ($stipoanuncio == 'PR') {
+                if ($darea < 13) {
+                    $dconstancia = $gdcuota;
+                    $dlicencia = 0;
+                }
+            }
+            if ($stipoanuncio == 'PR') {
+                if ($darea > 12) {
+                    $dlicencia = ($darea * 2.5);
+
+                    if ($dlicencia > 50) {
+                        $darea = 50;
+                    }
+                    if ($dlicencia >= 2.5) {
+                        if ($dlicencia < 51) {
+                            $darea = $dlicencia;
+                        }
+                    }
+
+                    $dlicencia = (($darea * $dvistas) * $gdcuota);
+                    $dconstancia = 0;
+                }
+            }
+
+            
+            
+            $ipasoaj = 0;
+            // Trace.Write("358>>>>>>>>>>>>>>");
+            if ($stipoanuncio == 'AJ') {
+                $ipasoaj = 1;
+            }
+            if ($stipoanuncio == 'AA') {
+                $ipasoaj = 1;
+            }
+
+            dd("ipasoaj" . $ipasoaj);
+        }
+    }
 }

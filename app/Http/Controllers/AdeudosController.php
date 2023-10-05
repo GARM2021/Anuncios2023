@@ -109,13 +109,13 @@ class AdeudosController extends Controller
         $frmitem["frmsycap"] =   substr($sycap, 0, 4);
 
         $syade = $request->input('AñoGenerado');
-        $dyade = (float)$syade;
+        $dyade = $syade;
 
 
         $iyade = (int)$syade;
 
         $frmitem["syade"] = $request->input('AñoGenerado');
-        $frmitem["dyade"] = (float)$syade;
+        $frmitem["dyade"] = $syade;
         $frmitem["dyade1"] =  $dyade;
         $frmitem["syade04"] =  substr($syade, 0, 4) . "04";
 
@@ -127,7 +127,9 @@ class AdeudosController extends Controller
         $frmitem["datorecibo"] = "**";
 
         if ($request->input('BCalcula') === 'calcula') {
-            
+
+            $dsacal = new AnuncioModel();
+            $DTAnu = $dsacal->FCalAnun($frmitem);
         }
 
         $dsanun = new AnuncioModel();

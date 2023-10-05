@@ -48,7 +48,7 @@
                     Lerror_captura.Text = "La Fecha Ultimo año Pagado es MAYOR a la de Año de Adeudos x Generar";
 
                 }
-                if (ierror < 01)
+                if (ierror < 01) //20230927 empiezo a transcribir
                 {
                     //Trace.Write("262>>>>>>>>>>>>>>");
                     foreach (DataRow arow in dsanun.DTAnu.Rows)
