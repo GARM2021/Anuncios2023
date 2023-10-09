@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 
 class AnuncioModel extends Model
 {
     protected $table = 'anundanuncios'; //! clase 24
     protected $primaryKey = 'cuenta'; //! Clase  24
-  
-    
+
+
 
     public static  $gsDUA;
     public static  $gsDUAnomcol;
@@ -228,11 +229,11 @@ class AnuncioModel extends Model
             })
             ->get();
 
-            
+
         //  dump($frmitem);
         // dd($anundanuncios);
 
-         
+
 
         foreach ($anundanuncios as $arow) {
             $dyade1 =  $frmitem["dyade"];
@@ -244,15 +245,15 @@ class AnuncioModel extends Model
             // dd("syade05 " . $syade05);
 
             $ifbajax = 0;
-           
+
             $dbonrec = 0;
             $dbonsan = 0;
             $drezago = 0;
             $drecargo = 0;
             $dsancion = 0;
-           
+
             $darea = 0;
-         
+
             $d_meses_acum = 0;
             $dacum_tasa = 0;
 
@@ -271,7 +272,7 @@ class AnuncioModel extends Model
             $dmini = floatval($iyini);
             $imini;
             $irecof = (int) $arow['recof'];
-       
+
             $ifecpag = (int) $arow['fpago'];
 
             $spaso = $arow['fpago'];
@@ -279,19 +280,19 @@ class AnuncioModel extends Model
 
             $gdcuota = 103.74;
 
-                    //   dump("irecof  " .      $irecof          );
-                    //   dump("ifbajax " .      $ifbajax);
-                    //   dump("iyade " .        $iyade);
-                    //   dump("iyini" .         $iyini);
-                    //   dump("stipoanuncio" .  $stipoanuncio);
+            //   dump("irecof  " .      $irecof          );
+            //   dump("ifbajax " .      $ifbajax);
+            //   dump("iyade " .        $iyade);
+            //   dump("iyini" .         $iyini);
+            //   dump("stipoanuncio" .  $stipoanuncio);
 
             if ($irecof > 0) {
-               
+
                 if ($ifecpag > 20221231) {
                     $ifbajax = 99999;
                 }
             }
-           
+
             if ($ifbajax != 0) {
                 $stipoanuncio = 'xx';
             }
@@ -326,8 +327,8 @@ class AnuncioModel extends Model
                 }
             }
 
-            
-            
+
+
             $ipasoaj = 0;
             // Trace.Write("358>>>>>>>>>>>>>>");
             if ($stipoanuncio == 'AJ') {
@@ -341,7 +342,7 @@ class AnuncioModel extends Model
         }
 
         /////////////////////////////////////////
-       
+
         if ($ipasoaj == 1) {
             $dlicencia = bcmul($darea, 2.5, 2);
             if ($dlicencia > 50) {
@@ -362,7 +363,7 @@ class AnuncioModel extends Model
 
         // Calculo de la licencia para anuncios tipo TE
         if ($stipoanuncio == 'TE') {
-            $ddiast =$arow['ddiast'];
+            $ddiast = $arow['ddiast'];
             $dnum_anun = $arow['dnum_anun'];
 
             $dlicencia = bcmul(bcmul($darea, $ddiast, 2), bcmul(103.74, 0.4, 2), 2);
@@ -420,11 +421,59 @@ class AnuncioModel extends Model
         }
 
         // Retorno de los resultados
-        
-            dump("dlicencia "   . $dlicencia);
-            dump("dconstancia " . $dconstancia);
-            dd("ipasouno "    . $ipasouno);
-     
-        
+
+        dump($frmitem);
+        dump($anundanuncios);
+
+        dump("dlicencia "   . $dlicencia);
+        dump("dconstancia " . $dconstancia);
+        dump("ipasouno "    . $ipasouno);
+
+        /////////////////////////////////////////////////////
+
+        if ($ipasouno == 3) {
+
+            $sycalc = $frmitem["syade"];
+
+            $dstm = MrecargoModel::where("aniotasa", $sycalc)->get();
+
+            $gdtasam = $dstm[0]["tasamensual"];
+
+
+            $gdañohoy =  Carbon::now()->year;
+            $gdmeshoy =  Carbon::now()->month;
+            dump("gdmeshoy " . $gdmeshoy);
+
+            // Calcula los recargos
+            if ($dyade1 < $gdañohoy) {
+                $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
+                $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+            }
+            if ($dyade1 == $gdañohoy) {
+                if ($gdmeshoy >= 4) {
+                    $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
+                    $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+                }
+            }
+
+            //     // Calcula la tasa acumulada
+                if ($dyade1 < $gdañohoy) {
+                    $d_meses_acum = 12;
+
+                    if ($dyade1 == 1996) {
+                        $d_meses_acum = $d_meses_acum - 7;
+                    }
+                    if ($dyade1 != 1996) {
+                        $d_meses_acum = $d_meses_acum - 3;
+                    }
+                    $dtasa_por = bcmul($d_meses_acum, $gdtasam);
+                    $dacum_tasa = bcadd($dacum_tasa, $dtasa_por, 2);
+                    $dyade1 = $dyade1 + 1;
+                   // $iyade1 = $iyade1 + 1;
+                }
+                dump("d_meses_acum " . $d_meses_acum);
+                dump ( "drecargo" . $drecargo);
+               dd( "dacum_tasa"  . $dacum_tasa);
+        }
     }
 }
