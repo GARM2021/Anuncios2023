@@ -88,6 +88,7 @@
                         spaso = spaso.Substring(0, 4);
                         //int iyfecpago       = Convert.ToInt16(spaso);
                         //Trace.Write("297>>>>>>>>>>>>>>");
+                        // lina 289 en php
                         if (irecof > 0)
                         {
                             //if (ifecpag > 20131231) 20200127 20211231
@@ -157,7 +158,7 @@
                         {
                             ipasoaj = 1;
                         }
-                        if (ipasoaj == 1)
+                        if (ipasoaj == 1) // linea 347 en php
                         {
 
                             dlicencia = decimal.Multiply(darea, 2.5m);
@@ -181,7 +182,7 @@
                             dconstancia = 0m;
                         }
                         //Trace.Write("390>>>>>>>>>>>>>>");
-                        if (stipoanuncio == "TE")
+                        if (stipoanuncio == "TE") // linea 366 en php
                         {
                             decimal ddiast = Convert.ToDecimal(arow["dias"].ToString());
                             decimal dnum_anun = Convert.ToDecimal(arow["num_anun_temp"].ToString());
@@ -253,7 +254,7 @@
                         {
                             ipasouno = ipasouno + 1;
                         }
-                        if (ipasouno == 3)
+                        if (ipasouno == 3) // linea 435 de php 
                         {
                             /////////////////////////////////////////////////////////////////////////////////////
                             //// Selecciona ANUNMRECARGO
@@ -310,8 +311,9 @@
                                 dacum_tasa = dacum_tasa + dtasa_por;
                                 dyade1 = dyade1 + 1;
                                 iyade1 = iyade1 + 1;
-                            }
+                            } // linea 474 de php 
                         }
+                        ////////////////////////////////////////////
                         //Trace.Write("480>>>>>>>>>>>>>>");
                         decimal dacum_tasa2 = 0m;
                         int ipaso482 = 0;
@@ -353,7 +355,7 @@
                                     dyade1 = dyade1 + 1;
                                 }
 
-                            } while (dyade1 < gdañohoy);
+                            } while (dyade1 < gdañohoy); // linea 534 de php
 
                             //Trace.Write("511>>>>>>>>>>>>>>");
                             if (dyade1 == gdañohoy)
