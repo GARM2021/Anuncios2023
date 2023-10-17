@@ -227,15 +227,19 @@ class AnuncioModel extends Model
                     ->orWhere('fbajax', '=', '0   ')
                     ->orWhere('fbajax', '=', '00000000');
             })
+            ->orderBy('cuenta', 'asc')
             ->get();
 
 
-        //  dump($frmitem);
-        // dd($anundanuncios);
+         dump($frmitem);
+         dump($anundanuncios);
 
 
         // es la linea 54 del cs
-        foreach ($anundanuncios as $arow) {
+
+        $anundanuncios = $anundanuncios->sortBy('cuenta'); //!20231017
+        //    dd($anundanuncios);
+        foreach ($anundanuncios as $arow) { //! 55 a 729 cs
             $dyade1 =  $frmitem["dyade"];
             $syade05 = $frmitem["syade04"];
 
@@ -287,7 +291,7 @@ class AnuncioModel extends Model
             //   dump("iyini" .         $iyini);
             //   dump("stipoanuncio" .  $stipoanuncio);
             // linea 92 en cs 
-            if ($irecof > 0) {
+            if ($irecof > 0) { //! linea 92 a 99 cs 
 
                 if ($ifecpag > 20221231) {
                     $ifbajax = 99999;
@@ -330,7 +334,7 @@ class AnuncioModel extends Model
 
 
 
-            $ipasoaj = 0;
+            $ipasoaj = 0; //! linea 151 en cs 
             // Trace.Write("358>>>>>>>>>>>>>>");
             if ($stipoanuncio == 'AJ') {
                 $ipasoaj = 1;
@@ -340,202 +344,248 @@ class AnuncioModel extends Model
             }
 
             // dd("ipasoaj" . $ipasoaj);
-        }
+            //! se movio a 555  // }
+            // linea 161 en cs
+            if ($ipasoaj == 1) {
+                $dlicencia = bcmul($darea, 2.5, 2);
+                if ($dlicencia > 50) {
+                    $darea = 50;
+                }
+                if ($dlicencia <= 2.5) {
+                    $darea = 2.5;
+                }
+                if ($dlicencia > 2.5) {
+                    if ($dlicencia < 51) {
+                        $darea = $dlicencia;
+                    }
+                }
 
-        /////////////////////////////////////////
-        // linea 161 en cs
-        if ($ipasoaj == 1) {
-            $dlicencia = bcmul($darea, 2.5, 2);
-            if ($dlicencia > 50) {
-                $darea = 50;
+                $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
+                $dconstancia = 0;
             }
-            if ($dlicencia <= 2.5) {
-                $darea = 2.5;
-            }
-            if ($dlicencia > 2.5) {
-                if ($dlicencia < 51) {
-                    $darea = $dlicencia;
+
+            // Calculo de la licencia para anuncios tipo TE
+            if ($stipoanuncio == 'TE') { //linea 185 en cs 
+                $ddiast = $arow['ddiast'];
+                $dnum_anun = $arow['dnum_anun'];
+
+                $dlicencia = bcmul(bcmul($darea, $ddiast, 2), bcmul(103.74, 0.4, 2), 2);
+                $dlicencia = bcmul($dlicencia, $dnum_anun, 2);
+                $dconstancia = 0;
+                $syade05 = '000000';
+                $syade04 = '000000';
+                $dbonrec = 0;
+                $dbonsan = 0;
+
+                if ($ifecpag > 0) {
+                    $stipoanuncio = 'xx';
                 }
             }
 
-            $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
-            $dconstancia = 0;
-        }
-
-        // Calculo de la licencia para anuncios tipo TE
-        if ($stipoanuncio == 'TE') { //linea 185 en cs 
-            $ddiast = $arow['ddiast'];
-            $dnum_anun = $arow['dnum_anun'];
-
-            $dlicencia = bcmul(bcmul($darea, $ddiast, 2), bcmul(103.74, 0.4, 2), 2);
-            $dlicencia = bcmul($dlicencia, $dnum_anun, 2);
-            $dconstancia = 0;
-            $syade05 = '000000';
-            $syade04 = '000000';
-            $dbonrec = 0;
-            $dbonsan = 0;
-
-            if ($ifecpag > 0) {
-                $stipoanuncio = 'xx';
-            }
-        }
-
-        // Calculo de la licencia para anuncios tipo EL
-        if ($stipoanuncio == 'EL') {
-            $dlicencia = bcmul($darea, 2.5, 2);
-            if ($dlicencia > 75) {
-                $darea = 75;
-            }
-            if ($dlicencia < 2.5) {
-                $darea = 2.5;
-            }
-            if ($dlicencia > 2.5) {
-                if ($dlicencia < 75) {
-                    $darea = $dlicencia;
+            // Calculo de la licencia para anuncios tipo EL
+            if ($stipoanuncio == 'EL') {
+                $dlicencia = bcmul($darea, 2.5, 2);
+                if ($dlicencia > 75) {
+                    $darea = 75;
                 }
+                if ($dlicencia < 2.5) {
+                    $darea = 2.5;
+                }
+                if ($dlicencia > 2.5) {
+                    if ($dlicencia < 75) {
+                        $darea = $dlicencia;
+                    }
+                }
+
+                $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
+                $dconstancia = 0;
             }
 
-            $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
-            $dconstancia = 0;
-        }
-
-        // Calculo del rezago, recargos y sanciones
-        if ($dconstancia > 0) {
-            $drezago = 0;
-            $drecargo = 0;
-            $dsancion = 0;
-            $dbonrec = 0;
-            $dbonsan = 0;
-            $dlicencia = 0;
-        }
-
-        // Calculo del indicador de paso 1
-        $ipasouno = 0;
-        if ($stipoanuncio != 'TE') {
-            $ipasouno++;
-        }
-        if ($dconstancia == 0) {
-            $ipasouno++;
-        }
-        if ($stipoanuncio != 'xx') {
-            $ipasouno++;
-        }
-
-        // Retorno de los resultados
-
-        dump($frmitem);
-        dump("anundanuncios" . $anundanuncios);
-
-        dump("dlicencia "   . $dlicencia);
-        dump("dconstancia " . $dconstancia);
-        dump("ipasouno "    . $ipasouno);
-
-        /////////////////////////////////////////////////////
-
-        if ($ipasouno == 3) { // linea 257 en cs 
-
-            $sycalc = $frmitem["syade"];
-
-            $dstm = MrecargoModel::where("aniotasa", $sycalc)->get();
-
-            $gdtasam = $dstm[0]["tasamensual"];
-
-
-            $gdañohoy =  Carbon::now()->year;
-            $gdmeshoy =  Carbon::now()->month;
-            dump("gdmeshoy " . $gdmeshoy);
-
-            // Calcula los recargos
-            if ($dyade1 < $gdañohoy) {
-                $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
-                $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+            // Calculo del rezago, recargos y sanciones
+            if ($dconstancia > 0) {
+                $drezago = 0;
+                $drecargo = 0;
+                $dsancion = 0;
+                $dbonrec = 0;
+                $dbonsan = 0;
+                $dlicencia = 0;
             }
-            if ($dyade1 == $gdañohoy) {
-                if ($gdmeshoy >= 4) {
+
+            // Calculo del indicador de paso 1
+            $ipasouno = 0;
+            if ($stipoanuncio != 'TE') {
+                $ipasouno++;
+            }
+            if ($dconstancia == 0) {
+                $ipasouno++;
+            }
+            if ($stipoanuncio != 'xx') {
+                $ipasouno++;
+            }
+
+            // Retorno de los resultados
+
+            // dump("anundanuncios" . $anundanuncios);
+
+            dump("scuenta  "   . $scuenta);
+            dump("dlicencia "   . $dlicencia);
+            dump("dconstancia " . $dconstancia);
+            dump("ipasouno "    . $ipasouno);
+
+            /////////////////////////////////////////////////////
+
+            if ($ipasouno == 3) { //! linea if 257 a 315 en cs  if 435 a 475 php
+
+                $sycalc = $frmitem["syade"];
+
+                $dstm = MrecargoModel::where("aniotasa", $sycalc)->get();
+
+                $gdtasam = $dstm[0]["tasamensual"];
+
+
+                $gdañohoy =  Carbon::now()->year;
+                $gdmeshoy =  Carbon::now()->month;
+                dump("gdmeshoy " . $gdmeshoy);
+
+                // Calcula los recargos
+                if ($dyade1 < $gdañohoy) {
                     $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
                     $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
                 }
+                if ($dyade1 == $gdañohoy) {
+                    if ($gdmeshoy >= 4) {
+                        $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
+                        $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+                    }
+                }
+
+                //     // Calcula la tasa acumulada
+                if ($dyade1 < $gdañohoy) { //! 298 cs
+                    $d_meses_acum = 12;
+
+                    if ($dyade1 == 1996) {
+                        $d_meses_acum = $d_meses_acum - 7;
+                    }
+                    if ($dyade1 != 1996) {
+                        $d_meses_acum = $d_meses_acum - 3;
+                    }
+                    $dtasa_por = bcmul($d_meses_acum, $gdtasam);
+                    $dacum_tasa = bcadd($dacum_tasa, $dtasa_por, 2);
+                    $dyade1 = $dyade1 + 1;
+                    $iyade1 = $iyade1 + 1;
+                }  // linea 313 de cs 
+
+                dump("d_meses_acum " . $d_meses_acum);
+                dump("drecargo ----->>" . $drecargo);
             }
 
-            //     // Calcula la tasa acumulada
-            if ($dyade1 < $gdañohoy) {
-                $d_meses_acum = 12;
+           
+            //  dd( "dacum_tasa"  . $dacum_tasa);
 
-                if ($dyade1 == 1996) {
-                    $d_meses_acum = $d_meses_acum - 7;
-                }
-                if ($dyade1 != 1996) {
-                    $d_meses_acum = $d_meses_acum - 3;
-                }
-                $dtasa_por = bcmul($d_meses_acum, $gdtasam);
-                $dacum_tasa = bcadd($dacum_tasa, $dtasa_por, 2);
-                $dyade1 = $dyade1 + 1;
-                $iyade1 = $iyade1 + 1;
-            } // linea 313 de cs 
+            /////////////////////////////////////////////////////////////
+
+            $dacum_tasa2 = 0;
+            $ipaso482  = 0;
+
+            if ($dconstancia > 0) {
+                $ipaso482 = 2;
+            }
+
+            if ($stipoanuncio == "xx") {
+
+                $ipaso482 = 2;
+            }
+            if ($stipoanuncio == "TE") {
+
+                $ipaso482 = 2;
+            }
+
+            $dtasa_por = 0;
+            // dump(
+            //     "ipaso482"
+            //         . $ipaso482
+            // );
+            // dump(
+            //     "dyade1"
+            //         . $dyade1
+            // );
+            // dump(
+            //     "gdañohoy"
+            //         . $gdañohoy
+            // );
+            if ($ipaso482 !=  2) { //! if 334 a 581 cs 
+
+                $syade1 = (string)$dyade1;
+                // dump("sycalc inicial  "  . $sycalc);
+                // dump("cuenta inicial " .  $arow["cuenta"]);
+                // dump("syade1 inicial >>>>>>>>>>>>>>>>>  " . $syade1);
+
+                do {
+                    // Trace.Write("494>>>>>>>>>>>>>>");
+                    if ($dyade1 != $gdañohoy) {
+                        $dtasa_por = 0;
+                        $syade1 = (string)$dyade1;
+                        // Selecciona ANUNMRECARGO
+                        // $tatmw->Faniotasa($dstmw->DTanunmrecargo, $syade1);
+
+                        $dstm = MrecargoModel::where("aniotasa", $syade1)->get();
+
+                        $dtasamensual  = $dstm[0]["tasamensual"];
+
+                        $dtasa_por = bcmul($dtasamensual, 12);
+                        $dacum_tasa = bcadd($dacum_tasa, $dtasa_por, 2);
+                        $d_meses_acum = $d_meses_acum + 12;
+                        $dyade1 = $dyade1 + 1;
+                    }
+                    dump("dyade1 do  "  . $dyade1);
+                    dump("dtasa_por  do " . $dtasa_por);
+                    // dump("dacum_tasa do " . $dacum_tasa);
+                    dump("d_meses_acum " . $d_meses_acum);
+                    dump("drecargo ----->>" . $drecargo);
+                } while ($dyade1 < $gdañohoy); // linea 358 de cs 
+
+                dump("================");
+                // dump("syade1  " . $syade1);
+                // dump("dyade1 "  . $dyade1);
+                // dump("dyade "  . $sycalc);
+                dump("cuenta " .  $arow["cuenta"]);
+                dump("dacum_tasa do " . $dacum_tasa);
+                //!este cierra el 515
+            }
         }
+        // if ($dyade1 == $gdañohoy) {
+        //     $dtasa_por = 0;
+        //     $dtasamensual = 0;
+        //     $syade1 = strval($dyade1);
 
-          dump("d_meses_acum " . $d_meses_acum);
-          dump ( "drecargo" . $drecargo);
-        //  dd( "dacum_tasa"  . $dacum_tasa);
+        //     // Selecciona ANUNMRECARGO ///////////////////////////////////
+        //     $dstm = MrecargoModel::where("aniotasa", $syade1)->get();
+        //     $dtasamensual  = $dstm[0]["tasamensual"];
 
-        /////////////////////////////////////////////////////////////
+        //     $gdmeshoy1 = $gdmeshoy;
 
-        $dacum_tasa2 = 0;
-        $ipaso482  = 0;
+        //     if ($gdmeshoy < 4) {
+        //         if ($gdañohoy == $dyade) {
+        //             $dtasamensual = 0;
+        //             $gdmeshoy = 0;
+        //         }
+        //     }
 
-        if ($dconstancia > 0) {
-            $ipaso482 = 2;
-        }
+        //     // Trace::write("531>>>>>>>>>>>>>>");
 
-        if ($stipoanuncio == "xx") {
+        //     if ($gdmeshoy >= 4) {
+        //         if ($gdañohoy == $dyade) {
+        //             if ($gdfechahoy == $dfinicio) {
+        //                 $gdmeshoy = $gdmeshoy - 4 + 1;
+        //             }
+        //         }
+        //     }
 
-            $ipaso482 = 2;
-        }
-        if ($stipoanuncio == "TE") {
-
-            $ipaso482 = 2;
-        }
-
-        $dtasa_por = 0;
-           dump (  "ipaso482"       
-            . $ipaso482
-           ); 
-           dump ( "dyade1" 
-            . $dyade1
-           );  
-           dump ( "gdañohoy" 
-           . $gdañohoy
-          );                      
-        if ($ipaso482 !=  2) {
-
-            do {
-                // Trace.Write("494>>>>>>>>>>>>>>");
-                if ($dyade1 != $gdañohoy) {
-                    $dtasa_por = 0;
-                    $syade1 = (string)$dyade1;
-                    // Selecciona ANUNMRECARGO
-                    // $tatmw->Faniotasa($dstmw->DTanunmrecargo, $syade1);
-
-                     $dstm = MrecargoModel::where("aniotasa", $syade1)->get();
-            
-                    $dtasamensual  = $dstm[0]["tasamensual"];
-
-                    $dtasa_por = bcmul($dtasamensual, 12);
-                    $dacum_tasa = bcadd($dacum_tasa, $dtasa_por, 2);
-                    $d_meses_acum = $d_meses_acum + 12;
-                    $dyade1 = $dyade1 + 1;
-                }
-              dump ( "dtasa_por " . $dtasa_por);
-              dump ( "dyade1"  . $dyade1); 
-              dump ( "cuenta "                                                    
-               .  $arow["cuenta"]  
-              );
-              
-            } while ($dyade1 < $gdañohoy); // linea 358 de cs 
-
-            dd("ya acabe");
-
-          }
+        //     $dtasa_por = $dtasamensual * $gdmeshoy;
+        //     $dacum_tasa = $dacum_tasa + $dtasa_por;
+        //     $d_meses_acum = $d_meses_acum + $gdmeshoy;
+        //     $gdmeshoy = $gdmeshoy1;
+        // }
 
     }
 }

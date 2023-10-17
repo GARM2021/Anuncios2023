@@ -36,7 +36,8 @@ class AdeudosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create($dua, $nomdua, $subdua, $nomsubdua, $sububicaion)
-    {
+    { 
+        // dd("AdeudosContreler Create");
         $frmitems = [];
         $frmitems["frmrecibo"] = '000000000000';
         $frmitems["frmfupago"] = '000000000000';

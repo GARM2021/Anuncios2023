@@ -51,7 +51,7 @@
                 if (ierror < 01) //20230927 empiezo a transcribir
                 {
                     //Trace.Write("262>>>>>>>>>>>>>>");
-                    foreach (DataRow arow in dsanun.DTAnu.Rows)
+                    foreach (DataRow arow in dsanun.DTAnu.Rows)//! 242 a 347 php
                     {
                         dyade1 = dyade;
                         string syade05 = syade04;
@@ -89,7 +89,7 @@
                         //int iyfecpago       = Convert.ToInt16(spaso);
                         //Trace.Write("297>>>>>>>>>>>>>>");
                         // lina 289 en php
-                        if (irecof > 0)
+                        if (irecof > 0)  //! linea 290 a 294 en php
                         {
                             //if (ifecpag > 20131231) 20200127 20211231
                             if (ifecpag > 20221231)
@@ -148,7 +148,7 @@
                             }
 
                         }
-                        int ipasoaj = 0;
+                        int ipasoaj = 0; //! linea 333 en php 
                         //Trace.Write("358>>>>>>>>>>>>>>");
                         if (stipoanuncio == "AJ")
                         {
@@ -254,7 +254,7 @@
                         {
                             ipasouno = ipasouno + 1;
                         }
-                        if (ipasouno == 3) // linea 435 de php 
+                        if (ipasouno == 3) //! if 257 a 315 cs if 435 a 475 php
                         {
                             /////////////////////////////////////////////////////////////////////////////////////
                             //// Selecciona ANUNMRECARGO
@@ -295,7 +295,7 @@
 
                             //20202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020
 
-                            if (dyade1 < gdañohoy)
+                            if (dyade1 < gdañohoy) //! 463 php
                             {
                                 d_meses_acum = 12m;
 
@@ -330,7 +330,7 @@
                         {
                             ipaso482 = 2;
                         }
-                        if (ipaso482 != 2)
+                        if (ipaso482 != 2) //! if 334 a 581 cs if 512 ... php
                         {
 
                             //// Selecciona ANUNMRECARGO //////////////////////////////////
@@ -577,8 +577,8 @@
                                     dbonsan = 0m;
                                 }
                             }//baja 3
-
-                        }//Temporales No 03/03/2006	 
+                         
+                        }//Temporales No 03/03/2006	//! hasta aqui el if de 509 php 
                         dacum_tasa = 0m;
                         dacum_tasa2 = 0m;
                         //Trace.Write("658>>>>>>>>>>>>>>");

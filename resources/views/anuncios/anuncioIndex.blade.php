@@ -14,7 +14,7 @@
         <h5 style="margin-left: 2%;">{{ $ditems->nomdua }}</h5>
         <h6 style="margin-left: 2%;">SUBDUA {{ $subdua }}</h6>
         <h6 style="margin-left: 2%;">{{ $nomsubdua }}</h6>
-        <h6 style="margin-left: 2%;">{{ $sububicaion }}</h6>
+        <h6 style="margin-left: 2%;">{{ str_replace("/", "÷", $sububicaion)  }}</h6>
 
 
 
@@ -28,11 +28,11 @@
             <table class="table-striped table-container">
                 <tr style="margin-left: 3%;">
                     <td>
-                        <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}"
+                        <a href="{{ route('anuncios.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => str_replace("/", "÷", $sububicaion)]) }}"
                             class="btn btn-success">Nuevo Anuncio</a>
                     </td>
                     <td>
-                        <a href="{{ route('adeudos.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => $sububicaion]) }}"
+                        <a href="{{ route('adeudos.create', ['dua' => str_pad($ditems->dua, 6, '0', STR_PAD_LEFT), 'nomdua' => $ditems->nomdua, 'subdua' => str_pad($subdua, 6, '0', STR_PAD_LEFT), 'nomsubdua' => $nomsubdua, 'sububicaion' => str_replace("/", "÷", $sububicaion)]) }}"
                             class="btn btn-success">Genera Adeudos</a>
                     </td>
                 </tr>
