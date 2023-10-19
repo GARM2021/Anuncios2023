@@ -355,10 +355,10 @@
                                     dyade1 = dyade1 + 1;
                                 }
 
-                            } while (dyade1 < gdañohoy); // linea 534 de php
+                            } while (dyade1 < gdañohoy); // linea 588 de php
 
                             //Trace.Write("511>>>>>>>>>>>>>>");
-                            if (dyade1 == gdañohoy)
+                            if (dyade1 == gdañohoy) //! 599 a  631 de php
                             {
                                 decimal dtasa_por = 0m;
                                 decimal dtasamensual = 0m;
@@ -394,7 +394,7 @@
                                 d_meses_acum = d_meses_acum + gdmeshoy;
                                 gdmeshoy = gdmeshoy1;
                             }
-                            if (stipoanuncio != "xx") // baja3
+                            if (stipoanuncio != "xx") // baja3 //! if 635 en php
                             {
                                 //Trace.Write("550>>>>>>>>>>>>>>");
                                 dacum_tasa2 = dacum_tasa;
@@ -592,7 +592,7 @@
                             dconstancia = 0m;
                             dbonrec = 0m;
                             dbonsan = 0m;
-                        }
+                        }//aqui voy 20231019
 
                         // 20230405 se desactivo la condicion
                         //if (  syade == "2023") // 20230201 

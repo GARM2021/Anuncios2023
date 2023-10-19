@@ -209,13 +209,38 @@ class AnuncioModel extends Model
     public function FCalAnun($frmitem)
     {
 
+        $diapaso = date('d');
+        $mespaso = date('m');
+        $añopaso = date('Y');
+        $idp = intval($diapaso);
+        $imp = intval($mespaso);
+        if ($idp < 10) {
+            $diapaso = '0' . $diapaso;
+        }
+        if ($imp < 10) {
+            $mespaso = '0' . $mespaso;
+        }
+        $gsfechahoy = $añopaso . $mespaso . $diapaso;
+        $gsañohoy = $añopaso;
+        $gsmeshoy = $mespaso;
+
+        // Convertir a decimal
+        $gdañohoy = (float)$gsañohoy;
+        $gdmeshoy = (float)$gsmeshoy;
+        $gdfechahoy = (float)$gsfechahoy;
+
+        $gdcuota = 103.74;
+
         $errors = [];
         $datosrecibo = [];
+
         $ierror = 0;
         $gsDUA = $frmitem["frmdua"];
         $gsSubDUA = $frmitem["frmsubdua"];
         $frmrecibo = $frmitem["frmrecibo"];
         $frmfupago  = $frmitem["frmfupago"];
+        $syade = substr($frmitem["iyade"], 0, 4);
+        $dyade = (float)$syade;
 
         $dyini0 = 0;
 
@@ -232,13 +257,13 @@ class AnuncioModel extends Model
 
 
         dump($frmitem);
-        dump($anundanuncios);
+        // dump($anundanuncios);
 
 
         // es la linea 54 del cs
 
         $anundanuncios = $anundanuncios->sortBy('cuenta'); //!20231017
-        //    dd($anundanuncios);
+        dump($anundanuncios);
         foreach ($anundanuncios as $arow) { //! 55 a 729 cs
             $dyade1 =  $frmitem["dyade"];
             $syade05 = $frmitem["syade04"];
@@ -270,11 +295,13 @@ class AnuncioModel extends Model
             $stipoanuncio = $arow['tipoanuncio'];
             $darea = floatval($arow['area']);
             $spaso = $arow['finicio'];
+            $dfinicio = floatval($spaso);
 
             $iyini = (int) substr($spaso, 0, 4);
             $dyini = floatval($iyini);
             $imini = (int) substr($spaso, 4, 2);
             $dmini = floatval($iyini);
+
             $imini;
             $irecof = (int) $arow['recof'];
 
@@ -383,7 +410,7 @@ class AnuncioModel extends Model
             }
 
             // Calculo de la licencia para anuncios tipo EL
-            if ($stipoanuncio == 'EL') {
+            if ($stipoanuncio == 'EL') {//! 209 cs
                 $dlicencia = bcmul($darea, 2.5, 2);
                 if ($dlicencia > 75) {
                     $darea = 75;
@@ -419,7 +446,7 @@ class AnuncioModel extends Model
             if ($dconstancia == 0) {
                 $ipasouno++;
             }
-            if ($stipoanuncio != 'xx') {
+            if ($stipoanuncio != 'xx') { //! 253 cs
                 $ipasouno++;
             }
 
@@ -464,14 +491,14 @@ class AnuncioModel extends Model
                         // $gdtasam = (float) $gdtasam;
                         $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
 
-                       // $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
-                        $drecargo = round(($d_meses_acum * ($dlicencia * ($gdtasam / 10000))), 0);//! 20231019 ok
-                        
-                        dump("d_meses_acum " . $d_meses_acum);
-                        dump("dlicencia  " . $dlicencia);
+                        // $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+                        $drecargo = round(($d_meses_acum * ($dlicencia * ($gdtasam / 10000))), 0); //! 20231019 ok
 
-                        dump("gdtasam  " . $gdtasam);
-                        dump("drecargo ----->>>" . $drecargo);
+                        // dump("d_meses_acum " . $d_meses_acum);
+                        // dump("dlicencia  " . $dlicencia);
+
+                        // dump("gdtasam  " . $gdtasam);
+                        // dump("drecargo ----->>>" . $drecargo);
                     }
                 }
 
@@ -500,7 +527,7 @@ class AnuncioModel extends Model
 
             /////////////////////////////////////////////////////////////
 
-            $dacum_tasa2 = 0;
+            $dacum_tasa2 = 0; //! 
             $ipaso482  = 0;
 
             if ($dconstancia > 0) {
@@ -553,55 +580,180 @@ class AnuncioModel extends Model
                         $d_meses_acum = $d_meses_acum + 12;
                         $dyade1 = $dyade1 + 1;
                     }
-                    dump("dyade1 do  "  . $dyade1);
-                    dump("dtasa_por  do " . $dtasa_por);
-                    // dump("dacum_tasa do " . $dacum_tasa);
-                    dump("d_meses_acum " . $d_meses_acum);
+                    // dump("dyade1 do  "  . $dyade1);
+                    // dump("dtasa_por  do " . $dtasa_por);
+                    // // dump("dacum_tasa do " . $dacum_tasa);
+                    // dump("d_meses_acum " . $d_meses_acum);
                     dump("drecargo ----->>" . $drecargo);
                 } while ($dyade1 < $gdañohoy); // linea 358 de cs 
 
                 dump("================");
-                // dump("syade1  " . $syade1);
-                // dump("dyade1 "  . $dyade1);
-                // dump("dyade "  . $sycalc);
-                dump("cuenta " .  $arow["cuenta"]);
+                dump("syade1  " . $syade1);
+                dump("dyade1 "  . $dyade1);
+                dump("dyade "  . $sycalc);
+                dump("dfinicio "  . $dfinicio);
+                dump("gdfechahoy "  . $gdfechahoy);
+                dump("cuenta 594 " .  $arow["cuenta"]);
                 dump("dacum_tasa do " . $dacum_tasa);
                 //!este cierra el 515
             }
-        }
-        // if ($dyade1 == $gdañohoy) {
-        //     $dtasa_por = 0;
-        //     $dtasamensual = 0;
-        //     $syade1 = strval($dyade1);
+            //} //! se movio al 633
+            if ($dyade1 == $gdañohoy) { //! 361 a 396 de cs 
+                $dtasa_por = 0;
+                $dtasamensual = 0;
+                $syade1 = strval($dyade1);
 
-        //     // Selecciona ANUNMRECARGO ///////////////////////////////////
-        //     $dstm = MrecargoModel::where("aniotasa", $syade1)->get();
-        //     $dtasamensual  = $dstm[0]["tasamensual"];
+                // Selecciona ANUNMRECARGO ///////////////////////////////////
+                $dstm = MrecargoModel::where("aniotasa", $syade1)->get();
+                $dtasamensual  = $dstm[0]["tasamensual"];
 
-        //     $gdmeshoy1 = $gdmeshoy;
+                $gdmeshoy1 = $gdmeshoy;
 
-        //     if ($gdmeshoy < 4) {
-        //         if ($gdañohoy == $dyade) {
-        //             $dtasamensual = 0;
-        //             $gdmeshoy = 0;
-        //         }
-        //     }
+                if ($gdmeshoy < 4) {
+                    if ($gdañohoy == $dyade) {
+                        $dtasamensual = 0;
+                        $gdmeshoy = 0;
+                    }
+                }
 
-        //     // Trace::write("531>>>>>>>>>>>>>>");
+                // Trace::write("531>>>>>>>>>>>>>>");
 
-        //     if ($gdmeshoy >= 4) {
-        //         if ($gdañohoy == $dyade) {
-        //             if ($gdfechahoy == $dfinicio) {
-        //                 $gdmeshoy = $gdmeshoy - 4 + 1;
-        //             }
-        //         }
-        //     }
+                if ($gdmeshoy >= 4) {
+                    if ($gdañohoy == $dyade) {
+                        if ($gdfechahoy == $dfinicio) {
+                            $gdmeshoy = $gdmeshoy - 4 + 1;
+                        }
+                    }
+                }
 
-        //     $dtasa_por = $dtasamensual * $gdmeshoy;
-        //     $dacum_tasa = $dacum_tasa + $dtasa_por;
-        //     $d_meses_acum = $d_meses_acum + $gdmeshoy;
-        //     $gdmeshoy = $gdmeshoy1;
-        // }
+                dump("gdmeshoy 629 "  . $gdmeshoy);
+                $dtasa_por = $dtasamensual * $gdmeshoy;
+                $dacum_tasa = $dacum_tasa + $dtasa_por;
+                $d_meses_acum = $d_meses_acum + $gdmeshoy;
+                $gdmeshoy = $gdmeshoy1;
+            }
+            //! el if de 397 a 579  de cs
+            if ($stipoanuncio != "xx") {
+                $dacum_tasa2 = $dacum_tasa;
 
+                if ($dyade < $gdañohoy) {
+                    if ($dconstancia == 0) {
+                        $drezago = $dlicencia;
+                        $dsancion = $dlicencia;
+                        $dlicencia = 0;
+                    }
+                }
+
+                if ($dyade < $gdañohoy) {
+                    if ($dconstancia > 0) {
+                        $drezago = $dconstancia;
+                        $dsancion = $dconstancia;
+                        $dconstancia = 0;
+                    }
+                }
+
+                if ($dyade < $gdañohoy) {
+                    $dsancion = $dlicencia + $dsancion + $dconstancia;
+                }
+
+                if ($dyade == $gdañohoy) {
+                    $dsancion = 0;
+                }
+
+                if ($dyini < $gdañohoy) {
+                    $dmini = 0;
+                }
+
+                $ipasodos = 0;
+
+                if ($dyade == $gdañohoy) {
+                    if ($gdmeshoy >= 4) {
+                        $ipasodos++;
+                    }
+
+                    if ($dmini <= 4) {
+                        $ipasodos++;
+                    }
+
+                    if ($dfinicio != $gdfechahoy) {
+                        $ipasodos++;
+                    }
+
+                    if ($dlicencia > 0) {
+                        $ipasodos++;
+                    }
+
+                    if ($dyini == $gdañohoy) {
+                        $ipasodos = 0;
+                    }
+                }
+
+                if ($ipasodos == 4) {
+                    $drezago = $dlicencia;
+                    $dsancion = $dlicencia;
+                    $dlicencia = 0;
+                }
+
+                $ipasotres = 0;
+
+                if ($dyade == $gdañohoy) {
+                    if ($gdmeshoy >= 4) {
+                        $ipasotres++;
+                    }
+
+                    if ($dmini <= 4) {
+                        $ipasotres++;
+                    }
+
+                    if ($dfinicio != $gdfechahoy) {
+                        $ipasotres++;
+                    }
+
+                    if ($dconstancia > 0) {
+                        $ipasotres++;
+                    }
+
+                    if ($dyini == $gdañohoy) {
+                        $ipasotres = 0;
+                    }
+                }
+
+                if ($ipasotres == 4) {
+                    $drezago = $dconstancia;
+                    $drecargo = ($dconstancia / 10000) * $dacum_tasa2;
+                    $dsancion = $dconstancia;
+                    $dconstancia = 0;
+                }
+
+                if ($gdfechahoy != $dfinicio) {
+                    // Realizar acciones para bonificación
+                }
+
+                if ($gdfechahoy == $dfinicio) {
+                    $dbonrec = 0;
+                    $dbonsan = 0;
+                }
+            }  //! fin del if 635 a 736 php y  397 a 579 cs
+
+            $dacum_tasa = 0;
+            $dacum_tasa2 = 0;
+
+            if ($stipoanuncio == "xx" )//! if 585 a 595 cs 
+            {
+                //Trace.Write("661>>>>>>>>>>>>>>");
+                $dlicencia = 0;
+                $drezago = 0;
+                $drecargo = 0;
+                $dsancion = 0;
+                $dconstancia = 0;
+                $dbonrec = 0;
+                $dbonsan = 0;
+                //! 20231019 voy aqui y en cs en la 608
+            }
+
+          
+          
+
+        } //! inicia foreach en 267
     }
 }
