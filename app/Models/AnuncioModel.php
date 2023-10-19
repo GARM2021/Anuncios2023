@@ -231,8 +231,8 @@ class AnuncioModel extends Model
             ->get();
 
 
-         dump($frmitem);
-         dump($anundanuncios);
+        dump($frmitem);
+        dump($anundanuncios);
 
 
         // es la linea 54 del cs
@@ -446,6 +446,11 @@ class AnuncioModel extends Model
                 $gdañohoy =  Carbon::now()->year;
                 $gdmeshoy =  Carbon::now()->month;
                 dump("gdmeshoy " . $gdmeshoy);
+                dump("dyade1 " . $dyade1);
+                dump("gdañohoy " . $gdañohoy);
+                dump("gdtasam  " . $gdtasam);
+                dump("gdtasam  " . $gdtasam);
+
 
                 // Calcula los recargos
                 if ($dyade1 < $gdañohoy) {
@@ -454,8 +459,19 @@ class AnuncioModel extends Model
                 }
                 if ($dyade1 == $gdañohoy) {
                     if ($gdmeshoy >= 4) {
+                        // $d_meses_acum = (int) $d_meses_acum;
+                        // $dlicencia = (float) $dlicencia;
+                        // $gdtasam = (float) $gdtasam;
                         $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
-                        $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+
+                       // $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+                        $drecargo = round(($d_meses_acum * ($dlicencia * ($gdtasam / 10000))), 0);//! 20231019 ok
+                        
+                        dump("d_meses_acum " . $d_meses_acum);
+                        dump("dlicencia  " . $dlicencia);
+
+                        dump("gdtasam  " . $gdtasam);
+                        dump("drecargo ----->>>" . $drecargo);
                     }
                 }
 
@@ -475,11 +491,11 @@ class AnuncioModel extends Model
                     $iyade1 = $iyade1 + 1;
                 }  // linea 313 de cs 
 
-                dump("d_meses_acum " . $d_meses_acum);
+
                 dump("drecargo ----->>" . $drecargo);
             }
 
-           
+
             //  dd( "dacum_tasa"  . $dacum_tasa);
 
             /////////////////////////////////////////////////////////////
