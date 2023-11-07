@@ -43,4 +43,6 @@ class AdeudosModel extends Model
         'marcado',
 
     ];
+
+   
 }

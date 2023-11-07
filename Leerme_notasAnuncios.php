@@ -142,4 +142,17 @@ HTML
 20230919
 D:\xampp\htdocs\Anuncios2023>php artisan make:model Ingresdingresos
 
+20231107
+SELECT     TOP (200) cuenta, dua, subdua, fechaadeuda FROM         anundadeudos
+WHERE     (cuenta NOT IN
+                          (SELECT     cuenta
+                            FROM          anundadeudos AS anundadeudos_1
+                            WHERE      (fechaadeuda = '202304')))
+ORDER BY fechaadeuda DESC
+
+SUBDUA 001926 20221215	043900057838
+
+  
+
+
 

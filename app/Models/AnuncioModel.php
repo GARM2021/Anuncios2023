@@ -100,7 +100,8 @@ class AnuncioModel extends Model
         $gdañohoy = (float)$gsañohoy;
         $gdmeshoy = (float)$gsmeshoy;
         $gdfechahoy = (float)$gsfechahoy;
-
+        $letrero = "gdfechahoy 103" . $gdfechahoy;
+        dump($letrero);
         $gdcuota = 103.74;
     }
 
@@ -267,7 +268,7 @@ class AnuncioModel extends Model
         foreach ($anundanuncios as $arow) { //! 55 a 729 cs
             $dyade1 =  $frmitem["dyade"];
             $syade05 = $frmitem["syade04"];
-
+            $syade04 = $syade05;
 
             // dump("arow" . $arow);
             // dump("dyade1 " . $dyade1);
@@ -410,7 +411,7 @@ class AnuncioModel extends Model
             }
 
             // Calculo de la licencia para anuncios tipo EL
-            if ($stipoanuncio == 'EL') {//! 209 cs
+            if ($stipoanuncio == 'EL') { //! 209 cs
                 $dlicencia = bcmul($darea, 2.5, 2);
                 if ($dlicencia > 75) {
                     $darea = 75;
@@ -634,6 +635,7 @@ class AnuncioModel extends Model
             }
             //! el if de 397 a 579  de cs
             if ($stipoanuncio != "xx") {
+                dump(" ");
                 $dacum_tasa2 = $dacum_tasa;
 
                 if ($dyade < $gdañohoy) {
@@ -738,7 +740,7 @@ class AnuncioModel extends Model
             $dacum_tasa = 0;
             $dacum_tasa2 = 0;
 
-            if ($stipoanuncio == "xx" )//! if 585 a 595 cs 
+            if ($stipoanuncio == "xx") //! if 585 a 595 cs 
             {
                 //Trace.Write("661>>>>>>>>>>>>>>");
                 $dlicencia = 0;
@@ -750,10 +752,133 @@ class AnuncioModel extends Model
                 $dbonsan = 0;
                 //! 20231019 voy aqui y en cs en la 608
             }
+            //WHERE     (cuenta = @cuenta) AND (fechaadeuda = @fechaadeuda) ref 120
+            dump(" ");
+            $adeudos = AdeudosModel::where('cuenta', $scuenta)
+                ->where('fechaadeuda', $syade04)
+                ->get();
 
-          
-          
+            $irows = count($adeudos);
+            $ipaso4 = 0;
+            if ($irows == 0) {
+                $ipaso4 += 1;
+            }
+            dump ( "cuenta" 
+             . $scuenta
+            );
+            dump ( "syade04" 
+             . $syade04
+            );
+            dump ( "ipaso4"      
+             . $ipaso4
+            );
+            dump($ipaso4);
+            if ($syade04 != "000004") {
+                $ipaso4 = $ipaso4 + 1;
+            }
+            dump($ipaso4);
+            if ($stipoanuncio != "xx") {
+                $ipaso4 = $ipaso4 + 1;
+            }
+            dump($ipaso4);
+            if ($stipoanuncio == "xx") //20090420
+            {
+                $ipaso4 = $ipaso4 + 5;
+            }
+            dump($ipaso4);
+            if ($dlicencia == 0) {
+                if ($dconstancia > 0) {
+                    $drezago = 0;
+                    $drecargo = 0;
+                    $dsancion = 0;
+                    $dconstancia = $dconstancia * 1.40;
+                    $dconstancia = round($dconstancia);
+                }
+            }
+            //   } //! inicia foreach en 267
 
+            if ($dyini == $gdañohoy) {
+                $drezago = 0;
+                $drecargo = 0;
+                $dsancion = 0;
+            }
+            dump(" ");
+            $gshorahoy = (string) (date('H:i'));
+            $ddlicencia = round($dlicencia, 0);
+            $ddrecargo = round($drecargo, 0);
+            $ddconstancia = round($dconstancia, 0);
+
+            $ddconstancia = $dconstancia;
+            $ddbonvalref = 0;
+            $ddbonrez = 0;
+            $ddbonrec = $dbonrec;
+            $ddbonsan = $dbonsan;
+            $ddbonconst = 0;
+            dump(" ");
+            dump("ipaso4");
+            dump($ipaso4);
+            if ($ipaso4 == 3) {
+                dump(" ");
+                $adeudo = new AdeudosModel();
+
+                // Asignar los valores a los atributos del objeto
+                $adeudo->cuenta = $scuenta;
+                $adeudo->dua = $gsDUA;
+                $adeudo->subdua = $gsSubDUA;
+                $adeudo->fechaadeuda = $syade04;
+                $adeudo->fpago = '0';
+                $adeudo->recof = '0';
+                $adeudo->fechadescar = ' ';
+                $adeudo->valref =       $ddlicencia;
+                $adeudo->rezago =       $drezago;
+                $adeudo->recargo =      $ddrecargo;
+                $adeudo->sancion =      $dsancion;
+                $adeudo->gastos = 0;
+                $adeudo->constancia =   $ddconstancia;
+                $adeudo->bonifvalref =  $ddbonvalref;
+                $adeudo->bonifrezago =  $ddbonrez;
+                $adeudo->bonifrecargo = $ddbonrec;
+                $adeudo->bonifsancion = $ddbonsan; 
+                $adeudo->bonifgastos = 0;
+                $adeudo->bonifconstancia = $ddbonconst;
+                $adeudo->fcaptura = $gsfechahoy;
+                $adeudo->horacap = $gshorahoy;
+                $adeudo->capturista = auth()->user()->name;
+                $adeudo->extra1 = '0';
+                $adeudo->extra2 = '0';
+                 dump (  'ddlicencia '
+                  . $ddlicencia
+                 ); 
+                 dump ( 'drezago '
+                  . $drezago
+                 ); 
+                 dump (  'ddrecargo '
+                  . $ddrecargo
+                 );
+                 dump (  'dsancion '
+                  . $dsancion
+                 );
+                 dump (  'ddconstanci '
+                  . $ddconstancia
+                 );
+                dump (  'ddbonvalref '
+                 . $ddbonvalref
+                );
+                dump (  'ddbonrez '
+                 . $ddbonrez
+                );
+               dump (  'ddbonrec '
+                . $ddbonrec
+               );
+             dump (  'ddbonsan '
+              .   $ddbonsan
+             );
+      
+                
+                // Guardar el objeto
+                // $adeudo->save();
+
+            }
         } //! inicia foreach en 267
     }
 }
