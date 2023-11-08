@@ -150,7 +150,7 @@ WHERE     (cuenta NOT IN
                             WHERE      (fechaadeuda = '202304')))
 ORDER BY fechaadeuda DESC
 
-SUBDUA 001926 20221215	043900057838
+DUA 000695 SUBDUA 001926 20221215	043900057838
 
   
 
