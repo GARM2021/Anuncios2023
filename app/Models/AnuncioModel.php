@@ -473,11 +473,11 @@ class AnuncioModel extends Model
 
                 $gdañohoy =  Carbon::now()->year;
                 $gdmeshoy =  Carbon::now()->month;
-                dump("gdmeshoy " . $gdmeshoy);
-                dump("dyade1 " . $dyade1);
-                dump("gdañohoy " . $gdañohoy);
-                dump("gdtasam  " . $gdtasam);
-                dump("gdtasam  " . $gdtasam);
+                // dump("gdmeshoy " . $gdmeshoy);
+                // dump("dyade1 " . $dyade1);
+                // dump("gdañohoy " . $gdañohoy);
+                // dump("gdtasam  " . $gdtasam);
+                // dump("gdtasam  " . $gdtasam);
 
 
                 // Calcula los recargos
@@ -520,7 +520,7 @@ class AnuncioModel extends Model
                 }  // linea 313 de cs 
 
 
-                dump("drecargo ----->>" . $drecargo);
+                dump("drecargo 523 ----->>" . $drecargo);
             }
 
 
@@ -585,7 +585,7 @@ class AnuncioModel extends Model
                     // dump("dtasa_por  do " . $dtasa_por);
                     // // dump("dacum_tasa do " . $dacum_tasa);
                     // dump("d_meses_acum " . $d_meses_acum);
-                    dump("drecargo ----->>" . $drecargo);
+                    dump("drecargo 588 ----->>" . $drecargo);
                 } while ($dyade1 < $gdañohoy); // linea 358 de cs 
 
                 dump("================");
@@ -846,6 +846,10 @@ class AnuncioModel extends Model
                 $adeudo->capturista = auth()->user()->name;
                 $adeudo->extra1 = '0';
                 $adeudo->extra2 = '0';
+                dump(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                dump (  'scuenta '
+                . $scuenta
+               ); 
                  dump (  'ddlicencia '
                   . $ddlicencia
                  ); 
