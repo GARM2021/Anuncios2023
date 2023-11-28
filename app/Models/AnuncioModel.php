@@ -28,7 +28,7 @@ class AnuncioModel extends Model
     public static  $gsmescap;
     public static  $gsdiacap;
     public static  $gsycap;
-    public static  $gdcuota;
+    public  static   $gdcuota ;
     public static  $gdtasam;
     public static  $gdañohoy;
     public static  $gdmeshoy;
@@ -102,7 +102,7 @@ class AnuncioModel extends Model
         $gdfechahoy = (float)$gsfechahoy;
         $letrero = "gdfechahoy 103" . $gdfechahoy;
         dump($letrero);
-        $gdcuota = 103.74;
+       // $gdcuota = 103.74;
     }
 
 
@@ -156,6 +156,10 @@ class AnuncioModel extends Model
             $syade = substr($frmitem["iyade"], 0, 4);
             $dyade = (float)$syade;
             $iyade = (int)$syade;
+
+            $adeudoscuota= AnuncioModel::FCuota($iyade);
+            $gdcuota = $adeudoscuota;
+
 
             if ($dyini0 < $dyini) {
 
@@ -230,7 +234,7 @@ class AnuncioModel extends Model
         $gdmeshoy = (float)$gsmeshoy;
         $gdfechahoy = (float)$gsfechahoy;
 
-        $gdcuota = 103.74;
+        //$gdcuota = 103.74;
 
         $errors = [];
         $datosrecibo = [];
@@ -242,6 +246,8 @@ class AnuncioModel extends Model
         $frmfupago  = $frmitem["frmfupago"];
         $syade = substr($frmitem["iyade"], 0, 4);
         $dyade = (float)$syade;
+
+
 
         $dyini0 = 0;
 
@@ -311,7 +317,7 @@ class AnuncioModel extends Model
             $spaso = $arow['fpago'];
             $spaso = substr($spaso, 0, 4);
 
-            $gdcuota = 103.74;
+           // $gdcuota = 103.74;
 
             //   dump("irecof  " .      $irecof          );
             //   dump("ifbajax " .      $ifbajax);
@@ -333,12 +339,12 @@ class AnuncioModel extends Model
                 $stipoanuncio = 'xx';
             }
             if ($stipoanuncio == 'AP') {
-                $dconstancia = $gdcuota;
+                $dconstancia = AnuncioModel::FCuota($iyade);
                 $dlicencia = 0;
             }
             if ($stipoanuncio == 'PR') {
                 if ($darea < 13) {
-                    $dconstancia = $gdcuota;
+                    $dconstancia = AnuncioModel::FCuota($iyade);
                     $dlicencia = 0;
                 }
             }
@@ -354,12 +360,36 @@ class AnuncioModel extends Model
                             $darea = $dlicencia;
                         }
                     }
+                 
+                
+                  
+       
 
-                    $dlicencia = (($darea * $dvistas) * $gdcuota);
+                    $dlicencia = (($darea * $dvistas) * AnuncioModel::FCuota($iyade));
                     $dconstancia = 0;
+
+                  
                 }
             }
-
+            $cuotapaso = AnuncioModel::FCuota($iyade);
+            dump (  'scuenta 368 >>>>>>>>>>>>>>>> '
+            . $scuenta
+           ); 
+            dump ( "stipoanuncio 368 " 
+             . $stipoanuncio
+            );
+            dump ( "darea 368 " 
+             . $darea
+            );
+            dump ( "dvistas 368 " 
+             . $dvistas
+            );
+            dump ( "gdcuota 368 " 
+             . $cuotapaso
+            );
+            dump ( "dlicencia 368 " 
+             . $dlicencia
+            );
 
 
             $ipasoaj = 0; //! linea 151 en cs 
@@ -388,7 +418,7 @@ class AnuncioModel extends Model
                     }
                 }
 
-                $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
+                $dlicencia = bcmul(bcmul($darea, $dvistas, 2), AnuncioModel::FCuota($iyade), 2);
                 $dconstancia = 0;
             }
 
@@ -425,7 +455,7 @@ class AnuncioModel extends Model
                     }
                 }
 
-                $dlicencia = bcmul(bcmul($darea, $dvistas, 2), $gdcuota, 2);
+                $dlicencia = bcmul(bcmul($darea, $dvistas, 2), AnuncioModel::FCuota($iyade), 2);
                 $dconstancia = 0;
             }
 
@@ -483,8 +513,34 @@ class AnuncioModel extends Model
                 // Calcula los recargos
                 if ($dyade1 < $gdañohoy) {
                     $d_meses_acum = ((int)$gdañohoy - (int)$dyade1) * 12 - 3 + $gdmeshoy;
-                    $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+                   // $drecargo = bcmul($d_meses_acum, bcmul($dlicencia, bcdiv($gdtasam, 10000)), 2);
+                    $drecargo = round(($d_meses_acum * ($dlicencia * ($gdtasam / 10000))), 2); //! 20231123 comparar contra ww_anuncios
+                    dump ( "drecargo 511===================" 
+                    . $drecargo
+                   );
                 }
+                dump (  'scuenta 512 >>>>>>>>>>>>>>>> '
+                . $scuenta
+               ); 
+                dump ( "dyade1 512=====================" 
+                 . $dyade1
+                );
+                dump ( "gdañohoy 512==================="   
+                 . $gdañohoy
+                );
+                dump ( "d_meses_acum 512===================" 
+                . $d_meses_acum
+               );
+               dump ( "dlicencia 512===================" 
+               . $dlicencia
+              );
+              dump ( "gdtasam 512===================" 
+              . $gdtasam
+             );
+
+                dump ( "drecargo 512===================" 
+                 . $drecargo
+                );
                 if ($dyade1 == $gdañohoy) {
                     if ($gdmeshoy >= 4) {
                         // $d_meses_acum = (int) $d_meses_acum;
@@ -766,21 +822,24 @@ class AnuncioModel extends Model
             dump ( "cuenta" 
              . $scuenta
             );
-            dump ( "syade04" 
+            dump ( "syade04 " 
              . $syade04
             );
-            dump ( "ipaso4"      
+            dump ( "ipaso4  irows 0"      
              . $ipaso4
             );
             dump($ipaso4);
             if ($syade04 != "000004") {
                 $ipaso4 = $ipaso4 + 1;
             }
-            dump($ipaso4);
+            dump ( "ipaso4 != 000004 "      
+            . $ipaso4
+           );
             if ($stipoanuncio != "xx") {
                 $ipaso4 = $ipaso4 + 1;
             }
-            dump($ipaso4);
+            dump ( "ipaso4 xx "    
+            . $ipaso4 );
             if ($stipoanuncio == "xx") //20090420
             {
                 $ipaso4 = $ipaso4 + 5;
@@ -846,7 +905,7 @@ class AnuncioModel extends Model
                 $adeudo->capturista = auth()->user()->name;
                 $adeudo->extra1 = '0';
                 $adeudo->extra2 = '0';
-                dump(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                dump(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                 dump (  'scuenta '
                 . $scuenta
                ); 
@@ -885,4 +944,106 @@ class AnuncioModel extends Model
             }
         } //! inicia foreach en 267
     }
+
+    public static function FCuota($iyade){
+
+        $x = intval($iyade);
+
+switch ($x) {
+    case 1995:
+        $gdcuota = 15.20;
+        break;
+    case 1996:
+        $gdcuota = 18.70;
+        break;
+    case 1997:
+        $gdcuota = 24.50;
+        break;
+    case 1998:
+        $gdcuota = 28.00;
+        break;
+    case 1999:
+        $gdcuota = 31.90;
+        break;
+    case 2000:
+        $gdcuota = 35.10;
+        break;
+    case 2001:
+        $gdcuota = 37.95;
+        break;
+    case 2002:
+        $gdcuota = 40.10;
+        break;
+    case 2003:
+        $gdcuota = 41.85;
+        break;
+    case 2004:
+        $gdcuota = 43.73;
+        break;
+    case 2005:
+        $gdcuota = 45.35;
+        break;
+    case 2006:
+        $gdcuota = 47.16;
+        break;
+    case 2007:
+        $gdcuota = 49.00;
+        break;
+    case 2008:
+        $gdcuota = 51.00;
+        break;
+    case 2009:
+        $gdcuota = 53.26;
+        break;
+    case 2010:
+        $gdcuota = 55.84;
+        break;
+    case 2011:
+        $gdcuota = 58.13;
+        break;
+    case 2012:
+        $gdcuota = 62.33;
+        break;
+    case 2013:
+        $gdcuota = 64.76;
+        break;
+    case 2014:
+        $gdcuota = 67.29;
+        break;
+    case 2015:
+        $gdcuota = 70.10;
+        break;
+    case 2016:
+        $gdcuota = 73.04;
+        break;
+    case 2017:
+        $gdcuota = 75.49;
+        break;
+    case 2018:
+        $gdcuota = 80.60;
+        break;
+    case 2019:
+        $gdcuota = 84.49;
+        break;
+    case 2020:
+        $gdcuota = 86.88;
+        break;
+    case 2021:
+        $gdcuota = 89.62;
+        break;
+    case 2022:
+        $gdcuota = 96.22;
+        break;
+    case 2023:
+        $gdcuota = 103.74;
+        break;
+    default:
+        // Handle invalid year
+        echo "Invalid year";
+        break;
+    }
+    return $gdcuota;
+
+    }
+
 }

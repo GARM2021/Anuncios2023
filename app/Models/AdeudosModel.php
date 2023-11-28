@@ -44,5 +44,6 @@ class AdeudosModel extends Model
 
     ];
 
+  
    
 }

@@ -150,9 +150,14 @@ WHERE     (cuenta NOT IN
                             WHERE      (fechaadeuda = '202304')))
 ORDER BY fechaadeuda DESC
 
-DUA 000695 SUBDUA 001926 20221215	043900057838
+DUA 000695 SUBDUA 001926 20150430	022500088072 < APLIADO
+DUA 000695 SUBDUA 001926 20221215	043900057838 < SIN APLICAR
 
-  
+d_meses_acum	92	decimal
+dlicencia  7304.00
+gdtasam 120
 
+
+se incluyo el dump 362 20231127
 
 
